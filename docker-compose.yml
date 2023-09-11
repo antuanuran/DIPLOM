@@ -1,0 +1,15 @@
+version: '3.9'
+
+volumes:
+  pgdata:
+
+services:
+  postgres:
+    image: postgres:alpine
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5462:5432
