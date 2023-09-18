@@ -4,7 +4,20 @@
 1. python3 -m venv .venv
 2. pip install -r requirements.txt
 
-# Make .env file.
+# Make .env file:
+- example (.env.template)
 
-# How to start
+# Create DB:
+- docker-compose up -d
+
+# Migrations:
+- python3 manage.py migrate
+
+# Create Superuser (for admin):
+- python3 manage.py createsuperuser
+
+# Run Project:
+- python3 manage.py runserver
+
+
  
