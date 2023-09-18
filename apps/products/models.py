@@ -19,7 +19,7 @@ class Attribute(models.Model):
 
 
 class Item(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="attributes")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="items")
     price = models.IntegerField(validators=[MinValueValidator(1)])
     count = models.PositiveIntegerField()
 

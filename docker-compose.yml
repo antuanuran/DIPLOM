@@ -1,4 +1,4 @@
-version: '3.9'
+version: '3.3'
 
 volumes:
   pg_data:
@@ -9,7 +9,7 @@ services:
     restart: always
     env_file:
       - .env
-    volumes:
-      - pg_data:/var/lib/postgresql/data
+#    volumes:
+#      - pg_data:/var/lib/postgresql/data
     ports:
-      - 5462:5432
+      - 5463:5432
