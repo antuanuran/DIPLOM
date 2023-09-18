@@ -15,7 +15,7 @@ ALLOWED_HOSTS = [x for x in os.getenv("ALLOWED_HOSTS", "").split(",") if x]
 
 # Application definition
 
-INSTALLED_APPS = [
+DJANGO_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -23,6 +23,16 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
+
+THIRD_PARTY_APPS = []
+
+LOCAL_APPS = [
+    "apps.users",
+    "apps.products",
+    "apps.orders",
+]
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -67,6 +77,8 @@ DATABASES = {
         "PORT": os.getenv("POSTGRES_PORT", 5432),
     }
 }
+
+AUTH_USER_MODEL = "users.User"
 
 
 # Password validation
