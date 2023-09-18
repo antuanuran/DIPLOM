@@ -1,0 +1,9 @@
+black
+isort
+flake8
+flake8-black
+flake8-pyproject
+pytest
+pytest-django
+pytest-cov
+pytest-env

@@ -28,4 +28,3 @@ logs/
 db.json
 celerybeat-schedule
 _dumps/
-requirements-dev.txt
