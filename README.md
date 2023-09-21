@@ -3,22 +3,23 @@
 # Development
 1. python3 -m venv .venv
 2. source .venv/bin/activate
-2. pip install -r requirements.txt
+3. pip install -r requirements.txt
+4. sudo apt install make
 
 # Make .env file:
 - example (.env.template)
 
-# Create DB:
+# Create DB
 - docker-compose up -d
 
-# Migrations:
-- python3 manage.py migrate
+# Migrations and RUN:
+- make load_db
 
-# Create Superuser (for admin):
-- python3 manage.py createsuperuser
+info: createsuperuser 
+			- email:    admin@admin.org
+			- password: admin
+			- password: admin
+			- "y" 
 
-# Run Project:
-- python3 manage.py runserver
 
 
- 
