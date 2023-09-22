@@ -9,17 +9,15 @@
 # Make .env file:
 - example (.env.template)
 
-# Create DB
-- docker-compose up -d
+# Migrations and RUN Project:
+- make run_project
 
-# Migrations and RUN:
-- make load_db
-
-info: createsuperuser 
+for info: createsuperuser: 
 			- email:    admin@admin.org
 			- password: admin
 			- password: admin
 			- "y" 
 
 
-
+# Curl:
+- http://localhost/admin/
