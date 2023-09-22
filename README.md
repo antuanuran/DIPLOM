@@ -16,7 +16,7 @@ for info: createsuperuser:
 			- email:    admin@admin.org
 			- password: admin
 			- password: admin
-			- "y" 
+			- sure?:    "y" 
 
 
 # Curl:
