@@ -24,5 +24,6 @@ recreatedb: dumpdb
 
 run_project: recreatedb
 	python manage.py loaddata _dumps/db-${TIME_MARK}.json
+	python manage.py import_data
 	python manage.py runserver
 
