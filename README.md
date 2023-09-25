@@ -13,10 +13,10 @@
 - make run_project
 
 for info: createsuperuser: 
-			- email:    admin@admin.org
-			- password: admin
-			- password: admin
-			- sure?:    "y" 
+- email:    admin@admin.org
+- password: admin
+- password: admin
+- sure?:    "y" 
 
 
 # Curl:
