@@ -1,14 +1,16 @@
-import csv
-from datetime import datetime
+import os.path
 
 from django.core.management import BaseCommand
-from apps.products.models import Category
+
+from apps.products.service import import_data
 
 
 class Command(BaseCommand):
-    def handle(self, *args, **options):
-        with open("import_data.csv", "r") as file:
-            data_all = list(csv.DictReader(file, delimiter=";"))
+    def add_arguments(self, parser):
+        parser.add_argument("path")
 
-        for category in data_all:
-            Category.objects.create(name=category["category"])
+    def handle(self, path: str, *args, **options):
+        data_format = os.path.splitext(os.path.basename(path))[-1][1:]
+
+        with open(path, "r") as file:
+            import_data(file, data_format)

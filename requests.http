@@ -1,0 +1,7 @@
+POST http://localhost:8000/api/v1/import-data/?file_type=yml
+#Authorization: Token ...
+
+###
+
+POST http://localhost:8000/api/import-data/?file_type=yml
+Content-Type: application/json

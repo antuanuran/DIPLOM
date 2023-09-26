@@ -24,6 +24,8 @@ recreatedb: dumpdb
 
 run_project: recreatedb
 	python manage.py loaddata _dumps/db-${TIME_MARK}.json
-#	python manage.py import_data
+	python manage.py import_data data_all/import_data.csv
+	python manage.py import_data data_all/shop1.yaml
+	python manage.py import_data data_all/shop2.yml
 	python manage.py runserver
 
