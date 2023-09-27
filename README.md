@@ -20,4 +20,5 @@ for info: createsuperuser:
 
 
 # Curl:
-- http://localhost/admin/
+- http://localhost:8000/admin/
+

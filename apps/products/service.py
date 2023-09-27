@@ -3,7 +3,7 @@ import csv
 import yaml
 from yaml import Loader
 
-from apps.products.models import Category
+from apps.products.models import Category, Product
 
 
 def load_data_from_yml(data_stream):
@@ -22,13 +22,23 @@ SUPPORTED_DATA_FORMATS = {
 
 
 def load_data_yml(data):
-    all = data.get("categories")
-    for i in all:
-        Category.objects.bulk_create([Category(name=i.get("name")) for i in all], ignore_conflicts=True)
+    Category.objects.bulk_create([Category(name=i.get("name")) for i in data.get("categories")], ignore_conflicts=True)
+
+    # for i in data:
+    #     if i == "categories":
+    #         for temp in data[i]:
+    #             print(temp.get("name"))
+    #             Category.objects.create(name=temp.get("name"))
+    #
+    #     elif i == "goods":
+    #         for temp in data[i]:
+    #             print(temp.get("name"))
+    #             cat = Category.objects.create(name=temp.get("category"))
+    #             Product.objects.create(name=temp.get("name"), category=cat)
 
 
 def load_data_csv(data):
-    Category.objects.bulk_create([Category(name=category["category"]) for category in data], ignore_conflicts=True)
+    Category.objects.bulk_create([Category(name=category["category"]) for category in data])
 
 
 def import_data(data_stream, data_format: str):
