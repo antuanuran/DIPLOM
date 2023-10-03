@@ -1,11 +1,12 @@
 from django.core.validators import MinValueValidator
+from django.core.exceptions import ValidationError
 from django.db import models
 
 from apps.users.models import User
 
 
 class Vendor(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="vendors")
 
     class Meta:
@@ -18,6 +19,7 @@ class Vendor(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
+    # products
 
     class Meta:
         verbose_name = "2. Категория"
@@ -31,6 +33,8 @@ class Product(models.Model):
     name = models.CharField(max_length=100)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="products")
     vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE, related_name="products")
+    # attributes
+    # items
 
     class Meta:
         verbose_name = "3. Продукт"
@@ -43,6 +47,7 @@ class Product(models.Model):
 class Attribute(models.Model):
     name = models.CharField(max_length=100)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="attributes")
+    # parameters - ссылка на конкретный параметр
 
     class Meta:
         verbose_name = "Атрибут"
@@ -56,6 +61,18 @@ class Item(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="items")
     price = models.IntegerField(validators=[MinValueValidator(1)])
     count = models.PositiveIntegerField()
+    upc = models.CharField(max_length=64, null=True, blank=True, db_index=True)
+    # parameters
+
+    # def save(self, *args, **kwargs):
+    #     self.clean()
+    #     super().save(*args, **kwargs)
+    #
+    # def clean(self):
+    #     if not self.upc:
+    #         return
+    #     if Item.objects.filter(product__vendor__id=self.product.vendor_id, upc=self.upc).exclude(id=self.id).exists():
+    #         raise ValidationError({"non unique id (goods)"}, code="non-unique-upc")
 
     class Meta:
         verbose_name = "4. Товар"

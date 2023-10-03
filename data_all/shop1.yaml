@@ -5,15 +5,14 @@ categories:
   - id: 15
     name: Аксессуары
   - id: 1
-    name: Flash-накопители
+    name: Аккумулятор
 
 goods:
   - id: 4216292
     category: 224
     model: apple/iphone/xs-max
-    name: Смартфон Apple iPhone XS Max 512GB (золотистый)
+    name: Смартфон Apple iPhone XS Max Pro
     price: 110000
-    price_rrc: 116990
     quantity: 14
     parameters:
       "Диагональ (дюйм)": 6.5
@@ -23,21 +22,20 @@ goods:
   - id: 4216313
     category: 224
     model: apple/iphone/xr
-    name: Смартфон Apple iPhone XR 256GB (красный)
+    name: Смартфон Apple iPhone XR Mini
     price: 65000
-    price_rrc: 69990
     quantity: 9
     parameters:
       "Диагональ (дюйм)": 6.1
       "Разрешение (пикс)": 1792x828
       "Встроенная память (Гб)": 256
       "Цвет": красный
+      "Размер": mini
   - id: 4216226
     category: 224
     model: apple/iphone/xr
-    name: Смартфон Apple iPhone XR 256GB (черный)
+    name: Смартфон Apple iPhone XR
     price: 65000
-    price_rrc: 69990
     quantity: 5
     parameters:
       "Диагональ (дюйм)": 6.1
@@ -47,12 +45,32 @@ goods:
   - id: 4672670
     category: 224
     model: apple/iphone/xr
-    name: Смартфон Apple iPhone XR 128GB (синий)
+    name: Смартфон Apple iPhone XR
     price: 60000
-    price_rrc: 64990
     quantity: 7
     parameters:
       "Диагональ (дюйм)": 6.1
       "Разрешение (пикс)": 1792x828
       "Встроенная память (Гб)": 256
       "Цвет": синий
+  - id: 46726799
+    category: 15
+    model: кабель
+    name: Кабель moonfish USB‑C
+    price: 2000
+    quantity: 73
+    parameters:
+      "Длинна, см.": 150
+      "Цвет": белый
+  - id: 467267856
+    category: 1
+    model: аккумулятор
+    name: Внешний аккумулятор moonfish MagSafe
+    price: 4500
+    quantity: 18
+    parameters:
+      "Ёмкость аккумулятора, мАч": 10000
+      "Тип": Li-Pol
+      "Мощность, Вт": 15      
+      
+      
