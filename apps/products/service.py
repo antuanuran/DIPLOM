@@ -1,4 +1,5 @@
 import csv
+from pprint import pprint
 
 import yaml
 from yaml import Loader
@@ -11,7 +12,7 @@ def load_data_from_yml(data_stream):
 
 
 def load_data_from_csv(data_stream):
-    return csv.DictReader(data_stream, delimiter=";")
+    return csv.DictReader(data_stream, delimiter=",")
 
 
 SUPPORTED_DATA_FORMATS = {
@@ -23,7 +24,6 @@ SUPPORTED_DATA_FORMATS = {
 
 def load_data_yml(data, owner_id):
     vendor, _ = Vendor.objects.get_or_create(name=data["shop"], defaults={"owner_id": owner_id})
-    # print(vendor)
 
     category_mapper = {}
     for entity in data.get("categories", []):
@@ -36,8 +36,8 @@ def load_data_yml(data, owner_id):
             category_id=category_mapper[entity["category"]],
             name=entity["name"],
         )
-        print(entity["category"])
-        print(product)
+        # print(entity["category"])
+        # print(product)
 
         item = Item.objects.filter(upc=entity["id"], product__vendor=vendor).first()
         if item:
@@ -66,7 +66,61 @@ def load_data_yml(data, owner_id):
 
 
 def load_data_csv(data, owner_id):
-    Category.objects.bulk_create([Category(name=category["category"]) for category in data], ignore_conflicts=True)
+    category_mapper = {}
+    for entity in data:
+        if entity["vendor_name"]:
+            vendor, _ = Vendor.objects.get_or_create(name=entity["vendor_name"], defaults={"owner_id": owner_id})
+
+        if entity["category_name"]:
+            db_cat, _ = Category.objects.get_or_create(name=entity["category_name"])
+            category_mapper[entity["category_id"]] = db_cat.id
+
+        if entity["product_name"]:
+            product, _ = Product.objects.get_or_create(
+                vendor=vendor, category_id=category_mapper[entity["category_product_id"]], name=entity["product_name"]
+            )
+
+        item = Item.objects.filter(upc=entity["product_id"], product__vendor=vendor).first()
+        if item:
+            item.product = product
+            item.price = entity["price"]
+            item.count = entity["quantity"]
+            item.save(update_fields=["product", "price", "count"])
+
+        else:
+            item = Item.objects.create(
+                price=entity["price"],
+                count=entity["quantity"],
+                upc=entity["product_id"],
+                product=product,
+            )
+
+        all_keys = [
+            "vendor_name",
+            "categories",
+            "category_name",
+            "category_id",
+            "goods",
+            "product_name",
+            "product_id",
+            "price",
+            "quantity",
+            "category_product_id",
+            "parameters",
+        ]
+        for key, value in entity.items():
+            if key not in all_keys:
+                if value:
+                    Attribute.objects.get_or_create(name=key, product=product)
+
+        item.parameters.all().delete()
+
+        for key, value in entity.items():
+            if key not in all_keys:
+                if value:
+                    ItemParameter.objects.create(
+                        value=value, item=item, attribute=Attribute.objects.get(name=key, product=product)
+                    )
 
 
 def import_data(data_stream, data_format: str, owner_id):
