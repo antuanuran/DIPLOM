@@ -12,13 +12,8 @@
 # Migrations and RUN Project:
 - make run_project
 
-for info: createsuperuser: 
+for info: createsuperuser:
 - email:    admin@admin.org
 - password: admin
 - password: admin
-- sure?:    "y" 
-
-
-# Curl:
-- http://localhost:8000/admin/
-
+- sure?:    "y"

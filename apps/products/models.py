@@ -64,15 +64,16 @@ class Item(models.Model):
     upc = models.CharField(max_length=64, null=True, blank=True, db_index=True)
     # parameters
 
-    # def save(self, *args, **kwargs):
-    #     self.clean()
-    #     super().save(*args, **kwargs)
-    #
-    # def clean(self):
-    #     if not self.upc:
-    #         return
-    #     if Item.objects.filter(product__vendor__id=self.product.vendor_id, upc=self.upc).exclude(id=self.id).exists():
-    #         raise ValidationError({"non unique id (goods)"}, code="non-unique-upc")
+    # Проверка на уникальность upc+vendor (при альтернативной загрузке - админка либо реквест)
+    def save(self, *args, **kwargs):
+        self.clean()
+        super().save(*args, **kwargs)
+
+    def clean(self):
+        if not self.upc:
+            return
+        if Item.objects.filter(product__vendor__id=self.product.vendor_id, upc=self.upc).exclude(id=self.id).exists():
+            raise ValidationError({"non unique id (goods)"}, code="non-unique-upc")
 
     class Meta:
         verbose_name = "4. Товар"

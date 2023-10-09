@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+import datetime as dt
 
 from dotenv import load_dotenv
 
@@ -24,7 +25,10 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    "rest_framework",
+    "djoser",
+]
 
 LOCAL_APPS = [
     "apps.users",
@@ -122,3 +126,17 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+}
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": dt.timedelta(days=7),
+    "AUTH_HEADER_TYPES": ("JWT",),
+}
