@@ -1,3 +1,4 @@
+# Создание юзера
 POST http://localhost:8000/api/v1/auth/users/
 Content-Type: application/json
 
@@ -7,6 +8,7 @@ Content-Type: application/json
 }
 
 ###
+# Создание токена
 
 POST http://localhost:8000/api/v1/auth/jwt/create/
 Content-Type: application/json
@@ -19,10 +21,10 @@ Content-Type: application/json
 ###
 
 GET http://localhost:8000/api/v1/auth/users/me/
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk3NDQ0MjYxLCJpYXQiOjE2OTY4Mzk0NjEsImp0aSI6IjViM2Y1YmZlNTM1MjQzNmNiOTA2ZWMwMDc1OGJjMjU1IiwidXNlcl9pZCI6MX0.WMii2-VvJHSS4VqZ_rToMjrNoPfyzeG1Hm91OLHpE_Y
+Authorization: JWT [TOKEN]
 
 ###
 
 POST http://localhost:8000/api/v1/import-data/?file_type=yml
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk3NDQ0MjYxLCJpYXQiOjE2OTY4Mzk0NjEsImp0aSI6IjViM2Y1YmZlNTM1MjQzNmNiOTA2ZWMwMDc1OGJjMjU1IiwidXNlcl9pZCI6MX0.WMii2-VvJHSS4VqZ_rToMjrNoPfyzeG1Hm91OLHpE_Y
+Authorization: JWT [TOKEN]
