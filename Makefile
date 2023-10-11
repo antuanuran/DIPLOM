@@ -20,11 +20,12 @@ recreatedb: dumpdb
 	docker-compose up -d
 	sleep 5
 	python manage.py migrate
-#	python manage.py createsuperuser
+	python manage.py createsuperuser
 
 run_project: recreatedb
 	python manage.py loaddata _dumps/db-${TIME_MARK}.json
-	python manage.py import_data data_all/shop1.yaml --owner_id 1
-	python manage.py import_data data_all/import_data.csv --owner_id 1
+	python manage.py import_data data_all/import_2.yaml --owner_id 1
+	python manage.py import_data data_all/import_1.csv --owner_id 1
+	python manage.py import_data data_all/import_3.yml --owner_id 1
 	python manage.py runserver
 

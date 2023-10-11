@@ -1,4 +1,18 @@
-# Создание юзера
+# Загрузка файлов через название в строке запроса
+POST http://localhost:8000/api/v1/import-data/?file_name=import_3.yml
+Content-Type: application/json
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk3NjE4Njg3LCJpYXQiOjE2OTcwMTM4ODcsImp0aSI6IjMyNWE2OGIyMGM4NzQxMTg5ZDNmNDY5OWFjNGFmOTFlIiwidXNlcl9pZCI6Mn0.ryYf57PjgkUw5zxeZVBszSwkNP5iQQPjiYBDX_xhia0
+
+###
+# Загрузка файла через Postman
+
+POST http://localhost:8000/api/v1/import-file/?file_type=yml
+Content-Type: application/json
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk3NjA1Nzg5LCJpYXQiOjE2OTcwMDA5ODksImp0aSI6ImUzZWZlMjExOWIwNjRjNjFiN2JlNDQ5N2Y2NzIwODM2IiwidXNlcl9pZCI6M30.GuIAHOXF8z5ore8mBxNTKwNOV_Fk2D02FW4EYnWmnE8
+
+
+###
+# Создание Юзера
 POST http://localhost:8000/api/v1/auth/users/
 Content-Type: application/json
 
@@ -9,7 +23,6 @@ Content-Type: application/json
 
 ###
 # Создание токена
-
 POST http://localhost:8000/api/v1/auth/jwt/create/
 Content-Type: application/json
 
@@ -19,12 +32,9 @@ Content-Type: application/json
 }
 
 ###
+# Проверка данных Юзера
 
 GET http://localhost:8000/api/v1/auth/users/me/
-Authorization: JWT [TOKEN]
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk3NjE4Njg3LCJpYXQiOjE2OTcwMTM4ODcsImp0aSI6IjMyNWE2OGIyMGM4NzQxMTg5ZDNmNDY5OWFjNGFmOTFlIiwidXNlcl9pZCI6Mn0.ryYf57PjgkUw5zxeZVBszSwkNP5iQQPjiYBDX_xhia0
 
 ###
-
-POST http://localhost:8000/api/v1/import-data/?file_type=yml
-Content-Type: application/json
-Authorization: JWT [TOKEN]

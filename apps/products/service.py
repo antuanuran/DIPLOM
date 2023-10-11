@@ -1,6 +1,4 @@
 import csv
-from pprint import pprint
-
 import yaml
 from yaml import Loader
 
@@ -36,8 +34,6 @@ def load_data_yml(data, owner_id):
             category_id=category_mapper[entity["category"]],
             name=entity["name"],
         )
-        # print(entity["category"])
-        # print(product)
 
         item = Item.objects.filter(upc=entity["id"], product__vendor=vendor).first()
         if item:
@@ -132,3 +128,6 @@ def import_data(data_stream, data_format: str, owner_id):
     else:
         data = SUPPORTED_DATA_FORMATS[data_format](data_stream)
         load_data_yml(data, owner_id)
+
+
+
