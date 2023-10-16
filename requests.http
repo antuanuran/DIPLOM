@@ -1,14 +1,14 @@
 # Загрузка файлов через название в строке запроса
-POST http://localhost:8000/api/v1/import-data/?file_name=import_1.csv
+POST http://localhost:8000/api/v1/products-import-data/?file_name=import_1.csv
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk3Njk2ODYxLCJpYXQiOjE2OTcwOTIwNjEsImp0aSI6ImFiMWNkNWMxOTY3YzQ3ZTk5NjZkY2ExNjJjYTk4ZDJhIiwidXNlcl9pZCI6Mn0.4BRNrr2PkwiOZdksdaAFXzP1n7Y9f4ebU4eNyYYKc2M
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4MDQ2MTU4LCJpYXQiOjE2OTc0NDEzNTgsImp0aSI6ImUwNmY4MTFkNmJiYTRmYzdiMTcwMDMyN2ZiNDA5YzYyIiwidXNlcl9pZCI6Mn0.hNHC5gGiL3ARrLd1YuPfyZvmBMHtuGy4_g-Pu039doY
 
 ###
 # Загрузка файла через Postman
 
-POST http://localhost:8000/api/v1/import-file/?file_type=yml
+POST http://localhost:8000/api/v1/products-import-file/?file_type=yml
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk3Njk2ODYxLCJpYXQiOjE2OTcwOTIwNjEsImp0aSI6ImFiMWNkNWMxOTY3YzQ3ZTk5NjZkY2ExNjJjYTk4ZDJhIiwidXNlcl9pZCI6Mn0.4BRNrr2PkwiOZdksdaAFXzP1n7Y9f4ebU4eNyYYKc2M
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4MDQ2MTU4LCJpYXQiOjE2OTc0NDEzNTgsImp0aSI6ImUwNmY4MTFkNmJiYTRmYzdiMTcwMDMyN2ZiNDA5YzYyIiwidXNlcl9pZCI6Mn0.hNHC5gGiL3ARrLd1YuPfyZvmBMHtuGy4_g-Pu039doY
 
 
 ###
@@ -36,5 +36,17 @@ Content-Type: application/json
 
 GET http://localhost:8000/api/v1/auth/users/me/
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk3Njk2ODYxLCJpYXQiOjE2OTcwOTIwNjEsImp0aSI6ImFiMWNkNWMxOTY3YzQ3ZTk5NjZkY2ExNjJjYTk4ZDJhIiwidXNlcl9pZCI6Mn0.4BRNrr2PkwiOZdksdaAFXzP1n7Y9f4ebU4eNyYYKc2M
+
+###
+
+GET http://localhost:8000/api/v1/items/
+Content-Type: application/json
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk3NzAwOTMyLCJpYXQiOjE2OTcwOTYxMzIsImp0aSI6Ijc3MjQ2ZGY0ZTUyNDRkZDliZWUyNDkzNDQ5ZTU0YzEyIiwidXNlcl9pZCI6MX0.p1jUjzcm5LLbOoLgi9yRXrZqZjr7uNgoDEFZUB7ozNQ
+
+###
+
+GET http://localhost:8000/api/v1/items/?limit=5&ordering=price&product__category=15
+Content-Type: application/json
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk3NzAwOTMyLCJpYXQiOjE2OTcwOTYxMzIsImp0aSI6Ijc3MjQ2ZGY0ZTUyNDRkZDliZWUyNDkzNDQ5ZTU0YzEyIiwidXNlcl9pZCI6MX0.p1jUjzcm5LLbOoLgi9yRXrZqZjr7uNgoDEFZUB7ozNQ
 
 ###

@@ -25,10 +25,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = [
-    "rest_framework",
-    "djoser",
-]
+THIRD_PARTY_APPS = ["rest_framework", "djoser", "django_filters"]
 
 LOCAL_APPS = [
     "apps.users",
@@ -127,7 +124,9 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-REST_FRAMEWORK = {"DEFAULT_AUTHENTICATION_CLASSES": ['rest_framework_simplejwt.authentication.JWTAuthentication'],
-                  "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated"]}
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": ["rest_framework_simplejwt.authentication.JWTAuthentication"],
+    "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated"],
+}
 
-SIMPLE_JWT = {"ACCESS_TOKEN_LIFETIME": dt.timedelta(days=7), 'AUTH_HEADER_TYPES': ('JWT', 'Bearer')}
+SIMPLE_JWT = {"ACCESS_TOKEN_LIFETIME": dt.timedelta(days=7), "AUTH_HEADER_TYPES": ("JWT", "Bearer")}

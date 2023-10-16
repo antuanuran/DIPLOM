@@ -10,7 +10,7 @@
 - example (.env.template)
 
 # Migrations and RUN Project:
-- make run_project
+- make run
 
 for info: createsuperuser:
 - email:    admin@admin.org
