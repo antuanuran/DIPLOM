@@ -37,10 +37,17 @@ def import_data(request):
 @api_view(http_method_names=["post"])
 @permission_classes([IsAuthenticated, IsVendor])
 def import_file(request):
-    data_format = request.query_params.get("file_type", "csv")
-    if not request.FILES or "file" in request.FILES:
+    # data_format = request.query_params.get("file_type", "csv")
+    if not request.FILES or "file" not in request.FILES:
         raise ValidationError("no file", code="no-file")
     data_stream = request.FILES["file"]
+
+    temp_list = list(data_stream.name)
+    for i in temp_list:
+        if i == ".":
+            count = temp_list.index(i) + 1
+    data_format = "".join(temp_list[count:])
+
     service.import_data(data_stream, data_format, request.user.id)
     return Response(status=status.HTTP_201_CREATED)
 
