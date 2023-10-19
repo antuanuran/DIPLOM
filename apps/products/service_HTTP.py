@@ -16,11 +16,6 @@ def import_data(name_file, data_format, owner_id):
             data_stream_csv = list(csv.DictReader(fd))
         service.load_data_csv(data_stream_csv, owner_id)
 
-    elif data_format == "yaml":
-        with open(f"data_all/{name_file}{data_format}", "r", encoding="utf-8") as fd:
-            data_stream_yaml = yaml.load(fd, Loader=Loader)
-        service.load_data_yml(data_stream_yaml, owner_id)
-
     else:
         with open(f"data_all/{name_file}.{data_format}", "r", encoding="utf-8") as fd:
             data_stream_yaml = yaml.load(fd, Loader=Loader)
