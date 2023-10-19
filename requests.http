@@ -27,8 +27,8 @@ POST http://localhost:8000/api/v1/auth/jwt/create/
 Content-Type: application/json
 
 {
-  "email": "admin2@admin.org",
-  "password": "develop123"
+  "email": "admin@admin.org",
+  "password": "admin"
 }
 
 ###
@@ -41,12 +41,12 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 
 GET http://localhost:8000/api/v1/items/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk3NzAwOTMyLCJpYXQiOjE2OTcwOTYxMzIsImp0aSI6Ijc3MjQ2ZGY0ZTUyNDRkZDliZWUyNDkzNDQ5ZTU0YzEyIiwidXNlcl9pZCI6MX0.p1jUjzcm5LLbOoLgi9yRXrZqZjr7uNgoDEFZUB7ozNQ
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4MzAwNjQxLCJpYXQiOjE2OTc2OTU4NDEsImp0aSI6IjhiZGM4NTQ4NzM2ZjRlMjlhNmEyODc5NWM1MjkzNDE4IiwidXNlcl9pZCI6MX0.UiCfPYMGGo8VyEzKaxeXBsJLDNkKndzJgPd2h2FGB6Y
 
 ###
 
-GET http://localhost:8000/api/v1/items/?limit=5&ordering=price&product__category=15
+GET http://localhost:8000/api/v1/items/?limit=5&ordering=-price&product__category=1&search=XS
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4MTI1MDgyLCJpYXQiOjE2OTc1MjAyODIsImp0aSI6ImU3OGNmMTEzZWZlMjRjMGJhYjRjNjc1NWY0ZDU3ZmM4IiwidXNlcl9pZCI6Mn0.uibsUDzO3LfK-9kD8TMIlfX39fCTX2vz6JaDwS_AiQo
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4MzAwNjQxLCJpYXQiOjE2OTc2OTU4NDEsImp0aSI6IjhiZGM4NTQ4NzM2ZjRlMjlhNmEyODc5NWM1MjkzNDE4IiwidXNlcl9pZCI6MX0.UiCfPYMGGo8VyEzKaxeXBsJLDNkKndzJgPd2h2FGB6Y
 
 ###

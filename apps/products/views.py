@@ -55,8 +55,14 @@ def import_file(request):
 class ItemViewSet(ModelViewSet):
     queryset = Item.objects.all()
     serializer_class = DetailItemSerializer
-    filter_backends = [DjangoFilterBackend, OrderingFilter, SearchFilter]
-    filterset_fields = ["product__category"]
+
+    filter_backends = [
+        DjangoFilterBackend,
+        OrderingFilter,
+        SearchFilter,
+    ]  # DjangoFilterBackend - сортировка по параметру. Не указали конкретный параметр, поэтому можно сортировать по всем параметрам нашей модели - Item
+
+    filterset_fields = ["product__category"]  # Фильтр по id Категории
     search_fields = ["product__name"]
     pagination_class = LimitOffsetPagination
 

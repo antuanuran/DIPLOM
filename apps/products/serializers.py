@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from apps.products.models import Item, ItemParameter, Product, Vendor
+from apps.products.models import Item, ItemParameter, Product, Vendor, Category
 
 
 class VendorSerializer(serializers.ModelSerializer):
@@ -11,8 +11,14 @@ class VendorSerializer(serializers.ModelSerializer):
         fields = ["id", "name", "owner"]
 
 
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ["id", "name"]
+
+
 class ProductSerializer(serializers.ModelSerializer):
-    category = serializers.SlugRelatedField(slug_field="name", read_only=True)
+    category = CategorySerializer(read_only=True)
     vendor = VendorSerializer(read_only=True)
 
     class Meta:
