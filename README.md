@@ -11,6 +11,7 @@
 
 # Migrations and RUN Project:
 - make run
+- make run_crop
 
 for info: createsuperuser:
 - email:    admin@admin.org

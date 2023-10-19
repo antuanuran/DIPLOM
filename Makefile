@@ -22,10 +22,17 @@ recreatedb: dumpdb
 	python manage.py migrate
 	python manage.py createsuperuser
 
+
 run: recreatedb
 	python manage.py loaddata _dumps/db-${TIME_MARK}.json
-	python manage.py import_data data_all/import_2.yaml --owner_id 1
 	python manage.py import_data data_all/import_1.csv --owner_id 1
+	python manage.py import_data data_all/import_2.yaml --owner_id 1
 	python manage.py import_data data_all/import_3.yml --owner_id 1
+	python manage.py runserver
+	
+
+run_crop: 
+	python manage.py makemigrations
+	python manage.py migrate
 	python manage.py runserver
 
