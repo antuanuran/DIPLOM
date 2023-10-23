@@ -2,6 +2,8 @@ import csv
 import yaml
 from yaml import Loader
 
+import os
+
 
 from apps.products.models import (
     Category,
