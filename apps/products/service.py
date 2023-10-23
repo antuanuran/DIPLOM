@@ -1,8 +1,17 @@
 import csv
 import yaml
 from yaml import Loader
+from rest_framework.exceptions import ValidationError
 
-from apps.products.models import Category, Product, Vendor, Item, Attribute, ItemParameter
+
+from apps.products.models import (
+    Category,
+    Product,
+    Vendor,
+    Item,
+    Attribute,
+    ItemParameter,
+)
 
 
 def load_data_from_yml(data_stream):
@@ -21,7 +30,9 @@ SUPPORTED_DATA_FORMATS = {
 
 
 def load_data_yml(data, owner_id):
-    vendor, _ = Vendor.objects.get_or_create(name=data["shop"], defaults={"owner_id": owner_id})
+    vendor, _ = Vendor.objects.get_or_create(
+        name=data["shop"], defaults={"owner_id": owner_id}
+    )
 
     category_mapper = {}
     for entity in data.get("categories", []):
@@ -57,7 +68,9 @@ def load_data_yml(data, owner_id):
         item.parameters.all().delete()
         for key, value in entity.get("parameters", {}).items():
             ItemParameter.objects.create(
-                value=value, item=item, attribute=Attribute.objects.get(name=key, product=product)
+                value=value,
+                item=item,
+                attribute=Attribute.objects.get(name=key, product=product),
             )
 
 
@@ -65,7 +78,9 @@ def load_data_csv(data, owner_id):
     category_mapper = {}
     for entity in data:
         if entity["vendor_name"]:
-            vendor, _ = Vendor.objects.get_or_create(name=entity["vendor_name"], defaults={"owner_id": owner_id})
+            vendor, _ = Vendor.objects.get_or_create(
+                name=entity["vendor_name"], defaults={"owner_id": owner_id}
+            )
 
         if entity["category_name"]:
             db_cat, _ = Category.objects.get_or_create(name=entity["category_name"])
@@ -73,10 +88,14 @@ def load_data_csv(data, owner_id):
 
         if entity["product_name"]:
             product, _ = Product.objects.get_or_create(
-                vendor=vendor, category_id=category_mapper[entity["category_product_id"]], name=entity["product_name"]
+                vendor=vendor,
+                category_id=category_mapper[entity["category_product_id"]],
+                name=entity["product_name"],
             )
 
-        item = Item.objects.filter(upc=entity["product_id"], product__vendor=vendor).first()
+        item = Item.objects.filter(
+            upc=entity["product_id"], product__vendor=vendor
+        ).first()
         if item:
             item.product = product
             item.price = entity["price"]
@@ -115,19 +134,24 @@ def load_data_csv(data, owner_id):
             if key not in all_keys:
                 if value:
                     ItemParameter.objects.create(
-                        value=value, item=item, attribute=Attribute.objects.get(name=key, product=product)
+                        value=value,
+                        item=item,
+                        attribute=Attribute.objects.get(name=key, product=product),
                     )
 
 
 def import_data(data_stream, data_format: str, owner_id):
     if data_format not in SUPPORTED_DATA_FORMATS:
-        raise NotImplementedError(f"{data_format} not supported. Available only: {SUPPORTED_DATA_FORMATS.keys()}")
+        raise NotImplementedError(
+            f"{data_format} not supported. Available only: {SUPPORTED_DATA_FORMATS.keys()}"
+        )
     elif data_format == "csv":
         data = SUPPORTED_DATA_FORMATS[data_format](data_stream)
-        load_data_csv(data, owner_id)
+        raise ValidationError(
+            "Загрузите файл с расширением .csv через другой сервис: (POST http://localhost:8000/api/v1/products-import-data/?file_name=import_1.csv)",
+            code="not-load",
+        )
+        # load_data_csv(data, owner_id)
     else:
         data = SUPPORTED_DATA_FORMATS[data_format](data_stream)
         load_data_yml(data, owner_id)
-
-
-
