@@ -1,7 +1,6 @@
 import csv
 import yaml
 from yaml import Loader
-from rest_framework.exceptions import ValidationError
 
 
 from apps.products.models import (
@@ -147,10 +146,6 @@ def import_data(data_stream, data_format: str, owner_id):
         )
     elif data_format == "csv":
         data = SUPPORTED_DATA_FORMATS[data_format](data_stream)
-        raise ValidationError(
-            "Загрузите файл с расширением .csv через другой сервис: (POST http://localhost:8000/api/v1/products-import-data/?file_name=import_1.csv)",
-            code="not-load",
-        )
         load_data_csv(data, owner_id)
     else:
         data = SUPPORTED_DATA_FORMATS[data_format](data_stream)

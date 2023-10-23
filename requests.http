@@ -1,7 +1,7 @@
 # Загрузка файлов через название в строке запроса
 POST http://localhost:8000/api/v1/products-import-data/?file_name=import_1.csv
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4NjMwNzU5LCJpYXQiOjE2OTgwMjU5NTksImp0aSI6IjRjNmFkNGUyMTg5ZDQ4OGRhMGM0MjVmMWMyMmI3NmI1IiwidXNlcl9pZCI6MX0.AZDrXdCN7583aDXYmW0190tuUmK-IzM5Rh-cRX-HLYk
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4NjQyNzM3LCJpYXQiOjE2OTgwMzc5MzcsImp0aSI6ImNkNzAxODZiMmM2MjQwNWY5NTFkZGVhZmFhYjRkMzY2IiwidXNlcl9pZCI6MX0.5TELhyAiz6YW-xFpmnkvwJUZBOoObK7DL3CsSXDiQvk
 
 ###
 # Загрузка файла через Postman
