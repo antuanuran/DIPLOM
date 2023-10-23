@@ -151,7 +151,7 @@ def import_data(data_stream, data_format: str, owner_id):
             "Загрузите файл с расширением .csv через другой сервис: (POST http://localhost:8000/api/v1/products-import-data/?file_name=import_1.csv)",
             code="not-load",
         )
-        # load_data_csv(data, owner_id)
+        load_data_csv(data, owner_id)
     else:
         data = SUPPORTED_DATA_FORMATS[data_format](data_stream)
         load_data_yml(data, owner_id)

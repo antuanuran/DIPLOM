@@ -27,11 +27,7 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = ["rest_framework", "djoser", "django_filters"]
 
-LOCAL_APPS = [
-    "apps.users",
-    "apps.products",
-    "apps.orders",
-]
+LOCAL_APPS = ["apps.users", "apps.products", "apps.orders", "apps.basket"]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 

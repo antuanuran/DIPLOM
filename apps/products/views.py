@@ -44,7 +44,6 @@ def import_file(request):
     data_stream = request.FILES["file"]
 
     _, data_format = data_stream.name.rsplit(".")
-
     # data_stream = data_stream_all.read().decode()
 
     service.import_data(data_stream, data_format, request.user.id)
@@ -54,6 +53,7 @@ def import_file(request):
 class ItemViewSet(ModelViewSet):
     queryset = Item.objects.all()
     serializer_class = DetailItemSerializer
+    http_method_names = ["get", "options", "head"]
 
     filter_backends = [
         DjangoFilterBackend,

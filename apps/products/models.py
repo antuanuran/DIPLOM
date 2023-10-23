@@ -31,8 +31,12 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="products")
-    vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE, related_name="products")
+    category = models.ForeignKey(
+        Category, on_delete=models.CASCADE, related_name="products"
+    )
+    vendor = models.ForeignKey(
+        Vendor, on_delete=models.CASCADE, related_name="products"
+    )
     # attributes
     # items
 
@@ -46,7 +50,9 @@ class Product(models.Model):
 
 class Attribute(models.Model):
     name = models.CharField(max_length=100)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="attributes")
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name="attributes"
+    )
     # parameters - ссылка на конкретный параметр
 
     class Meta:
@@ -63,6 +69,8 @@ class Item(models.Model):
     count = models.PositiveIntegerField()
     upc = models.CharField(max_length=64, null=True, blank=True, db_index=True)
     # parameters
+    # basket_rows (Model from basket App)
+    # baskets     (Model from basket App)
 
     # Проверка на уникальность upc+vendor (при альтернативной загрузке - админка либо реквест)
     def save(self, *args, **kwargs):
@@ -72,7 +80,13 @@ class Item(models.Model):
     def clean(self):
         if not self.upc:
             return
-        if Item.objects.filter(product__vendor__id=self.product.vendor_id, upc=self.upc).exclude(id=self.id).exists():
+        if (
+            Item.objects.filter(
+                product__vendor__id=self.product.vendor_id, upc=self.upc
+            )
+            .exclude(id=self.id)
+            .exists()
+        ):
             raise ValidationError({"non unique id (goods)"}, code="non-unique-upc")
 
     class Meta:
@@ -84,7 +98,9 @@ class Item(models.Model):
 
 
 class ItemParameter(models.Model):
-    attribute = models.ForeignKey(Attribute, on_delete=models.CASCADE, related_name="parameters")
+    attribute = models.ForeignKey(
+        Attribute, on_delete=models.CASCADE, related_name="parameters"
+    )
     item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name="parameters")
     value = models.CharField(max_length=100)
 
