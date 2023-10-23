@@ -44,15 +44,13 @@ def import_file(request):
     data_stream = request.FILES["file"]
 
     _, data_format = data_stream.name.rsplit(".")
-    # data_stream = data_stream_all.read().decode()
 
     if data_format == "csv":
-        raise ValidationError(
-            "Загрузите файл с расширением .csv через другой сервис: (POST http://localhost:8000/api/v1/products-import-data/?file_name=import_1.csv)",
-            code="not-load",
-        )
+        data_stream = data_stream.read().decode()
+        service.import_http_csv(data_stream, request.user.id)
 
-    service.import_data(data_stream, data_format, request.user.id)
+    else:
+        service.import_data(data_stream, data_format, request.user.id)
     return Response(status=status.HTTP_201_CREATED)
 
 
