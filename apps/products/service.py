@@ -152,19 +152,19 @@ def import_data(data_stream, data_format: str, owner_id):
     else:
         data = SUPPORTED_DATA_FORMATS[data_format](data_stream)
         load_data_yml(data, owner_id)
-        
-        
+
+
 def convert_to_csv(data):
     my_file = open("data_all/temp.txt", "w+")
     my_file.write(data)
     my_file.close()
 
-    with open('data_all/temp.txt', 'r') as in_file:
+    with open("data_all/temp.txt", "r") as in_file:
         items = []
         for line in in_file:
             str_file = line.strip()
             items.append(str_file.split(","))
-        with open('data_all/temp.csv', "w") as out_file:
+        with open("data_all/temp.csv", "w") as out_file:
             writer = csv.writer(out_file)
             writer.writerows(items)
 

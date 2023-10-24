@@ -73,6 +73,7 @@ class Item(models.Model):
     # baskets     (Model from basket App)
 
     # Проверка на уникальность upc+vendor (при альтернативной загрузке - админка либо реквест)
+    # ****************************************************************************************
     def save(self, *args, **kwargs):
         self.clean()
         super().save(*args, **kwargs)
@@ -92,6 +93,8 @@ class Item(models.Model):
     class Meta:
         verbose_name = "4. Товар"
         verbose_name_plural = "4. Товары"
+
+    # ****************************************************************************************
 
     def __str__(self):
         return f"{self.product} [{self.price} руб. / {self.count} шт.]"

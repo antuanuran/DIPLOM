@@ -33,7 +33,9 @@ def import_data(request):
     except FileNotFoundError:
         raise ValidationError("incorrect file name", code="incorrect-file-name")
 
-    return Response(status=status.HTTP_201_CREATED)
+    return Response(
+        data=f"file: '{name_format}' LOAD......ok", status=status.HTTP_201_CREATED
+    )
 
 
 @api_view(http_method_names=["post"])
@@ -51,7 +53,10 @@ def import_file(request):
 
     else:
         service.import_data(data_stream, data_format, request.user.id)
-    return Response(status=status.HTTP_201_CREATED)
+    return Response(
+        data=f"file: '{request.FILES['file'].name}' LOAD......ok",
+        status=status.HTTP_201_CREATED,
+    )
 
 
 class ItemViewSet(ModelViewSet):
