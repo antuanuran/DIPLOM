@@ -21,7 +21,7 @@ class BasketRowSerializer(serializers.ModelSerializer):
         fields = ["id", "basket_id", "qty", "item", "item_id"]
 
     def validate(self, attrs):
-        temp = BasketRow.objects.filter(item=attrs["item_id"])
+        temp = Item.objects.filter(id=attrs["item_id"])
         if not temp:
             raise ValidationError()
         else:
