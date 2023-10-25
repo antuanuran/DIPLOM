@@ -1,7 +1,9 @@
+import psycopg2
 from rest_framework import serializers
 
 from apps.basket.models import BasketRow
 from apps.products.serializers import ItemSerializer, ItemParameterSerializer, ProductSerializer
+from rest_framework.exceptions import ValidationError
 
 
 class DetailSerializer(ItemSerializer):
@@ -17,3 +19,10 @@ class BasketRowSerializer(serializers.ModelSerializer):
     class Meta:
         model = BasketRow
         fields = ["id", "basket_id", "qty", "item", "item_id"]
+
+    def validate(self, attrs):
+        temp = BasketRow.objects.filter(item=attrs["item_id"])
+        if not temp:
+            raise ValidationError()
+        else:
+            return attrs
