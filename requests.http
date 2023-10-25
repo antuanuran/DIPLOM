@@ -1,7 +1,7 @@
 # Загрузка файлов через название в строке запроса
 POST http://localhost:8000/api/v1/products-import-data/?file_name=import_2.yaml
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4NzM4MTk1LCJpYXQiOjE2OTgxMzMzOTUsImp0aSI6IjAzYzk1OGMyYWUzYzRkNzJhODM0ZDQzN2I5NDQ2NjEyIiwidXNlcl9pZCI6MX0.L2MT398s3-TTfHsu4Mtx5ebhqaZtVQ3cf67Kz_KxRo4
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4ODA3NjEwLCJpYXQiOjE2OTgyMDI4MTAsImp0aSI6IjYwODIyMTBhM2NlNDQxYjdiN2E5ZTFmZjlmNTA3YWFmIiwidXNlcl9pZCI6MX0.hmMpT003mex6ch57S32VAAz3sgnKI0zg6VfivoV5i_I
 
 ###
 # Загрузка файла через Postman
@@ -53,10 +53,10 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 
 POST http://localhost:8000/api/v1/basket-rows/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4NjMwNzU5LCJpYXQiOjE2OTgwMjU5NTksImp0aSI6IjRjNmFkNGUyMTg5ZDQ4OGRhMGM0MjVmMWMyMmI3NmI1IiwidXNlcl9pZCI6MX0.AZDrXdCN7583aDXYmW0190tuUmK-IzM5Rh-cRX-HLYk
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4ODA3NjEwLCJpYXQiOjE2OTgyMDI4MTAsImp0aSI6IjYwODIyMTBhM2NlNDQxYjdiN2E5ZTFmZjlmNTA3YWFmIiwidXNlcl9pZCI6MX0.hmMpT003mex6ch57S32VAAz3sgnKI0zg6VfivoV5i_I
 
 {
-  "item_id": 100
+  "item_id": 1
 }
 
 ###

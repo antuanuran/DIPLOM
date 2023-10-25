@@ -1,3 +1,4 @@
+from rest_framework import request
 from rest_framework.viewsets import ModelViewSet
 
 from apps.basket.models import BasketRow, Basket
@@ -9,5 +10,5 @@ class BasketRowViewSet(ModelViewSet):
     serializer_class = BasketRowSerializer
 
     def perform_create(self, serializer):
-        basket, _ = Basket.objects.get_or_create(user=self.request.user)
-        serializer.save(basket=basket)
+        basket, _ = Basket.objects.get_or_create(user_id=self.request.user.id)
+        serializer.save(basket_id=basket.id)

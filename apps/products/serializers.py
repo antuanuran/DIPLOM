@@ -31,7 +31,7 @@ class ItemParameterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ItemParameter
-        fields = ["id", "value", "attribute"]
+        fields = ["attribute", "value"]
 
 
 class ItemSerializer(serializers.ModelSerializer):
