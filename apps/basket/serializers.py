@@ -22,6 +22,6 @@ class BasketRowSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
         temp = Item.objects.filter(id=attrs["item_id"])
         if not temp:
-            raise ValidationError()
+            raise ValidationError("incorrect item_id", code="no-file")
         else:
             return attrs
