@@ -19,9 +19,21 @@ from apps.products import service_HTTP
 from apps.products import service
 
 
-@api_view(http_method_names=["post"])
+@api_view(http_method_names=["post", "get"])
 @permission_classes([IsAuthenticated, IsVendor])
 def import_data(request):
+    if request.method == "GET":
+        item = Item.objects.first()
+
+        return Response(
+            data={
+                "user": request.user.id,
+                "file_name": request.query_params.get("file_name"),
+                "item": item.product.name,
+                "data": ItemSerializer(item).data,
+            }
+        )
+
     name_format = request.query_params.get("file_name", "name.csv")
     list(name_format)
 

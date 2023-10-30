@@ -5,4 +5,4 @@ from apps.basket.models import BasketRow
 
 @admin.register(BasketRow)
 class BasketRowAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["basket", "item", "qty"]

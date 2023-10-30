@@ -1,5 +1,5 @@
 # Загрузка файлов через название в строке запроса
-POST http://localhost:8000/api/v1/products-import-data/?file_name=import_2.yaml
+GET http://localhost:8000/api/v1/products-import-data/?file_name=import_1.csv
 Content-Type: application/json
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4ODE5MjQzLCJpYXQiOjE2OTgyMTQ0NDMsImp0aSI6IjVjNWRlZWY3NzI2MzRmNDNhYjI1ZGU4MWI3ODk0YTMyIiwidXNlcl9pZCI6MX0.6PvcqV7VbTiHPQE7F8I0NjjdEI1hu2t0cER0RRLWZ6g
 
@@ -35,7 +35,7 @@ Content-Type: application/json
 # Проверка данных Юзера
 
 GET http://localhost:8000/api/v1/auth/users/me/
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4MTI1MDgyLCJpYXQiOjE2OTc1MjAyODIsImp0aSI6ImU3OGNmMTEzZWZlMjRjMGJhYjRjNjc1NWY0ZDU3ZmM4IiwidXNlcl9pZCI6Mn0.uibsUDzO3LfK-9kD8TMIlfX39fCTX2vz6JaDwS_AiQo
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4ODE5MjQzLCJpYXQiOjE2OTgyMTQ0NDMsImp0aSI6IjVjNWRlZWY3NzI2MzRmNDNhYjI1ZGU4MWI3ODk0YTMyIiwidXNlcl9pZCI6MX0.6PvcqV7VbTiHPQE7F8I0NjjdEI1hu2t0cER0RRLWZ6g
 
 ###
 
@@ -56,7 +56,8 @@ Content-Type: application/json
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4ODE5MjQzLCJpYXQiOjE2OTgyMTQ0NDMsImp0aSI6IjVjNWRlZWY3NzI2MzRmNDNhYjI1ZGU4MWI3ODk0YTMyIiwidXNlcl9pZCI6MX0.6PvcqV7VbTiHPQE7F8I0NjjdEI1hu2t0cER0RRLWZ6g
 
 {
-  "item_id": 11
+  "goods_id": 12,
+  "qty": -10
 }
 
 ###

@@ -9,6 +9,9 @@ class Basket(models.Model):
     items = models.ManyToManyField(Item, through="BasketRow", related_name="baskets", blank=True)
     # rows
 
+    def __str__(self):
+        return self.user.email
+
 
 class BasketRow(models.Model):
     basket = models.ForeignKey(Basket, on_delete=models.CASCADE, related_name="rows")
