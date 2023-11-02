@@ -1,28 +1,5 @@
-# Загрузка файлов через название в строке запроса
-GET http://localhost:8000/api/v1/products-import-data/?file_name=import_1.csv
-Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4ODE5MjQzLCJpYXQiOjE2OTgyMTQ0NDMsImp0aSI6IjVjNWRlZWY3NzI2MzRmNDNhYjI1ZGU4MWI3ODk0YTMyIiwidXNlcl9pZCI6MX0.6PvcqV7VbTiHPQE7F8I0NjjdEI1hu2t0cER0RRLWZ6g
-
-###
-# Загрузка файла через Postman
-
-POST http://localhost:8000/api/v1/products-import-file/
-Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4ODE5MjQzLCJpYXQiOjE2OTgyMTQ0NDMsImp0aSI6IjVjNWRlZWY3NzI2MzRmNDNhYjI1ZGU4MWI3ODk0YTMyIiwidXNlcl9pZCI6MX0.6PvcqV7VbTiHPQE7F8I0NjjdEI1hu2t0cER0RRLWZ6g
-
-
-###
-# Создание Юзера
-POST http://localhost:8000/api/v1/auth/users/
-Content-Type: application/json
-
-{
-  "email": "admin2@admin.org",
-  "password": "develop123"
-}
-
-###
-# Создание токена
+# 1. Создать токен для дальнейшего использования (email и password указываем суперюзера).
+#    Затем копируем значение по ключу: "access": "TOKEN"
 POST http://localhost:8000/api/v1/auth/jwt/create/
 Content-Type: application/json
 
@@ -31,33 +8,84 @@ Content-Type: application/json
   "password": "admin"
 }
 
-###
-# Проверка данных Юзера
-
-GET http://localhost:8000/api/v1/auth/users/me/
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4ODE5MjQzLCJpYXQiOjE2OTgyMTQ0NDMsImp0aSI6IjVjNWRlZWY3NzI2MzRmNDNhYjI1ZGU4MWI3ODk0YTMyIiwidXNlcl9pZCI6MX0.6PvcqV7VbTiHPQE7F8I0NjjdEI1hu2t0cER0RRLWZ6g
 
 ###
 
+
+# 2. Вариант загрузки данных файла через имя файла в строке (GET либо POST) :
+POST http://localhost:8000/api/v1/products-import-data/?file_name=import_1.csv
+Content-Type: application/json
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5NDk4OTkyLCJpYXQiOjE2OTg4OTQxOTIsImp0aSI6IjFmZGVlODQ1NDJlNTRhN2U5NTE1M2IxN2E4NTJjYTUxIiwidXNlcl9pZCI6MX0.SQrYr6ruST1eqE6I3sUmzcRt1lfL-gn85jQYAD0eK6M
+
+
+###
+
+
+# 3. Вариант загрузки файла через Postman / Insomnia. 
+#    POST - запрос. 
+#    Токен указываем по ключу: "Bearer Token". 
+#    Body: Key указываем: "file". Value: прикрепляем файл.
+
+POST http://localhost:8000/api/v1/products-import-file/
+Content-Type: application/json
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5NDk4OTkyLCJpYXQiOjE2OTg4OTQxOTIsImp0aSI6IjFmZGVlODQ1NDJlNTRhN2U5NTE1M2IxN2E4NTJjYTUxIiwidXNlcl9pZCI6MX0.SQrYr6ruST1eqE6I3sUmzcRt1lfL-gn85jQYAD0eK6M
+
+
+###
+
+
+# 4. Вывод всех данных (товаров). GET-запрос.
 GET http://localhost:8000/api/v1/items/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4NjMwNzU5LCJpYXQiOjE2OTgwMjU5NTksImp0aSI6IjRjNmFkNGUyMTg5ZDQ4OGRhMGM0MjVmMWMyMmI3NmI1IiwidXNlcl9pZCI6MX0.AZDrXdCN7583aDXYmW0190tuUmK-IzM5Rh-cRX-HLYk
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5NDk4OTkyLCJpYXQiOjE2OTg4OTQxOTIsImp0aSI6IjFmZGVlODQ1NDJlNTRhN2U5NTE1M2IxN2E4NTJjYTUxIiwidXNlcl9pZCI6MX0.SQrYr6ruST1eqE6I3sUmzcRt1lfL-gn85jQYAD0eK6M
+
 
 ###
 
+
+# 5. Фильтрация, сортировка и пагинация. 
+#    limit             - пагинация (кол-во на страницу)
+#    ordering          - сортировка 
+#    product__category - сортировка по категории
+#    search            - поиск по слову  
 GET http://localhost:8000/api/v1/items/?limit=5&ordering=-price&product__category=1&search=XS
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4MzAwNjQxLCJpYXQiOjE2OTc2OTU4NDEsImp0aSI6IjhiZGM4NTQ4NzM2ZjRlMjlhNmEyODc5NWM1MjkzNDE4IiwidXNlcl9pZCI6MX0.UiCfPYMGGo8VyEzKaxeXBsJLDNkKndzJgPd2h2FGB6Y
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5NDk4OTkyLCJpYXQiOjE2OTg4OTQxOTIsImp0aSI6IjFmZGVlODQ1NDJlNTRhN2U5NTE1M2IxN2E4NTJjYTUxIiwidXNlcl9pZCI6MX0.SQrYr6ruST1eqE6I3sUmzcRt1lfL-gn85jQYAD0eK6M
+
 
 ###
 
+
+# 6. Отправка товаров в корзину (для уменьшения кол-ва товаров указывать значение "qty" со знаком минус)
 POST http://localhost:8000/api/v1/basket-rows/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4ODE5MjQzLCJpYXQiOjE2OTgyMTQ0NDMsImp0aSI6IjVjNWRlZWY3NzI2MzRmNDNhYjI1ZGU4MWI3ODk0YTMyIiwidXNlcl9pZCI6MX0.6PvcqV7VbTiHPQE7F8I0NjjdEI1hu2t0cER0RRLWZ6g
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5NDk4OTkyLCJpYXQiOjE2OTg4OTQxOTIsImp0aSI6IjFmZGVlODQ1NDJlNTRhN2U5NTE1M2IxN2E4NTJjYTUxIiwidXNlcl9pZCI6MX0.SQrYr6ruST1eqE6I3sUmzcRt1lfL-gn85jQYAD0eK6M
 
 {
-  "goods_id": 12,
-  "qty": -10
+  "item_id": 12,
+  "qty": 5
 }
 
+
 ###
+
+
+# Дополнительно.
+
+
+# 7.Создание Юзера
+POST http://localhost:8000/api/v1/auth/users/
+Content-Type: application/json
+
+{
+  "email": "admin2@admin.org",
+  "password": "develop123"
+}
+
+
+###
+
+
+# 8. Проверка данных Юзера
+GET http://localhost:8000/api/v1/auth/users/me/
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5NDk4OTkyLCJpYXQiOjE2OTg4OTQxOTIsImp0aSI6IjFmZGVlODQ1NDJlNTRhN2U5NTE1M2IxN2E4NTJjYTUxIiwidXNlcl9pZCI6MX0.SQrYr6ruST1eqE6I3sUmzcRt1lfL-gn85jQYAD0eK6M

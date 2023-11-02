@@ -29,8 +29,8 @@ def import_data(request):
             data={
                 "user": request.user.id,
                 "file_name": request.query_params.get("file_name"),
-                "item": item.product.name,
-                "data": ItemSerializer(item).data,
+                "name_product": item.product.name,
+                "detail_data": ItemSerializer(item).data,
             }
         )
 
