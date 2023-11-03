@@ -15,7 +15,7 @@ Content-Type: application/json
 # 2. Вариант загрузки данных файла через имя файла в строке (GET либо POST) :
 POST http://localhost:8000/api/v1/products-import-data/?file_name=import_1.csv
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5NDk4OTkyLCJpYXQiOjE2OTg4OTQxOTIsImp0aSI6IjFmZGVlODQ1NDJlNTRhN2U5NTE1M2IxN2E4NTJjYTUxIiwidXNlcl9pZCI6MX0.SQrYr6ruST1eqE6I3sUmzcRt1lfL-gn85jQYAD0eK6M
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5NTkzMTMyLCJpYXQiOjE2OTg5ODgzMzIsImp0aSI6IjM3NzA5ZTc1ZGJjNTQ0NTJiNTcxMzU3M2FhMDJjZjkwIiwidXNlcl9pZCI6MX0.krb7Tl5Od3nV1BtquXzTYisNqDTCwLCwhqNW_zapIyA
 
 
 ###
@@ -28,7 +28,7 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 
 POST http://localhost:8000/api/v1/products-import-file/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5NDk4OTkyLCJpYXQiOjE2OTg4OTQxOTIsImp0aSI6IjFmZGVlODQ1NDJlNTRhN2U5NTE1M2IxN2E4NTJjYTUxIiwidXNlcl9pZCI6MX0.SQrYr6ruST1eqE6I3sUmzcRt1lfL-gn85jQYAD0eK6M
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5NTkzMTMyLCJpYXQiOjE2OTg5ODgzMzIsImp0aSI6IjM3NzA5ZTc1ZGJjNTQ0NTJiNTcxMzU3M2FhMDJjZjkwIiwidXNlcl9pZCI6MX0.krb7Tl5Od3nV1BtquXzTYisNqDTCwLCwhqNW_zapIyA
 
 
 ###
@@ -37,7 +37,7 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 # 4. Вывод всех данных (товаров). GET-запрос.
 GET http://localhost:8000/api/v1/items/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5NDk4OTkyLCJpYXQiOjE2OTg4OTQxOTIsImp0aSI6IjFmZGVlODQ1NDJlNTRhN2U5NTE1M2IxN2E4NTJjYTUxIiwidXNlcl9pZCI6MX0.SQrYr6ruST1eqE6I3sUmzcRt1lfL-gn85jQYAD0eK6M
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5NTkzMTMyLCJpYXQiOjE2OTg5ODgzMzIsImp0aSI6IjM3NzA5ZTc1ZGJjNTQ0NTJiNTcxMzU3M2FhMDJjZjkwIiwidXNlcl9pZCI6MX0.krb7Tl5Od3nV1BtquXzTYisNqDTCwLCwhqNW_zapIyA
 
 
 ###
@@ -59,10 +59,10 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 # 6. Отправка товаров в корзину (для уменьшения кол-ва товаров указывать значение "qty" со знаком минус)
 POST http://localhost:8000/api/v1/basket-rows/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5NDk4OTkyLCJpYXQiOjE2OTg4OTQxOTIsImp0aSI6IjFmZGVlODQ1NDJlNTRhN2U5NTE1M2IxN2E4NTJjYTUxIiwidXNlcl9pZCI6MX0.SQrYr6ruST1eqE6I3sUmzcRt1lfL-gn85jQYAD0eK6M
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5NTkzMTMyLCJpYXQiOjE2OTg5ODgzMzIsImp0aSI6IjM3NzA5ZTc1ZGJjNTQ0NTJiNTcxMzU3M2FhMDJjZjkwIiwidXNlcl9pZCI6MX0.krb7Tl5Od3nV1BtquXzTYisNqDTCwLCwhqNW_zapIyA
 
 {
-  "item_id": 12,
+  "item_id": 5,
   "qty": 5
 }
 

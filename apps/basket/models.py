@@ -9,6 +9,10 @@ class Basket(models.Model):
     items = models.ManyToManyField(Item, through="BasketRow", related_name="baskets", blank=True)
     # rows
 
+    class Meta:
+        verbose_name = "Корзина"
+        verbose_name_plural = "Корзины"
+
     def __str__(self):
         return self.user.email
 
@@ -18,9 +22,13 @@ class BasketRow(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name="basket_rows")
     qty = models.PositiveIntegerField(default=1)
 
+    @property
+    def sum(self):
+        return self.qty * self.item.price
+
     class Meta:
-        verbose_name = "Корзина"
-        verbose_name_plural = "Корзины"
+        verbose_name = "Заказ в корзине"
+        verbose_name_plural = "Заказы в корзине"
 
     def __str__(self):
-        return f"{self.basket.user.email}  -->  [ТОВАР: {self.item}]"
+        return f"{self.basket.user.email}  ->  [ТОВАР: {self.item}]"

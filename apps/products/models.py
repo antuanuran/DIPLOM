@@ -19,6 +19,7 @@ class Vendor(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
+    is_active = models.BooleanField(default=True)
     # products
 
     class Meta:
@@ -37,6 +38,7 @@ class Product(models.Model):
     vendor = models.ForeignKey(
         Vendor, on_delete=models.CASCADE, related_name="products"
     )
+    is_active = models.BooleanField(default=True)
     # attributes
     # items
 
@@ -68,6 +70,7 @@ class Item(models.Model):
     price = models.IntegerField(validators=[MinValueValidator(1)])
     count = models.PositiveIntegerField()
     upc = models.CharField(max_length=64, null=True, blank=True, db_index=True)
+    is_active = models.BooleanField(default=True)
     # parameters
     # basket_rows (Model from basket App)
     # baskets     (Model from basket App)

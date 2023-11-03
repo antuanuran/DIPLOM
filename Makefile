@@ -29,10 +29,19 @@ run: recreatedb
 	python manage.py import_data data_all/import_2.yaml --owner_id 1
 	python manage.py import_data data_all/import_3.yml --owner_id 1
 	python manage.py runserver
-	
 
-run_crop: 
+
+run_crop:
 	python manage.py makemigrations
 	python manage.py migrate
 	python manage.py runserver
 
+run_2:
+	docker-compose down -v
+	docker-compose up -d
+	sleep 4
+	python manage.py makemigrations
+	python manage.py migrate
+	python manage.py createsuperuser
+	python manage.py import_data data_all/import_2.yaml --owner_id 1
+	python manage.py runserver
