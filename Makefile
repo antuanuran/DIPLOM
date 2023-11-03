@@ -31,12 +31,12 @@ run: recreatedb
 	python manage.py runserver
 
 
-run_crop:
+run_min:
 	python manage.py makemigrations
 	python manage.py migrate
 	python manage.py runserver
 
-run_2:
+run_crop:
 	docker-compose down -v
 	docker-compose up -d
 	sleep 4
@@ -45,3 +45,17 @@ run_2:
 	python manage.py createsuperuser
 	python manage.py import_data data_all/import_2.yaml --owner_id 1
 	python manage.py runserver
+	
+doc:
+	docker ps
+	sleep 1
+	docker stop diplom_postgres_1
+	sleep 3
+	docker rm diplom_postgres_1
+	docker images
+	docker rmi postgres:alpine
+	sleep 1
+	sleep 1
+	sleep 1
+	docker ps
+	docker images
