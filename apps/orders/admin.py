@@ -1,4 +1,5 @@
 from django.contrib import admin
+from rest_framework.exceptions import ValidationError
 
 from apps.orders.models import Order, OrderRow
 
@@ -17,3 +18,9 @@ class OrderAdmin(admin.ModelAdmin):
     readonly_fields = ["sum"]
     ordering = ["-created_at"]
     inlines = [OrderRowInLine]
+
+    def save_model(self, request, obj, form, change):
+        # print(obj.rows)
+        # if obj.rows.qty > obj.rows.item.count:
+        #     raise ValidationError(f"Max Limit Value: {obj.item.count}")
+        return super().save_model(request, obj, form, change)
