@@ -5,6 +5,7 @@ from .models import Category, Product, Attribute, Item, ItemParameter, Vendor
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ["name", "id"]
+    search_fields = ["name"]
 
 
 class AttributeInlines(admin.TabularInline):
@@ -16,6 +17,8 @@ class AttributeInlines(admin.TabularInline):
 class ProductAdmin(admin.ModelAdmin):
     list_display = ["name", "category", "id"]
     inlines = [AttributeInlines]
+    search_fields = ["name"]
+    autocomplete_fields = ["category"]
 
 
 # @admin.register(Attribute)
@@ -42,9 +45,9 @@ class ItemParameterInlines(admin.TabularInline):
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
     list_display = ["product", "id", "price", "count"]
-
     # Добавление поля для поисковой строки в Админке
     search_fields = ["product__name"]
+    autocomplete_fields = ["product"]
 
     inlines = [ItemParameterInlines]
 

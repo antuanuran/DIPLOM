@@ -40,11 +40,10 @@ class User(AbstractUser):
 
     is_customer = models.BooleanField(default=False)
     is_vendor = models.BooleanField(default=False)
-    
 
     class Meta:
-        verbose_name = 'Покупатель'
-        verbose_name_plural = 'Покупатели'
+        verbose_name = "Покупатель"
+        verbose_name_plural = "Покупатели"
 
     def __str__(self):
         return self.email
