@@ -10,8 +10,8 @@ class Vendor(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="vendors")
 
     class Meta:
-        verbose_name = "1. Поставщик"
-        verbose_name_plural = "1. Поставщики"
+        verbose_name = "Поставщик / Вендор"
+        verbose_name_plural = "Поставщики / Вендоры"
 
     def __str__(self):
         return self.name
@@ -23,8 +23,8 @@ class Category(models.Model):
     # products
 
     class Meta:
-        verbose_name = "2. Категория"
-        verbose_name_plural = "2. Категории"
+        verbose_name = "1. Категория"
+        verbose_name_plural = "1. Категории"
 
     def __str__(self):
         return self.name
@@ -43,8 +43,8 @@ class Product(models.Model):
     # items
 
     class Meta:
-        verbose_name = "3. Продукт"
-        verbose_name_plural = "3. Продукты"
+        verbose_name = "2. Продукт"
+        verbose_name_plural = "2. Продукты"
 
     def __str__(self):
         return f"{self.name}"
@@ -94,8 +94,8 @@ class Item(models.Model):
             raise ValidationError({"non unique id (goods)"}, code="non-unique-upc")
 
     class Meta:
-        verbose_name = "4. Товар"
-        verbose_name_plural = "4. Товары"
+        verbose_name = "3. Товар"
+        verbose_name_plural = "3. Товары"
 
     # ****************************************************************************************
 
