@@ -7,7 +7,7 @@ from rest_framework.exceptions import ValidationError
 
 @admin.register(BasketRow)
 class BasketRowAdmin(admin.ModelAdmin):
-    list_display = ["basket", "item", "qty", "sum"]
+    list_display = ["basket", "item", "qty", "sum_basket_row"]
     # Добавление поля для поисковой строки в Админке
     autocomplete_fields = ["item"]
 
@@ -20,4 +20,8 @@ class BasketRowAdmin(admin.ModelAdmin):
 
 @admin.register(Basket)
 class BasketAdmin(admin.ModelAdmin):
-    list_display = ["user", "id"]
+    list_display = ["user", "id", "sum_basket"]
+    readonly_fields = ["sum_basket"]
+
+    def save_model(self, request, obj, form, change):
+        return super().save_model(request, obj, form, change)

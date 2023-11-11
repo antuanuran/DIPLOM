@@ -9,6 +9,13 @@ class Basket(models.Model):
     items = models.ManyToManyField(Item, through="BasketRow", related_name="baskets", blank=True)
     # rows
 
+    @property
+    def sum_basket(self):
+        total = 0
+        for row in self.rows.all():
+            total += row.sum_basket_row
+        return total
+
     class Meta:
         verbose_name = "Корзина"
         verbose_name_plural = "Корзины"
@@ -23,7 +30,7 @@ class BasketRow(models.Model):
     qty = models.PositiveIntegerField(default=1)
 
     @property
-    def sum(self):
+    def sum_basket_row(self):
         return self.qty * self.item.price
 
     class Meta:
