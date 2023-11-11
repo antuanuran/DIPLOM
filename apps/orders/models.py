@@ -27,10 +27,10 @@ class Order(models.Model):
     # rows
 
     @property
-    def sum(self):
+    def sum_order(self):
         total = 0
         for row in self.rows.all():
-            total += row.sum
+            total += row.sum_order_row
         return total
 
     class Meta:
@@ -48,7 +48,7 @@ class OrderRow(models.Model):
     price = models.PositiveIntegerField()
 
     @property
-    def sum(self):
+    def sum_order_row(self):
         return (self.qty or 0) * (self.price or 0)
 
     class Meta:
