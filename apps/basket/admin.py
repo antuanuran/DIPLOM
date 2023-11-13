@@ -13,6 +13,7 @@ class BasketRowInLineFormset(BaseInlineFormSet):
                 raise ValidationError(
                     f"Max Limit count  [{form.cleaned_data['item'].product.name}] - {form.cleaned_data['item'].count}"
                 )
+        super().clean()
 
 
 class BasketRowInLine(admin.TabularInline):
@@ -20,6 +21,9 @@ class BasketRowInLine(admin.TabularInline):
     extra = 0
     readonly_fields = ["sum_basket_row"]
     formset = BasketRowInLineFormset
+
+    # Добавление поля для поисковой строки в Админке
+    autocomplete_fields = ["item"]
 
 
 @admin.register(Basket)

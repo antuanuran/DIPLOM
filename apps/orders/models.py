@@ -7,21 +7,16 @@ from apps.users.models import User
 
 
 class Order(models.Model):
-    STATUS_NEW = "новый"
-    STATUS_DELIVERY = "в доставке"
-    STATUS_FINISHED = "завершен"
-    STATUS_CANCELED = "отменен"
-
     STATUSES = [
-        (STATUS_NEW, STATUS_NEW),
-        (STATUS_DELIVERY, STATUS_DELIVERY),
-        (STATUS_FINISHED, STATUS_FINISHED),
-        (STATUS_CANCELED, STATUS_CANCELED),
+        ("STATUS_NEW", "новый"),
+        ("STATUS_DELIVERY", "в доставке"),
+        ("STATUS_FINISHED", "завершен"),
+        ("STATUS_CANCELED", "отменен"),
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="orders")
     items = models.ManyToManyField(Item, through="OrderRow", related_name="orders", blank=True)
-    status = models.CharField(max_length=30, choices=STATUSES, default=STATUS_NEW)
+    status = models.CharField(max_length=30, choices=STATUSES, default="STATUS_NEW")
     created_at = models.DateTimeField(default=timezone.now, blank=True)
     updated_at = models.DateTimeField(auto_now=True)
     # rows

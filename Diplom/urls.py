@@ -7,4 +7,5 @@ urlpatterns = [
     path("api/v1/auth/", include("djoser.urls.jwt")),
     path("api/v1/", include("apps.products.urls")),
     path("api/v1/", include("apps.basket.urls")),
+    path("api/v1/", include("apps.orders.urls")),
 ]

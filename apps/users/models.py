@@ -41,6 +41,8 @@ class User(AbstractUser):
     is_customer = models.BooleanField(default=False)
     is_vendor = models.BooleanField(default=False)
 
+    # baskets
+
     class Meta:
         verbose_name = "Менеджер"
         verbose_name_plural = "Менеджеры"
