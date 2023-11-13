@@ -4,15 +4,15 @@ POST http://localhost:8000/api/v1/auth/jwt/create/
 Content-Type: application/json
 
 {
-  "email": "admin@admin.org",
-  "password": "admin"
+  "email": "admin2@admin.org",
+  "password": "develop123"
 }
 
 
 ### 2. Вариант загрузки данных файла через имя файла в строке (GET либо POST) :
 POST http://localhost:8000/api/v1/products-import-data/?file_name=import_1.csv
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwMTI5MTgxLCJpYXQiOjE2OTk1MjQzODEsImp0aSI6ImI2ZGNlODBkOTkxYjQzZTQ5YmFjMDE1MmMyYmVlMjFlIiwidXNlcl9pZCI6MX0.zLEE-CP1DAgpt6TFRkb5AcRjrmq1ZRYBYVjiNEG7W3Y
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNDY2Njk4LCJpYXQiOjE2OTk4NjE4OTgsImp0aSI6ImFlOTM3YzNmOTEyZTRkYTk5Mjk5MDE5ZmI0YjNiOTQyIiwidXNlcl9pZCI6Mn0.QNfQRFhZdXySPEqHn4i5ldGr2seVcgyPSxmkbVwOKXA
 
 
 
@@ -23,35 +23,24 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 
 POST http://localhost:8000/api/v1/products-import-file/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5NTkzMTMyLCJpYXQiOjE2OTg5ODgzMzIsImp0aSI6IjM3NzA5ZTc1ZGJjNTQ0NTJiNTcxMzU3M2FhMDJjZjkwIiwidXNlcl9pZCI6MX0.krb7Tl5Od3nV1BtquXzTYisNqDTCwLCwhqNW_zapIyA
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNDY2Njk4LCJpYXQiOjE2OTk4NjE4OTgsImp0aSI6ImFlOTM3YzNmOTEyZTRkYTk5Mjk5MDE5ZmI0YjNiOTQyIiwidXNlcl9pZCI6Mn0.QNfQRFhZdXySPEqHn4i5ldGr2seVcgyPSxmkbVwOKXA
 
 
 
 ### 4. Вывод всех данных (товаров). GET-запрос.
 GET http://localhost:8000/api/v1/items/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwMTI5MTgxLCJpYXQiOjE2OTk1MjQzODEsImp0aSI6ImI2ZGNlODBkOTkxYjQzZTQ5YmFjMDE1MmMyYmVlMjFlIiwidXNlcl9pZCI6MX0.zLEE-CP1DAgpt6TFRkb5AcRjrmq1ZRYBYVjiNEG7W3Y
-
-
-
-### 5. Фильтрация, сортировка и пагинация. 
-#    limit             - пагинация (кол-во на страницу)
-#    ordering          - сортировка 
-#    product__category - сортировка по категории
-#    search            - поиск по слову  
-GET http://localhost:8000/api/v1/items/?limit=5&ordering=-price&product__category=1&search=XS
-Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5NDk4OTkyLCJpYXQiOjE2OTg4OTQxOTIsImp0aSI6IjFmZGVlODQ1NDJlNTRhN2U5NTE1M2IxN2E4NTJjYTUxIiwidXNlcl9pZCI6MX0.SQrYr6ruST1eqE6I3sUmzcRt1lfL-gn85jQYAD0eK6M
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNDY2Njk4LCJpYXQiOjE2OTk4NjE4OTgsImp0aSI6ImFlOTM3YzNmOTEyZTRkYTk5Mjk5MDE5ZmI0YjNiOTQyIiwidXNlcl9pZCI6Mn0.QNfQRFhZdXySPEqHn4i5ldGr2seVcgyPSxmkbVwOKXA
 
 
 
 ### 6. Отправка товаров в корзину (для уменьшения кол-ва товаров указывать значение "qty" со знаком минус)
 POST http://localhost:8000/api/v1/basket-rows/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNDU3Mzk1LCJpYXQiOjE2OTk4NTI1OTUsImp0aSI6IjBmNmVjNzNlMTdjZjRhNWFhZTVkZTVlMWEzMTYwMmE3IiwidXNlcl9pZCI6MX0.Di2BrjfKKqXpr4Ic-X0X3ja4LlzDQn0WzYGDlO13UJg
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNDY2Njk4LCJpYXQiOjE2OTk4NjE4OTgsImp0aSI6ImFlOTM3YzNmOTEyZTRkYTk5Mjk5MDE5ZmI0YjNiOTQyIiwidXNlcl9pZCI6Mn0.QNfQRFhZdXySPEqHn4i5ldGr2seVcgyPSxmkbVwOKXA
 
 {
-  "item_id": 20,
+  "item_id": 3,
   "qty": 5
 }
 
@@ -60,7 +49,7 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 ### 7. Orders. Покупки
 POST http://localhost:8000/api/v1/checkout/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNDU3Mzk1LCJpYXQiOjE2OTk4NTI1OTUsImp0aSI6IjBmNmVjNzNlMTdjZjRhNWFhZTVkZTVlMWEzMTYwMmE3IiwidXNlcl9pZCI6MX0.Di2BrjfKKqXpr4Ic-X0X3ja4LlzDQn0WzYGDlO13UJg
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNDY2Njk4LCJpYXQiOjE2OTk4NjE4OTgsImp0aSI6ImFlOTM3YzNmOTEyZTRkYTk5Mjk5MDE5ZmI0YjNiOTQyIiwidXNlcl9pZCI6Mn0.QNfQRFhZdXySPEqHn4i5ldGr2seVcgyPSxmkbVwOKXA
 
 
 
@@ -82,4 +71,16 @@ Content-Type: application/json
 
 ### - Проверка данных Юзера
 GET http://localhost:8000/api/v1/auth/users/me/
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5NDk4OTkyLCJpYXQiOjE2OTg4OTQxOTIsImp0aSI6IjFmZGVlODQ1NDJlNTRhN2U5NTE1M2IxN2E4NTJjYTUxIiwidXNlcl9pZCI6MX0.SQrYr6ruST1eqE6I3sUmzcRt1lfL-gn85jQYAD0eK6M
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNDY2Njk4LCJpYXQiOjE2OTk4NjE4OTgsImp0aSI6ImFlOTM3YzNmOTEyZTRkYTk5Mjk5MDE5ZmI0YjNiOTQyIiwidXNlcl9pZCI6Mn0.QNfQRFhZdXySPEqHn4i5ldGr2seVcgyPSxmkbVwOKXA
+
+
+
+### Вывод всех товаров с Фильтрацией, сортировкой и пагинацией. 
+#    limit             - пагинация (кол-во на страницу)
+#    ordering          - сортировка 
+#    product__category - сортировка по категории
+#    search            - поиск по слову  
+GET http://localhost:8000/api/v1/items/?limit=5&ordering=-price&product__category=1&search=XS
+Content-Type: application/json
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNDY2Njk4LCJpYXQiOjE2OTk4NjE4OTgsImp0aSI6ImFlOTM3YzNmOTEyZTRkYTk5Mjk5MDE5ZmI0YjNiOTQyIiwidXNlcl9pZCI6Mn0.QNfQRFhZdXySPEqHn4i5ldGr2seVcgyPSxmkbVwOKXA
+
