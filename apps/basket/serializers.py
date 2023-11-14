@@ -15,12 +15,12 @@ class DetailSerializer(ItemSerializer):
 
 class BasketRowSerializer(serializers.ModelSerializer):
     item = DetailSerializer(read_only=True)
-    item_id = serializers.IntegerField(write_only=True)
+    tovar_id = serializers.IntegerField(write_only=True, source="item_id")
     qty = serializers.IntegerField()
 
     class Meta:
         model = BasketRow
-        fields = ["id", "basket_id", "qty", "item", "item_id"]
+        fields = ["id", "basket_id", "qty", "item", "tovar_id"]
 
     def validate(self, attrs):
         if not Item.objects.filter(id=attrs["item_id"]).exists():

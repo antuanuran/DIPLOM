@@ -10,10 +10,10 @@ class Basket(models.Model):
     # rows
 
     @property
-    def sum_basket(self):
+    def sum_total_all_baskets(self):
         total = 0
         for row in self.rows.all():
-            total += row.sum_basket_row
+            total += row.sum_current_basket
         return total
 
     class Meta:
@@ -30,7 +30,7 @@ class BasketRow(models.Model):
     qty = models.PositiveIntegerField(default=1)
 
     @property
-    def sum_basket_row(self):
+    def sum_current_basket(self):
         return self.qty * self.item.price
 
     class Meta:

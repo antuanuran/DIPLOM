@@ -35,10 +35,12 @@ class ItemParameterSerializer(serializers.ModelSerializer):
 
 
 class ItemSerializer(serializers.ModelSerializer):
+    tovar_id = serializers.IntegerField(source="id")
+
     class Meta:
         model = Item
         fields = [
-            "id",
+            "tovar_id",
             "product",
             "price",
             "count",

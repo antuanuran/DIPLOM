@@ -61,6 +61,8 @@ def import_file(request):
 
     if data_format == "csv":
         data_stream = data_stream.read().decode()
+        print(data_stream)
+
         service.import_http_csv(data_stream, request.user.id)
 
     else:

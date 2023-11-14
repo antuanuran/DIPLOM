@@ -21,7 +21,7 @@ class OrderRowInLineFormset(BaseInlineFormSet):
 class OrderRowInLine(admin.TabularInline):
     model = OrderRow
     extra = 0
-    readonly_fields = ["sum_order_row"]
+    readonly_fields = ["sum_current_order"]
     formset = OrderRowInLineFormset
 
     # Добавление поля для поисковой строки в Админке
@@ -30,7 +30,7 @@ class OrderRowInLine(admin.TabularInline):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ["user", "id", "status", "created_at", "updated_at", "sum_order"]
-    readonly_fields = ["sum_order"]
+    list_display = ["user", "id", "status", "created_at", "updated_at", "sum_total_all_orders"]
+    readonly_fields = ["sum_total_all_orders"]
     ordering = ["-created_at"]
     inlines = [OrderRowInLine]

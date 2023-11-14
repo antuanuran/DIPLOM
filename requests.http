@@ -4,15 +4,15 @@ POST http://localhost:8000/api/v1/auth/jwt/create/
 Content-Type: application/json
 
 {
-  "email": "admin2@admin.org",
-  "password": "develop123"
+  "email": "admin@admin.org",
+  "password": "admin"
 }
 
 
 ### 2. Вариант загрузки данных файла через имя файла в строке (GET либо POST) :
 POST http://localhost:8000/api/v1/products-import-data/?file_name=import_1.csv
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNDY2Njk4LCJpYXQiOjE2OTk4NjE4OTgsImp0aSI6ImFlOTM3YzNmOTEyZTRkYTk5Mjk5MDE5ZmI0YjNiOTQyIiwidXNlcl9pZCI6Mn0.QNfQRFhZdXySPEqHn4i5ldGr2seVcgyPSxmkbVwOKXA
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNTQ2MTIzLCJpYXQiOjE2OTk5NDEzMjMsImp0aSI6IjY3ZDgzYzI1MDIwZTRlMDc4NDZiYzI2MzYzNzUxMWVjIiwidXNlcl9pZCI6MX0.y4phoHXFafdnFyyM6wP_Iy6b-iVWEXC7A3p2S_M_D_c
 
 
 
@@ -23,33 +23,33 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 
 POST http://localhost:8000/api/v1/products-import-file/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNDY2Njk4LCJpYXQiOjE2OTk4NjE4OTgsImp0aSI6ImFlOTM3YzNmOTEyZTRkYTk5Mjk5MDE5ZmI0YjNiOTQyIiwidXNlcl9pZCI6Mn0.QNfQRFhZdXySPEqHn4i5ldGr2seVcgyPSxmkbVwOKXA
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNTQ2MTIzLCJpYXQiOjE2OTk5NDEzMjMsImp0aSI6IjY3ZDgzYzI1MDIwZTRlMDc4NDZiYzI2MzYzNzUxMWVjIiwidXNlcl9pZCI6MX0.y4phoHXFafdnFyyM6wP_Iy6b-iVWEXC7A3p2S_M_D_c
 
 
 
 ### 4. Вывод всех данных (товаров). GET-запрос.
 GET http://localhost:8000/api/v1/items/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNDY2Njk4LCJpYXQiOjE2OTk4NjE4OTgsImp0aSI6ImFlOTM3YzNmOTEyZTRkYTk5Mjk5MDE5ZmI0YjNiOTQyIiwidXNlcl9pZCI6Mn0.QNfQRFhZdXySPEqHn4i5ldGr2seVcgyPSxmkbVwOKXA
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNTQ2MTIzLCJpYXQiOjE2OTk5NDEzMjMsImp0aSI6IjY3ZDgzYzI1MDIwZTRlMDc4NDZiYzI2MzYzNzUxMWVjIiwidXNlcl9pZCI6MX0.y4phoHXFafdnFyyM6wP_Iy6b-iVWEXC7A3p2S_M_D_c
 
 
 
 ### 6. Отправка товаров в корзину (для уменьшения кол-ва товаров указывать значение "qty" со знаком минус)
 POST http://localhost:8000/api/v1/basket-rows/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNDY2Njk4LCJpYXQiOjE2OTk4NjE4OTgsImp0aSI6ImFlOTM3YzNmOTEyZTRkYTk5Mjk5MDE5ZmI0YjNiOTQyIiwidXNlcl9pZCI6Mn0.QNfQRFhZdXySPEqHn4i5ldGr2seVcgyPSxmkbVwOKXA
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNTQ2MTIzLCJpYXQiOjE2OTk5NDEzMjMsImp0aSI6IjY3ZDgzYzI1MDIwZTRlMDc4NDZiYzI2MzYzNzUxMWVjIiwidXNlcl9pZCI6MX0.y4phoHXFafdnFyyM6wP_Iy6b-iVWEXC7A3p2S_M_D_c
 
 {
-  "item_id": 3,
+  "tovar_id": 13,
   "qty": 5
 }
 
 
 
-### 7. Orders. Покупки
+### 7. Orders. Покупки. Одним кликом отправляется весь товар из корзины пользователя в Покупки
 POST http://localhost:8000/api/v1/checkout/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNDY2Njk4LCJpYXQiOjE2OTk4NjE4OTgsImp0aSI6ImFlOTM3YzNmOTEyZTRkYTk5Mjk5MDE5ZmI0YjNiOTQyIiwidXNlcl9pZCI6Mn0.QNfQRFhZdXySPEqHn4i5ldGr2seVcgyPSxmkbVwOKXA
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNTQ2MTIzLCJpYXQiOjE2OTk5NDEzMjMsImp0aSI6IjY3ZDgzYzI1MDIwZTRlMDc4NDZiYzI2MzYzNzUxMWVjIiwidXNlcl9pZCI6MX0.y4phoHXFafdnFyyM6wP_Iy6b-iVWEXC7A3p2S_M_D_c
 
 
 
@@ -71,7 +71,7 @@ Content-Type: application/json
 
 ### - Проверка данных Юзера
 GET http://localhost:8000/api/v1/auth/users/me/
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNDY2Njk4LCJpYXQiOjE2OTk4NjE4OTgsImp0aSI6ImFlOTM3YzNmOTEyZTRkYTk5Mjk5MDE5ZmI0YjNiOTQyIiwidXNlcl9pZCI6Mn0.QNfQRFhZdXySPEqHn4i5ldGr2seVcgyPSxmkbVwOKXA
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNTQ2MTIzLCJpYXQiOjE2OTk5NDEzMjMsImp0aSI6IjY3ZDgzYzI1MDIwZTRlMDc4NDZiYzI2MzYzNzUxMWVjIiwidXNlcl9pZCI6MX0.y4phoHXFafdnFyyM6wP_Iy6b-iVWEXC7A3p2S_M_D_c
 
 
 
@@ -82,5 +82,5 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 #    search            - поиск по слову  
 GET http://localhost:8000/api/v1/items/?limit=5&ordering=-price&product__category=1&search=XS
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNDY2Njk4LCJpYXQiOjE2OTk4NjE4OTgsImp0aSI6ImFlOTM3YzNmOTEyZTRkYTk5Mjk5MDE5ZmI0YjNiOTQyIiwidXNlcl9pZCI6Mn0.QNfQRFhZdXySPEqHn4i5ldGr2seVcgyPSxmkbVwOKXA
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNTQ2MTIzLCJpYXQiOjE2OTk5NDEzMjMsImp0aSI6IjY3ZDgzYzI1MDIwZTRlMDc4NDZiYzI2MzYzNzUxMWVjIiwidXNlcl9pZCI6MX0.y4phoHXFafdnFyyM6wP_Iy6b-iVWEXC7A3p2S_M_D_c
 
