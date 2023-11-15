@@ -77,20 +77,16 @@ def load_data_yml(data, owner_id):
 
 def load_data_csv(data, owner_id):
     for entity in data:
-        vendor, _ = Vendor.objects.get_or_create(
-            name=entity["vendor_name"], owner_id=owner_id
-        )
+
+        vendor, _ = Vendor.objects.get_or_create(name=entity["vendor_name"], owner_id=owner_id)
 
         db_cat, _ = Category.objects.get_or_create(name=entity["category_name"])
         new_category_id = db_cat.id
 
-        product, _ = Product.objects.get_or_create(
-            vendor=vendor, category_id=new_category_id, name=entity["product_name"]
-        )
+        product, _ = Product.objects.get_or_create(vendor=vendor, category_id=new_category_id, name=entity["product_name"])
 
-        item = Item.objects.filter(
-            upc=entity["product_id"], product__vendor=vendor
-        ).first()
+        item = Item.objects.filter(upc=entity["product_id"], product__vendor=vendor).first()
+
         if item:
             item.product = product
             item.price = entity["price"]
@@ -98,12 +94,7 @@ def load_data_csv(data, owner_id):
             item.save(update_fields=["product", "price", "count"])
 
         else:
-            item = Item.objects.create(
-                price=entity["price"],
-                count=entity["quantity"],
-                upc=entity["product_id"],
-                product_id=product.id,
-            )
+            item = Item.objects.create(price=entity["price"], count=entity["quantity"], upc=entity["product_id"], product_id=product.id)
 
         all_keys = [
             "vendor_name",

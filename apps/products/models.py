@@ -75,29 +75,27 @@ class Item(models.Model):
     # basket_rows (Model from basket App)
     # baskets     (Model from basket App)
 
-    # Проверка на уникальность upc+vendor (при альтернативной загрузке - админка либо реквест)
+    # Проверка на уникальность upc+vendor. При создании товара (item) в базе напрямую, self.id - не передается на этапе сохранения.
+    # Но при создании товара через DRF или терминал - у нас фильтром выбирается объект, который уже имеет id, поэтому в этом случае до ошибки (raise) не доходит и перезаписываетс поле)
     # ****************************************************************************************
     def save(self, *args, **kwargs):
+        # print(self.id)
         self.clean()
         super().save(*args, **kwargs)
 
     def clean(self):
         if not self.upc:
             return
-        if (
-            Item.objects.filter(
-                product__vendor__id=self.product.vendor_id, upc=self.upc
-            )
-            .exclude(id=self.id)
-            .exists()
-        ):
-            raise ValidationError({"non unique id (goods)"}, code="non-unique-upc")
+
+        a = Item.objects.filter(product__vendor__id=self.product.vendor_id, upc=self.upc)
+        if not self.id:
+            if a:
+                raise ValidationError({"non unique id (goods)"}, code="non-unique-upc")
+    # ****************************************************************************************
 
     class Meta:
         verbose_name = "3. Товар"
         verbose_name_plural = "3. Товары"
-
-    # ****************************************************************************************
 
     def __str__(self):
         return f"{self.product} [{self.price} руб. / {self.count} шт.]"

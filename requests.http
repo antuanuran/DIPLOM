@@ -12,7 +12,7 @@ Content-Type: application/json
 ### 2. Вариант загрузки данных файла через имя файла в строке (GET либо POST) :
 POST http://localhost:8000/api/v1/products-import-data/?file_name=import_1.csv
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNTQ2MTIzLCJpYXQiOjE2OTk5NDEzMjMsImp0aSI6IjY3ZDgzYzI1MDIwZTRlMDc4NDZiYzI2MzYzNzUxMWVjIiwidXNlcl9pZCI6MX0.y4phoHXFafdnFyyM6wP_Iy6b-iVWEXC7A3p2S_M_D_c
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNjI1MDQ3LCJpYXQiOjE3MDAwMjAyNDcsImp0aSI6IjY0NDc0MTc4OWMzYzQ4MGU4OGQ5NTRiZjY4NTZjZTI5IiwidXNlcl9pZCI6MX0.dLo2iGEchd3qLpPl0RYnUr4Zoo9QWSbXXDWkpFCEXqM
 
 
 
