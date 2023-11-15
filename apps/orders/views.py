@@ -3,7 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
 
-from apps.orders.models import Order
+from apps.orders.models import Order, OrderRow
 from apps.orders.serializers import OrderSerializer
 from rest_framework import status
 
@@ -13,6 +13,7 @@ from rest_framework import status
 def checkout(request):
     user = request.user
     basket = request.user.baskets.first()
+
     if not basket:
         raise ValidationError("user hasn't basket", code="no-basket")
 
@@ -32,4 +33,5 @@ def checkout(request):
     basket.rows.all().delete()  # Очищаем корзину
 
     serializer = OrderSerializer(order)
+
     return Response(serializer.data, status=status.HTTP_201_CREATED)

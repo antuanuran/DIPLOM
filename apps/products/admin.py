@@ -21,11 +21,6 @@ class ProductAdmin(admin.ModelAdmin):
     autocomplete_fields = ["category"]
 
 
-# @admin.register(Attribute)
-# class AttributeAdmin(admin.ModelAdmin):
-#     list_display = ["name", "id", "product"]
-
-
 class ItemParameterInlines(admin.TabularInline):
     model = ItemParameter
     extra = 0
@@ -44,7 +39,7 @@ class ItemParameterInlines(admin.TabularInline):
 
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ["product", "id", "price", "count"]
+    list_display = ["product", "price", "count", "id"]
 
     search_fields = ["product__name"]  # Добавление поля для поисковой строки в Админке
     autocomplete_fields = [
@@ -70,11 +65,6 @@ class ItemAdmin(admin.ModelAdmin):
         return super().get_form(request, obj, **kwargs)
 
 
-# @admin.register(ItemParameter)
-# class ItemParameterAdmin(admin.ModelAdmin):
-#     list_display = ["attribute", "id", "item", "value"]
-
-
 @admin.register(Vendor)
 class VendorAdmin(admin.ModelAdmin):
-    list_display = ["name", "id", "owner"]
+    list_display = ["vendor", "name", "manager"]

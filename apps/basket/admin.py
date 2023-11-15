@@ -28,7 +28,7 @@ class BasketRowInLine(admin.TabularInline):
 
 @admin.register(Basket)
 class BasketAdmin(admin.ModelAdmin):
-    list_display = ["user", "id", "sum_total_all_baskets"]
+    list_display = ["number_baskets", "user", "sum_total_all_baskets"]
     readonly_fields = ["sum_total_all_baskets"]
     search_fields = ["user__email"]
 

@@ -45,7 +45,7 @@ run_crop:
 	python manage.py createsuperuser
 	python manage.py import_data data_all/import_2.yaml --owner_id 1
 	python manage.py runserver
-	
+
 doc:
 	docker ps
 	sleep 1
@@ -59,3 +59,6 @@ doc:
 	sleep 1
 	docker ps
 	docker images
+
+
+# fuser -n tcp -k 8000

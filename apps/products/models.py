@@ -9,6 +9,16 @@ class Vendor(models.Model):
     name = models.CharField(max_length=100, unique=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="vendors")
 
+    @property
+    def vendor(self):
+        text = f"Вендор № {self.id}"
+        return text
+
+    @property
+    def manager(self):
+        text = self.owner
+        return text
+
     class Meta:
         verbose_name = "Поставщик / Вендор"
         verbose_name_plural = "Поставщики / Вендоры"
@@ -75,9 +85,9 @@ class Item(models.Model):
     # basket_rows (Model from basket App)
     # baskets     (Model from basket App)
 
-    # Проверка на уникальность upc+vendor. При создании товара (item) в базе напрямую, self.id - не передается на этапе сохранения.
-    # Но при создании товара через DRF или терминал - у нас фильтром выбирается объект, который уже имеет id, поэтому в этом случае до ошибки (raise) не доходит и перезаписываетс поле)
     # ****************************************************************************************
+    # Проверка на уникальность upc+vendor. При создании товара (item) в базе напрямую, self.id - не передается на этапе сохранения.
+    # Но при создании товара через DRF или терминал - у нас фильтром выбирается объект, который уже имеет id, поэтому в этом случае до ошибки (raise) не доходит и перезаписывается поле)
     def save(self, *args, **kwargs):
         # print(self.id)
         self.clean()
@@ -87,10 +97,13 @@ class Item(models.Model):
         if not self.upc:
             return
 
-        a = Item.objects.filter(product__vendor__id=self.product.vendor_id, upc=self.upc)
+        a = Item.objects.filter(
+            product__vendor__id=self.product.vendor_id, upc=self.upc
+        )
         if not self.id:
             if a:
                 raise ValidationError({"non unique id (goods)"}, code="non-unique-upc")
+
     # ****************************************************************************************
 
     class Meta:
@@ -98,7 +111,7 @@ class Item(models.Model):
         verbose_name_plural = "3. Товары"
 
     def __str__(self):
-        return f"{self.product} [{self.price} руб. / {self.count} шт.]"
+        return f"{self.product} -> Цена:{self.price} руб. / Кол-во:{self.count} шт.]"
 
 
 class ItemParameter(models.Model):

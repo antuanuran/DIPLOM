@@ -16,6 +16,11 @@ class Basket(models.Model):
             total += row.sum_current_basket
         return total
 
+    @property
+    def number_baskets(self):
+        text = f"Корзина № {self.id}"
+        return text
+
     class Meta:
         verbose_name = "Корзина"
         verbose_name_plural = "Корзины"

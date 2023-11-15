@@ -28,6 +28,11 @@ class Order(models.Model):
             total += row.sum_current_order
         return total
 
+    @property
+    def number_order(self):
+        text = f"Заказ № {self.id}"
+        return text
+
     class Meta:
         verbose_name = "Покупка"
         verbose_name_plural = "Покупки"
@@ -51,4 +56,4 @@ class OrderRow(models.Model):
         verbose_name_plural = "Покупки"
 
     def __str__(self):
-        return f"{self.order.user.email}  ->  [ТОВАР: {self.item}]"
+        return f"Товар: {self.item}"
