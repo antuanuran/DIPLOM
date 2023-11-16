@@ -1,6 +1,8 @@
 import csv
 import yaml
 from yaml import Loader
+from rest_framework.exceptions import ValidationError
+
 
 import os
 
@@ -31,23 +33,17 @@ SUPPORTED_DATA_FORMATS = {
 
 
 def load_data_yml(data, owner_id):
-    vendor, _ = Vendor.objects.get_or_create(
-        name=data["shop"], defaults={"owner_id": owner_id}
-    )
+    vendor, _ = Vendor.objects.get_or_create(name=data["shop"], defaults={"owner_id": owner_id})
 
-    category_mapper = {}
+    new_category_id = {}
     for entity in data.get("categories", []):
         db_cat, _ = Category.objects.get_or_create(name=entity["name"])
-        category_mapper[entity["id"]] = db_cat.id
+        new_category_id[entity["id"]] = db_cat.id
 
     for entity in data.get("goods", []):
-        product, _ = Product.objects.get_or_create(
-            vendor=vendor,
-            category_id=category_mapper[entity["category"]],
-            name=entity["name"],
-        )
+        product, _ = Product.objects.get_or_create(vendor=vendor, category_id=new_category_id[entity["category"]], name=entity["name"])
 
-        item = Item.objects.filter(upc=entity["id"], product__vendor=vendor).first()
+        item = Item.objects.filter(upc=entity["id"], product__vendor_id=vendor.id).first()
         if item:
             item.product = product
             item.price = entity["price"]
@@ -56,76 +52,66 @@ def load_data_yml(data, owner_id):
 
         else:
             item = Item.objects.create(
+                product=product,
                 price=entity["price"],
                 count=entity["quantity"],
+
                 upc=entity["id"],
-                product=product,
             )
 
-        desired_attributes = set(entity.get("parameters", {}).keys())
-        for temp in desired_attributes:
-            attr, _ = Attribute.objects.get_or_create(name=temp, product=product)
+        ItemParameter.objects.filter(item_id=item.id).delete()
 
-        item.parameters.all().delete()
-        for key, value in entity.get("parameters", {}).items():
-            ItemParameter.objects.create(
-                value=value,
-                item=item,
-                attribute=Attribute.objects.get(name=key, product=product),
-            )
+        for key, value in entity['parameters'].items():
+            if key:
+                attribute_temp, _ = Attribute.objects.get_or_create(name=key, product_id=product.id)
+
+                if value:
+                    item_temp, _ = ItemParameter.objects.get_or_create(item_id=item.id, value=value, attribute_id=attribute_temp.id)
+                else:
+                    item_temp, _ = ItemParameter.objects.get_or_create(item_id=item.id, value="", attribute_id=attribute_temp.id)
 
 
 def load_data_csv(data, owner_id):
     for entity in data:
+        if entity["vendor_name"] and entity["product_name"] and entity["product_id"] and entity["price"] and entity["quantity"] and entity["category_id"] and entity["category_name"]:
+            continue
+        else:
+            raise ValidationError(f"Отсутствуют значение одного из полей: vendor_name / product_name / price / quantity / category_id / category_name", code="no-value-in-fields")
 
-        vendor, _ = Vendor.objects.get_or_create(name=entity["vendor_name"], owner_id=owner_id)
+    for entity in data:
+        vendor, _ = Vendor.objects.get_or_create(name=entity.get("vendor_name", []), owner_id=owner_id)
 
-        db_cat, _ = Category.objects.get_or_create(name=entity["category_name"])
+        db_cat, _ = Category.objects.get_or_create(name=entity.get("category_name", []))
         new_category_id = db_cat.id
 
-        product, _ = Product.objects.get_or_create(vendor=vendor, category_id=new_category_id, name=entity["product_name"])
+        product, _ = Product.objects.get_or_create(vendor_id=vendor.id, category_id=new_category_id, name=entity["product_name"])
 
-        item = Item.objects.filter(upc=entity["product_id"], product__vendor=vendor).first()
+        item = Item.objects.filter(upc=entity["product_id"], product__vendor_id=vendor.id).first()
 
         if item:
-            item.product = product
             item.price = entity["price"]
             item.count = entity["quantity"]
+            item.product = product
+
             item.save(update_fields=["product", "price", "count"])
 
         else:
-            item = Item.objects.create(price=entity["price"], count=entity["quantity"], upc=entity["product_id"], product_id=product.id)
+            item = Item.objects.create(
+                price=entity["price"],
+                count=entity["quantity"],
+                product_id=product.id,
+                upc=entity["product_id"],
+            )
 
-        all_keys = [
-            "vendor_name",
-            "categories",
-            "category_name",
-            "category_id",
-            "goods",
-            "product_name",
-            "product_id",
-            "price",
-            "quantity",
-            "category_product_id",
-            "parameters",
-        ]
-        for key, value in entity.items():
-            if key not in all_keys:
-                if value:
-                    Attribute.objects.get_or_create(name=key, product_id=product.id)
+        all_keys = ["vendor_name", "product_name", "product_id", "price", "quantity", "category_id", "category_name"]
 
-        item.parameters.all().delete()
+        ItemParameter.objects.filter(item_id=item.id).delete()
 
         for key, value in entity.items():
             if key not in all_keys:
                 if value:
-                    ItemParameter.objects.create(
-                        value=value,
-                        item=item,
-                        attribute=Attribute.objects.get(
-                            name=key, product_id=product.id
-                        ),
-                    )
+                    attribute_temp, _ = Attribute.objects.get_or_create(name=key, product_id=product.id)
+                    item_temp, _ = ItemParameter.objects.get_or_create(item_id=item.id, value=value, attribute_id=attribute_temp.id)
 
 
 def import_data(data_stream, data_format: str, owner_id):
