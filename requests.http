@@ -4,8 +4,8 @@ POST http://localhost:8000/api/v1/auth/jwt/create/
 Content-Type: application/json
 
 {
-  "email": "admin@admin.org",
-  "password": "admin"
+  "email": "admin2@admin.org",
+  "password": "develop123"
 }
 
 
@@ -37,10 +37,10 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 ### 6. Отправка товаров в корзину (для уменьшения кол-ва товаров указывать значение "qty" со знаком минус)
 POST http://localhost:8000/api/v1/basket-rows/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNTQ2MTIzLCJpYXQiOjE2OTk5NDEzMjMsImp0aSI6IjY3ZDgzYzI1MDIwZTRlMDc4NDZiYzI2MzYzNzUxMWVjIiwidXNlcl9pZCI6MX0.y4phoHXFafdnFyyM6wP_Iy6b-iVWEXC7A3p2S_M_D_c
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNzkxNDg4LCJpYXQiOjE3MDAxODY2ODgsImp0aSI6ImFiYzEzNjgzMDc5MDQ2OTc4YzMzMWFlOTFhMjNhZTVjIiwidXNlcl9pZCI6Mn0.ZK8JTh_mNyTovv_HsEni-J9w9_SAQdMqUVS9GOv7A0w
 
 {
-  "tovar_id": 214,
+  "tovar_id": 437,
   "qty": 1
 }
 
@@ -49,7 +49,7 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 ### 7. Orders. Покупки. Одним кликом отправляется весь товар из корзины пользователя в Покупки
 POST http://localhost:8000/api/v1/checkout/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNTQ2MTIzLCJpYXQiOjE2OTk5NDEzMjMsImp0aSI6IjY3ZDgzYzI1MDIwZTRlMDc4NDZiYzI2MzYzNzUxMWVjIiwidXNlcl9pZCI6MX0.y4phoHXFafdnFyyM6wP_Iy6b-iVWEXC7A3p2S_M_D_c
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNzkxNDg4LCJpYXQiOjE3MDAxODY2ODgsImp0aSI6ImFiYzEzNjgzMDc5MDQ2OTc4YzMzMWFlOTFhMjNhZTVjIiwidXNlcl9pZCI6Mn0.ZK8JTh_mNyTovv_HsEni-J9w9_SAQdMqUVS9GOv7A0w
 
 
 

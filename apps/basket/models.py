@@ -18,7 +18,7 @@ class Basket(models.Model):
 
     @property
     def number_baskets(self):
-        text = f"Корзина № {self.id}"
+        text = f"Корзина ({self.user})"
         return text
 
     class Meta:

@@ -33,6 +33,35 @@ SUPPORTED_DATA_FORMATS = {
 
 
 def load_data_yml(data, owner_id):
+    # Проверка на ввод значений
+    if not data["shop"]:
+        raise ValidationError("Введите значение Вендора ('shop')", code="no-value-shop")
+
+    for category in data["categories"]:
+        for key, value in category.items():
+            if not value:
+                raise ValidationError(
+                    "Введите корректные значения Категорий ('name' - 'id')",
+                    code="value-error-category",
+                )
+
+    for good in data["goods"]:
+        id_temp = good["id"]
+        for key, value in good.items():
+            if not value:
+                raise ValidationError(
+                    f"Введите значение ('{key}'), id-товара: {id_temp}",
+                    code="value error",
+                )
+            if key == "parameters":
+                for k, val in value.items():
+                    if not val:
+                        raise ValidationError(
+                            f"Введите значение ('{k}'), id-товара: {id_temp}",
+                            code="value error",
+                        )
+    ####
+
     vendor, _ = Vendor.objects.get_or_create(
         name=data["shop"], defaults={"owner_id": owner_id}
     )
@@ -95,8 +124,8 @@ def load_data_csv(data, owner_id):
         "category_name",
     ]
 
-    # Проверка на ввод значений
     for entity in data:
+        # Проверка ввода значений
         temp_id = entity["product_id"]
         for key, value in entity.items():
             if key in all_keys:
@@ -105,14 +134,13 @@ def load_data_csv(data, owner_id):
                         f"Введите значение поля: '{key}' для product_id: '{temp_id}'",
                         code="no-value-in-field",
                     )
-    ####
+        ###
 
-    for entity in data:
         vendor, _ = Vendor.objects.get_or_create(
-            name=entity.get("vendor_name", []), owner_id=owner_id
+            name=entity["vendor_name"], owner_id=owner_id
         )
 
-        db_cat, _ = Category.objects.get_or_create(name=entity.get("category_name", []))
+        db_cat, _ = Category.objects.get_or_create(name=entity["category_name"])
         new_category_id = db_cat.id
 
         product, _ = Product.objects.get_or_create(
