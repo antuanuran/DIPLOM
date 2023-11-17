@@ -2,8 +2,11 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
+from rest_framework.viewsets import ModelViewSet
 
-from apps.orders.models import Order, OrderRow
+
+from apps.orders.models import Order
+from apps.orders.premissions import IsOwner
 from apps.orders.serializers import OrderSerializer
 from rest_framework import status
 
@@ -32,6 +35,19 @@ def checkout(request):
 
     basket.rows.all().delete()  # Очищаем корзину
 
-    serializer = OrderSerializer(order)
+    serializer = OrderSerializer(order)  # Выводим через сериализатор итог покупок
 
     return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+class OrderViewSet(ModelViewSet):
+    http_method_names = ["get", "head", "options", "patch"]
+
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated, IsOwner]
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        result = qs.filter(user_id=self.request.user.id)
+        return result

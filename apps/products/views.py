@@ -12,6 +12,7 @@ from rest_framework.pagination import LimitOffsetPagination
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import OrderingFilter, SearchFilter
 
+from apps.orders.premissions import IsOwner
 from apps.products.models import Item
 from apps.products.serializers import DetailItemSerializer, ItemSerializer
 from apps.users.permissions import IsVendor
