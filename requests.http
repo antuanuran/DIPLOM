@@ -37,10 +37,10 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 ### 6. Отправка товаров в корзину (для уменьшения кол-ва товаров указывать значение "qty" со знаком минус)
 POST http://localhost:8000/api/v1/basket-rows/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNzkxNDg4LCJpYXQiOjE3MDAxODY2ODgsImp0aSI6ImFiYzEzNjgzMDc5MDQ2OTc4YzMzMWFlOTFhMjNhZTVjIiwidXNlcl9pZCI6Mn0.ZK8JTh_mNyTovv_HsEni-J9w9_SAQdMqUVS9GOv7A0w
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNjI1MDQ3LCJpYXQiOjE3MDAwMjAyNDcsImp0aSI6IjY0NDc0MTc4OWMzYzQ4MGU4OGQ5NTRiZjY4NTZjZTI5IiwidXNlcl9pZCI6MX0.dLo2iGEchd3qLpPl0RYnUr4Zoo9QWSbXXDWkpFCEXqM
 
 {
-  "tovar_id": 437,
+  "tovar_id": 59,
   "qty": 1
 }
 
@@ -49,7 +49,7 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 ### 7. Orders. Покупки. Одним кликом отправляется весь товар из корзины пользователя в Покупки
 POST http://localhost:8000/api/v1/checkout/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNzkxNDg4LCJpYXQiOjE3MDAxODY2ODgsImp0aSI6ImFiYzEzNjgzMDc5MDQ2OTc4YzMzMWFlOTFhMjNhZTVjIiwidXNlcl9pZCI6Mn0.ZK8JTh_mNyTovv_HsEni-J9w9_SAQdMqUVS9GOv7A0w
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNjI1MDQ3LCJpYXQiOjE3MDAwMjAyNDcsImp0aSI6IjY0NDc0MTc4OWMzYzQ4MGU4OGQ5NTRiZjY4NTZjZTI5IiwidXNlcl9pZCI6MX0.dLo2iGEchd3qLpPl0RYnUr4Zoo9QWSbXXDWkpFCEXqM
 
 
 

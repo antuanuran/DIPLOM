@@ -29,6 +29,8 @@ class BasketRowSerializer(serializers.ModelSerializer):
             return attrs
 
     def create(self, validated_data):
+        # print(f"3. create - сериалайзер {validated_data}")
+
         item_id = validated_data["item_id"]
         basket_id = validated_data["basket_id"]
 
