@@ -37,26 +37,42 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 ### 6. Отправка товаров в корзину (для уменьшения кол-ва товаров указывать значение "qty" со знаком минус)
 POST http://localhost:8000/api/v1/basket-rows/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNjI1MDQ3LCJpYXQiOjE3MDAwMjAyNDcsImp0aSI6IjY0NDc0MTc4OWMzYzQ4MGU4OGQ5NTRiZjY4NTZjZTI5IiwidXNlcl9pZCI6MX0.dLo2iGEchd3qLpPl0RYnUr4Zoo9QWSbXXDWkpFCEXqM
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNTQ2MTIzLCJpYXQiOjE2OTk5NDEzMjMsImp0aSI6IjY3ZDgzYzI1MDIwZTRlMDc4NDZiYzI2MzYzNzUxMWVjIiwidXNlcl9pZCI6MX0.y4phoHXFafdnFyyM6wP_Iy6b-iVWEXC7A3p2S_M_D_c
 
 {
-  "tovar_id": 59,
+  "tovar_id": 66,
   "qty": 1
 }
 
 
 
 ### 7. Orders. Покупки. Одним кликом отправляется весь товар из корзины пользователя в Покупки
-POST http://localhost:8000/api/v1/checkout/
+POST http://localhost:8000/api/v1/orders/checkout/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNjI1MDQ3LCJpYXQiOjE3MDAwMjAyNDcsImp0aSI6IjY0NDc0MTc4OWMzYzQ4MGU4OGQ5NTRiZjY4NTZjZTI5IiwidXNlcl9pZCI6MX0.dLo2iGEchd3qLpPl0RYnUr4Zoo9QWSbXXDWkpFCEXqM
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNTQ2MTIzLCJpYXQiOjE2OTk5NDEzMjMsImp0aSI6IjY3ZDgzYzI1MDIwZTRlMDc4NDZiYzI2MzYzNzUxMWVjIiwidXNlcl9pZCI6MX0.y4phoHXFafdnFyyM6wP_Iy6b-iVWEXC7A3p2S_M_D_c
+
+
+
+### 8. Orders. Вывод покупок, которые относятся к конкретному Юзеру
+GET http://localhost:8000/api/v1/orders/
+Content-Type: application/json
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNTQ2MTIzLCJpYXQiOjE2OTk5NDEzMjMsImp0aSI6IjY3ZDgzYzI1MDIwZTRlMDc4NDZiYzI2MzYzNzUxMWVjIiwidXNlcl9pZCI6MX0.y4phoHXFafdnFyyM6wP_Iy6b-iVWEXC7A3p2S_M_D_c
+
+
+
+### 9. Orders. Покупки. Изменение статуса на "отменен"
+PATCH http://localhost:8000/api/v1/orders/9/
+Content-Type: application/json
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNTQ2MTIzLCJpYXQiOjE2OTk5NDEzMjMsImp0aSI6IjY3ZDgzYzI1MDIwZTRlMDc4NDZiYzI2MzYzNzUxMWVjIiwidXNlcl9pZCI6MX0.y4phoHXFafdnFyyM6wP_Iy6b-iVWEXC7A3p2S_M_D_c
+
+{
+  "status": "отменен"
+}
 
 
 
 
 ### Дополнительно.
-
-
 
 #  - Создание Юзера
 POST http://localhost:8000/api/v1/auth/users/

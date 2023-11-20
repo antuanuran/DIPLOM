@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from apps.orders.models import OrderRow, Order
 from apps.products.serializers import ItemSerializer, ItemParameterSerializer, ProductSerializer
+from rest_framework.exceptions import PermissionDenied
 
 
 class DetailSerializer(ItemSerializer):
@@ -22,3 +23,8 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ["id", "rows", "status", "created_at", "updated_at"]
+
+    def validate_status(self, value):
+        if value != Order.STATUS_CANCELED:
+            raise PermissionDenied
+        return value
