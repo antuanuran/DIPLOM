@@ -40,7 +40,7 @@ Content-Type: application/json
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMDYwNTgwLCJpYXQiOjE3MDA0NTU3ODAsImp0aSI6IjQyN2I1NTg2NmM4NDRhNTdiMDY1Y2ZhYzg1MGM5ZDhkIiwidXNlcl9pZCI6M30.5vGjKOl-QTa6IgffUYr1D-U7YbQTGooFpLSY0odgR-w
 
 {
-  "tovar_id": 65,
+  "tovar_id": 66,
   "qty": 1
 }
 
@@ -61,13 +61,13 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 
 
 ### 9. Orders. Покупки. Изменение статуса на "отменен"
-PATCH http://localhost:8000/api/v1/orders/11/
+PATCH http://localhost:8000/api/v1/orders/15/
 Content-Type: application/json
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMDYwNTgwLCJpYXQiOjE3MDA0NTU3ODAsImp0aSI6IjQyN2I1NTg2NmM4NDRhNTdiMDY1Y2ZhYzg1MGM5ZDhkIiwidXNlcl9pZCI6M30.5vGjKOl-QTa6IgffUYr1D-U7YbQTGooFpLSY0odgR-w
 
 {
-  "status": "новый"
-}
+  "status": "отменен"
+  }
 
 
 

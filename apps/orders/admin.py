@@ -30,7 +30,14 @@ class OrderRowInLine(admin.TabularInline):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ["number_order", "user", "status", "created_at", "updated_at", "sum_total_all_orders"]
+    list_display = [
+        "number_order",
+        "user",
+        "status",
+        "created_at",
+        "updated_at",
+        "sum_total_all_orders",
+    ]
     readonly_fields = ["sum_total_all_orders"]
     ordering = ["-created_at"]
     inlines = [OrderRowInLine]

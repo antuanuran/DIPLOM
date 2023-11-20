@@ -48,10 +48,11 @@ class OrderViewSet(ModelViewSet):
         for row in basket.rows.all():
             if row.qty > row.item.count:
                 raise ValidationError(f"item is out of stock - {row.item.product.name}", code="no-products-in-basket")
+
             if not row.item.is_active:
                 raise ValidationError(
                     f"На текущий момент - Товар:{row.item.product.name} отсутствует а складе",
-                    code="no-products-in-basket",
+                    code="no-products",
                 )
 
         # транзакция - для безопасного кода
