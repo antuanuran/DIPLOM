@@ -26,5 +26,5 @@ class OrderSerializer(serializers.ModelSerializer):
 
     def validate_status(self, value):
         if value != Order.STATUS_CANCELED:
-            raise PermissionDenied
+            raise PermissionDenied("User может изменять статус заказа только на 'отменён'")
         return value

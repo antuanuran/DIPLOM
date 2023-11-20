@@ -4,7 +4,7 @@ POST http://localhost:8000/api/v1/auth/jwt/create/
 Content-Type: application/json
 
 {
-  "email": "admin2@admin.org",
+  "email": "admin3@admin.org",
   "password": "develop123"
 }
 
@@ -37,10 +37,10 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 ### 6. Отправка товаров в корзину (для уменьшения кол-ва товаров указывать значение "qty" со знаком минус)
 POST http://localhost:8000/api/v1/basket-rows/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNTQ2MTIzLCJpYXQiOjE2OTk5NDEzMjMsImp0aSI6IjY3ZDgzYzI1MDIwZTRlMDc4NDZiYzI2MzYzNzUxMWVjIiwidXNlcl9pZCI6MX0.y4phoHXFafdnFyyM6wP_Iy6b-iVWEXC7A3p2S_M_D_c
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMDYwNTgwLCJpYXQiOjE3MDA0NTU3ODAsImp0aSI6IjQyN2I1NTg2NmM4NDRhNTdiMDY1Y2ZhYzg1MGM5ZDhkIiwidXNlcl9pZCI6M30.5vGjKOl-QTa6IgffUYr1D-U7YbQTGooFpLSY0odgR-w
 
 {
-  "tovar_id": 66,
+  "tovar_id": 65,
   "qty": 1
 }
 
@@ -49,24 +49,24 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 ### 7. Orders. Покупки. Одним кликом отправляется весь товар из корзины пользователя в Покупки
 POST http://localhost:8000/api/v1/orders/checkout/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNTQ2MTIzLCJpYXQiOjE2OTk5NDEzMjMsImp0aSI6IjY3ZDgzYzI1MDIwZTRlMDc4NDZiYzI2MzYzNzUxMWVjIiwidXNlcl9pZCI6MX0.y4phoHXFafdnFyyM6wP_Iy6b-iVWEXC7A3p2S_M_D_c
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMDYwNTgwLCJpYXQiOjE3MDA0NTU3ODAsImp0aSI6IjQyN2I1NTg2NmM4NDRhNTdiMDY1Y2ZhYzg1MGM5ZDhkIiwidXNlcl9pZCI6M30.5vGjKOl-QTa6IgffUYr1D-U7YbQTGooFpLSY0odgR-w
 
 
 
 ### 8. Orders. Вывод покупок, которые относятся к конкретному Юзеру
 GET http://localhost:8000/api/v1/orders/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNTQ2MTIzLCJpYXQiOjE2OTk5NDEzMjMsImp0aSI6IjY3ZDgzYzI1MDIwZTRlMDc4NDZiYzI2MzYzNzUxMWVjIiwidXNlcl9pZCI6MX0.y4phoHXFafdnFyyM6wP_Iy6b-iVWEXC7A3p2S_M_D_c
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMDYwNTgwLCJpYXQiOjE3MDA0NTU3ODAsImp0aSI6IjQyN2I1NTg2NmM4NDRhNTdiMDY1Y2ZhYzg1MGM5ZDhkIiwidXNlcl9pZCI6M30.5vGjKOl-QTa6IgffUYr1D-U7YbQTGooFpLSY0odgR-w
 
 
 
 ### 9. Orders. Покупки. Изменение статуса на "отменен"
-PATCH http://localhost:8000/api/v1/orders/9/
+PATCH http://localhost:8000/api/v1/orders/11/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNTQ2MTIzLCJpYXQiOjE2OTk5NDEzMjMsImp0aSI6IjY3ZDgzYzI1MDIwZTRlMDc4NDZiYzI2MzYzNzUxMWVjIiwidXNlcl9pZCI6MX0.y4phoHXFafdnFyyM6wP_Iy6b-iVWEXC7A3p2S_M_D_c
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMDYwNTgwLCJpYXQiOjE3MDA0NTU3ODAsImp0aSI6IjQyN2I1NTg2NmM4NDRhNTdiMDY1Y2ZhYzg1MGM5ZDhkIiwidXNlcl9pZCI6M30.5vGjKOl-QTa6IgffUYr1D-U7YbQTGooFpLSY0odgR-w
 
 {
-  "status": "отменен"
+  "status": "новый"
 }
 
 
@@ -79,7 +79,7 @@ POST http://localhost:8000/api/v1/auth/users/
 Content-Type: application/json
 
 {
-  "email": "admin2@admin.org",
+  "email": "admin3@admin.org",
   "password": "develop123"
 }
 
