@@ -23,7 +23,7 @@ class BasketRowSerializer(serializers.ModelSerializer):
         fields = ["id", "basket_id", "qty", "item", "tovar_id"]
 
     def validate(self, attrs):
-        if not Item.objects.filter(id=attrs["item_id"]).exists():
+        if not Item.objects.filter(id=attrs["item_id"], is_active=True).exists():
             raise ValidationError("incorrect item_id", code="no-item_id")
         else:
             return attrs

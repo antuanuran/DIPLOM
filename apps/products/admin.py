@@ -39,7 +39,7 @@ class ItemParameterInlines(admin.TabularInline):
 
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ["product", "price", "count", "id"]
+    list_display = ["product", "price", "count", "id", "is_active"]
 
     search_fields = ["product__name"]  # Добавление поля для поисковой строки в Админке
     autocomplete_fields = [

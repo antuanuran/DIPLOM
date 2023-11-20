@@ -1,8 +1,9 @@
-from rest_framework.decorators import api_view, permission_classes, action
+from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
 from rest_framework.viewsets import ModelViewSet
+from django.db import transaction
 
 
 from apps.orders.models import Order
@@ -47,14 +48,19 @@ class OrderViewSet(ModelViewSet):
         for row in basket.rows.all():
             if row.qty > row.item.count:
                 raise ValidationError(f"item is out of stock - {row.item.product.name}", code="no-products-in-basket")
+            if not row.item.is_active:
+                raise ValidationError(
+                    f"На текущий момент - Товар:{row.item.product.name} отсутствует а складе",
+                    code="no-products-in-basket",
+                )
 
-        # код не безопасный: добавить транзакций
-        order = Order.objects.create(user=user)
-        # неоптимальный код: сделать балк создание
-        for row in basket.rows.all():
-            order.rows.create(item=row.item, qty=row.qty, price=row.item.price)
-
-        basket.rows.all().delete()  # Очищаем корзину
+        # транзакция - для безопасного кода
+        with transaction.atomic():
+            order = Order.objects.create(user=user)
+            for row in basket.rows.all():
+                order.rows.create(item=row.item, qty=row.qty, price=row.item.price)
+            basket.rows.all().delete()  # Очищаем корзину
+        ### транзакция завершена
 
         serializer = OrderSerializer(order)  # Выводим через сериализатор итог покупок
 
