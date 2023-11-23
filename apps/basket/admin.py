@@ -19,7 +19,7 @@ class BasketRowInLineFormset(BaseInlineFormSet):
 class BasketRowInLine(admin.TabularInline):
     model = BasketRow
     extra = 0
-    readonly_fields = ["sum_current_basket"]
+    readonly_fields = ["price_unit", "summa_price"]
     formset = BasketRowInLineFormset
 
     # Добавление поля для поисковой строки в Админке
@@ -28,8 +28,8 @@ class BasketRowInLine(admin.TabularInline):
 
 @admin.register(Basket)
 class BasketAdmin(admin.ModelAdmin):
-    list_display = ["number_baskets", "user", "sum_total_all_baskets"]
-    readonly_fields = ["sum_total_all_baskets"]
+    list_display = ["number_baskets", "user", "total_price_all_basket"]
+    readonly_fields = ["total_price_all_basket"]
     search_fields = ["user__email"]
 
     inlines = [BasketRowInLine]

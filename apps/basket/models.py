@@ -10,10 +10,10 @@ class Basket(models.Model):
     # rows
 
     @property
-    def sum_total_all_baskets(self):
+    def total_price_all_basket(self):
         total = 0
         for row in self.rows.all():
-            total += row.sum_current_basket
+            total += row.summa_price
         return total
 
     @property
@@ -35,12 +35,16 @@ class BasketRow(models.Model):
     qty = models.PositiveIntegerField(default=1)
 
     @property
-    def sum_current_basket(self):
+    def summa_price(self):
         return self.qty * self.item.price
+
+    @property
+    def price_unit(self):
+        return self.item.price
 
     class Meta:
         verbose_name = "Заказ в корзине"
         verbose_name_plural = "Заказы в корзине"
 
     def __str__(self):
-        return f"{self.basket.user.email}  ->  [ТОВАР: {self.item}]"
+        return f" {self.item}"

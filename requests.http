@@ -4,15 +4,15 @@ POST http://localhost:8000/api/v1/auth/jwt/create/
 Content-Type: application/json
 
 {
-  "email": "admin3@admin.org",
-  "password": "develop123"
+  "email": "admin@admin.org",
+  "password": "admin"
 }
 
 
 ### 2. Вариант загрузки данных файла через имя файла в строке (GET либо POST) :
 POST http://localhost:8000/api/v1/products-import-data/?file_name=import_2.yaml
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwODA2MTU5LCJpYXQiOjE3MDAyMDEzNTksImp0aSI6IjlmOGI5ZDliMWYwMjRmNzdiYWUwZDkyODA1YThkMDEwIiwidXNlcl9pZCI6Mn0.8xSDXT6kFVHai3kgwb-tVhbuN2TqkbrVTZHpDS-azFM
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMzI5Njc1LCJpYXQiOjE3MDA3MjQ4NzUsImp0aSI6Ijc4YTY5YTFkMjg2ZDQzMWNhM2FjOTA4ZjMwNGJjYTUyIiwidXNlcl9pZCI6MX0.kDhJjl6hqBnR0KgLQ4inaQEpef9P4p8hFrZRJwuke4g
 
 
 
@@ -23,24 +23,24 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 
 POST http://localhost:8000/api/v1/products-import-file/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNTQ2MTIzLCJpYXQiOjE2OTk5NDEzMjMsImp0aSI6IjY3ZDgzYzI1MDIwZTRlMDc4NDZiYzI2MzYzNzUxMWVjIiwidXNlcl9pZCI6MX0.y4phoHXFafdnFyyM6wP_Iy6b-iVWEXC7A3p2S_M_D_c
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMzI5Njc1LCJpYXQiOjE3MDA3MjQ4NzUsImp0aSI6Ijc4YTY5YTFkMjg2ZDQzMWNhM2FjOTA4ZjMwNGJjYTUyIiwidXNlcl9pZCI6MX0.kDhJjl6hqBnR0KgLQ4inaQEpef9P4p8hFrZRJwuke4g
 
 
 
 ### 4. Вывод всех имеющихся товаров. GET-запрос.
 GET http://localhost:8000/api/v1/items/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwODA2MTU5LCJpYXQiOjE3MDAyMDEzNTksImp0aSI6IjlmOGI5ZDliMWYwMjRmNzdiYWUwZDkyODA1YThkMDEwIiwidXNlcl9pZCI6Mn0.8xSDXT6kFVHai3kgwb-tVhbuN2TqkbrVTZHpDS-azFM
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMzI5Njc1LCJpYXQiOjE3MDA3MjQ4NzUsImp0aSI6Ijc4YTY5YTFkMjg2ZDQzMWNhM2FjOTA4ZjMwNGJjYTUyIiwidXNlcl9pZCI6MX0.kDhJjl6hqBnR0KgLQ4inaQEpef9P4p8hFrZRJwuke4g
 
 
 
 ### 6. Отправка товаров в корзину (для уменьшения кол-ва товаров указывать значение "qty" со знаком минус)
 POST http://localhost:8000/api/v1/basket-rows/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMDYwNTgwLCJpYXQiOjE3MDA0NTU3ODAsImp0aSI6IjQyN2I1NTg2NmM4NDRhNTdiMDY1Y2ZhYzg1MGM5ZDhkIiwidXNlcl9pZCI6M30.5vGjKOl-QTa6IgffUYr1D-U7YbQTGooFpLSY0odgR-w
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMzI5Njc1LCJpYXQiOjE3MDA3MjQ4NzUsImp0aSI6Ijc4YTY5YTFkMjg2ZDQzMWNhM2FjOTA4ZjMwNGJjYTUyIiwidXNlcl9pZCI6MX0.kDhJjl6hqBnR0KgLQ4inaQEpef9P4p8hFrZRJwuke4g
 
 {
-  "tovar_id": 66,
+  "tovar_id": 19,
   "qty": 1
 }
 
@@ -49,21 +49,21 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 ### 7. Orders. Покупки. Одним кликом отправляется весь товар из корзины пользователя в Покупки
 POST http://localhost:8000/api/v1/orders/checkout/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMDYwNTgwLCJpYXQiOjE3MDA0NTU3ODAsImp0aSI6IjQyN2I1NTg2NmM4NDRhNTdiMDY1Y2ZhYzg1MGM5ZDhkIiwidXNlcl9pZCI6M30.5vGjKOl-QTa6IgffUYr1D-U7YbQTGooFpLSY0odgR-w
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMzI5Njc1LCJpYXQiOjE3MDA3MjQ4NzUsImp0aSI6Ijc4YTY5YTFkMjg2ZDQzMWNhM2FjOTA4ZjMwNGJjYTUyIiwidXNlcl9pZCI6MX0.kDhJjl6hqBnR0KgLQ4inaQEpef9P4p8hFrZRJwuke4g
 
 
 
 ### 8. Orders. Вывод покупок, которые относятся к конкретному Юзеру по токену
 GET http://localhost:8000/api/v1/orders/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMDYwNTgwLCJpYXQiOjE3MDA0NTU3ODAsImp0aSI6IjQyN2I1NTg2NmM4NDRhNTdiMDY1Y2ZhYzg1MGM5ZDhkIiwidXNlcl9pZCI6M30.5vGjKOl-QTa6IgffUYr1D-U7YbQTGooFpLSY0odgR-w
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMzI5Njc1LCJpYXQiOjE3MDA3MjQ4NzUsImp0aSI6Ijc4YTY5YTFkMjg2ZDQzMWNhM2FjOTA4ZjMwNGJjYTUyIiwidXNlcl9pZCI6MX0.kDhJjl6hqBnR0KgLQ4inaQEpef9P4p8hFrZRJwuke4g
 
 
 
 ### 9. Orders. Покупки. Изменение статуса на "отменен"
 PATCH http://localhost:8000/api/v1/orders/20/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMDYwNTgwLCJpYXQiOjE3MDA0NTU3ODAsImp0aSI6IjQyN2I1NTg2NmM4NDRhNTdiMDY1Y2ZhYzg1MGM5ZDhkIiwidXNlcl9pZCI6M30.5vGjKOl-QTa6IgffUYr1D-U7YbQTGooFpLSY0odgR-w
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMzI5Njc1LCJpYXQiOjE3MDA3MjQ4NzUsImp0aSI6Ijc4YTY5YTFkMjg2ZDQzMWNhM2FjOTA4ZjMwNGJjYTUyIiwidXNlcl9pZCI6MX0.kDhJjl6hqBnR0KgLQ4inaQEpef9P4p8hFrZRJwuke4g
 
 {
   "status": "отменен"
