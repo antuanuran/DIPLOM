@@ -27,7 +27,7 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 
 
 
-### 4. Вывод всех данных (товаров). GET-запрос.
+### 4. Вывод всех имеющихся товаров. GET-запрос.
 GET http://localhost:8000/api/v1/items/
 Content-Type: application/json
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwODA2MTU5LCJpYXQiOjE3MDAyMDEzNTksImp0aSI6IjlmOGI5ZDliMWYwMjRmNzdiYWUwZDkyODA1YThkMDEwIiwidXNlcl9pZCI6Mn0.8xSDXT6kFVHai3kgwb-tVhbuN2TqkbrVTZHpDS-azFM
@@ -53,7 +53,7 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 
 
 
-### 8. Orders. Вывод покупок, которые относятся к конкретному Юзеру
+### 8. Orders. Вывод покупок, которые относятся к конкретному Юзеру по токену
 GET http://localhost:8000/api/v1/orders/
 Content-Type: application/json
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMDYwNTgwLCJpYXQiOjE3MDA0NTU3ODAsImp0aSI6IjQyN2I1NTg2NmM4NDRhNTdiMDY1Y2ZhYzg1MGM5ZDhkIiwidXNlcl9pZCI6M30.5vGjKOl-QTa6IgffUYr1D-U7YbQTGooFpLSY0odgR-w
@@ -61,7 +61,7 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 
 
 ### 9. Orders. Покупки. Изменение статуса на "отменен"
-PATCH http://localhost:8000/api/v1/orders/15/
+PATCH http://localhost:8000/api/v1/orders/20/
 Content-Type: application/json
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMDYwNTgwLCJpYXQiOjE3MDA0NTU3ODAsImp0aSI6IjQyN2I1NTg2NmM4NDRhNTdiMDY1Y2ZhYzg1MGM5ZDhkIiwidXNlcl9pZCI6M30.5vGjKOl-QTa6IgffUYr1D-U7YbQTGooFpLSY0odgR-w
 

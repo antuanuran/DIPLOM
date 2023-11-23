@@ -64,5 +64,4 @@ class OrderViewSet(ModelViewSet):
         ### транзакция завершена
 
         serializer = OrderSerializer(order)  # Выводим через сериализатор итог покупок
-
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(data=serializer.data, status=status.HTTP_201_CREATED)

@@ -85,6 +85,13 @@ class Item(models.Model):
     # basket_rows (Model from basket App)
     # baskets     (Model from basket App)
 
+    @property
+    def attributes(self):
+        result = []
+        for i in self.parameters.all():
+            result.append(f"{i.attribute.name}: {i.value}")
+        return result
+
     # ****************************************************************************************
     # Проверка на уникальность upc+vendor. При создании товара (item) в базе напрямую, self.id - не передается на этапе сохранения.
     # Но при создании товара через DRF или терминал - у нас фильтром выбирается объект, который уже имеет id, поэтому в этом случае до ошибки (raise) не доходит и перезаписывается поле)
@@ -111,7 +118,7 @@ class Item(models.Model):
         verbose_name_plural = "3. Товары"
 
     def __str__(self):
-        return f"{self.product} -> Цена:{self.price} руб. / Кол-во:{self.count} шт.]"
+        return f"{self.product}. Цена: {self.price} руб. / Кол-во: {self.count} шт. {self.attributes}"
 
 
 class ItemParameter(models.Model):
