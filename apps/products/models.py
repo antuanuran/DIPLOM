@@ -29,7 +29,6 @@ class Vendor(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    is_active = models.BooleanField(default=True)
     # products
 
     class Meta:
@@ -48,7 +47,6 @@ class Product(models.Model):
     vendor = models.ForeignKey(
         Vendor, on_delete=models.CASCADE, related_name="products"
     )
-    is_active = models.BooleanField(default=True)
     # attributes
     # items
 

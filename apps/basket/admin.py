@@ -19,7 +19,7 @@ class BasketRowInLineFormset(BaseInlineFormSet):
 class BasketRowInLine(admin.TabularInline):
     model = BasketRow
     extra = 0
-    readonly_fields = ["price_unit", "summa_price"]
+    readonly_fields = ["price_unit", "summa_price", "is_active_item"]
     formset = BasketRowInLineFormset
 
     # Добавление поля для поисковой строки в Админке

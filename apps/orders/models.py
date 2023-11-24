@@ -1,4 +1,6 @@
 from django.utils import timezone
+from django.core.exceptions import ValidationError
+
 
 from django.db import models
 
@@ -55,6 +57,17 @@ class OrderRow(models.Model):
     @property
     def sum_current_order(self):
         return (self.qty or 0) * (self.price or 0)
+
+    # ******************************
+    def save(self, *args, **kwargs):
+        self.clean()
+        super().save(*args, **kwargs)
+
+    def clean(self):
+        if not self.item.is_active:
+            raise ValidationError({"item not active!"}, code="not-active-item")
+
+    # ******************************
 
     class Meta:
         verbose_name = "Покупка"

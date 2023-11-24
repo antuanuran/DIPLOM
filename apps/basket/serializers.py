@@ -4,9 +4,6 @@ from apps.basket.models import BasketRow, Item
 from apps.products.serializers import ItemSerializer, ItemParameterSerializer, ProductSerializer
 from rest_framework.exceptions import ValidationError
 
-from rest_framework.response import Response
-from rest_framework import status
-
 
 class DetailSerializer(ItemSerializer):
     parameters = ItemParameterSerializer(read_only=True, many=True)

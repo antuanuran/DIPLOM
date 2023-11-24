@@ -40,7 +40,7 @@ Content-Type: application/json
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMzI5Njc1LCJpYXQiOjE3MDA3MjQ4NzUsImp0aSI6Ijc4YTY5YTFkMjg2ZDQzMWNhM2FjOTA4ZjMwNGJjYTUyIiwidXNlcl9pZCI6MX0.kDhJjl6hqBnR0KgLQ4inaQEpef9P4p8hFrZRJwuke4g
 
 {
-  "tovar_id": 19,
+  "tovar_id": 4,
   "qty": 1
 }
 

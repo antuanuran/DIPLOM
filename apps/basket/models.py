@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.exceptions import ValidationError
+
 
 from apps.products.models import Item
 from apps.users.models import User
@@ -41,6 +43,24 @@ class BasketRow(models.Model):
     @property
     def price_unit(self):
         return self.item.price
+
+    @property
+    def is_active_item(self):
+        if self.item.is_active:
+            return "Yes"
+        else:
+            return "Not"
+
+    # ******************************
+    def save(self, *args, **kwargs):
+        self.clean()
+        super().save(*args, **kwargs)
+
+    def clean(self):
+        if not self.item.is_active:
+            raise ValidationError({"item not active!"}, code="not-active-item")
+
+    # ******************************
 
     class Meta:
         verbose_name = "Заказ в корзине"
