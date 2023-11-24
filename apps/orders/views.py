@@ -4,12 +4,13 @@ from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
 from rest_framework.viewsets import ModelViewSet
 from django.db import transaction
-
+from drf_yasg.utils import no_body, swagger_auto_schema
 
 from apps.orders.models import Order
 from apps.orders.premissions import IsOwner
 from apps.orders.serializers import OrderSerializer
 from rest_framework import status
+from drf_yasg import openapi
 
 
 class OrderViewSet(ModelViewSet):
@@ -30,10 +31,12 @@ class OrderViewSet(ModelViewSet):
         result = qs.filter(user_id=self.request.user.id)
         return result
 
+    @swagger_auto_schema(auto_schema=None)
     def create(self, request, *args, **kwargs):
         return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
     # detail-False означает, что мы работаем со всем списком, а не с конкретной сущностью
+    @swagger_auto_schema(request_body=no_body)
     @action(methods=["post"], detail=False)
     def checkout(self, request):
         user = request.user

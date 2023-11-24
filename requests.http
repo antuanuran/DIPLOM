@@ -7,12 +7,12 @@ Content-Type: application/json
   "email": "admin@admin.org",
   "password": "admin"
 }
-
+JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNDIxODU5LCJpYXQiOjE3MDA4MTcwNTksImp0aSI6IjA3ZmRlOGRlMmNjYTRmMTY4YTQxOTc3MGJjMjZhMmJlIiwidXNlcl9pZCI6MX0.nsRf1AGNF7URMMLe8GrPuXa5-Csf98XWBlFNG4I2HXs
 
 ### 2. Вариант загрузки данных файла через имя файла в строке (GET либо POST) :
 POST http://localhost:8000/api/v1/products-import-data/?file_name=import_2.yaml
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMzI5Njc1LCJpYXQiOjE3MDA3MjQ4NzUsImp0aSI6Ijc4YTY5YTFkMjg2ZDQzMWNhM2FjOTA4ZjMwNGJjYTUyIiwidXNlcl9pZCI6MX0.kDhJjl6hqBnR0KgLQ4inaQEpef9P4p8hFrZRJwuke4g
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNDIxODU5LCJpYXQiOjE3MDA4MTcwNTksImp0aSI6IjA3ZmRlOGRlMmNjYTRmMTY4YTQxOTc3MGJjMjZhMmJlIiwidXNlcl9pZCI6MX0.nsRf1AGNF7URMMLe8GrPuXa5-Csf98XWBlFNG4I2HXs
 
 
 
@@ -27,10 +27,8 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 
 
 
-### 4. Вывод всех имеющихся товаров. GET-запрос.
+### 4. Вывод всех имеющихся товаров. GET-запрос. (Для просмотра можно без авторизации)
 GET http://localhost:8000/api/v1/items/
-Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMzI5Njc1LCJpYXQiOjE3MDA3MjQ4NzUsImp0aSI6Ijc4YTY5YTFkMjg2ZDQzMWNhM2FjOTA4ZjMwNGJjYTUyIiwidXNlcl9pZCI6MX0.kDhJjl6hqBnR0KgLQ4inaQEpef9P4p8hFrZRJwuke4g
 
 
 
@@ -40,7 +38,7 @@ Content-Type: application/json
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMzI5Njc1LCJpYXQiOjE3MDA3MjQ4NzUsImp0aSI6Ijc4YTY5YTFkMjg2ZDQzMWNhM2FjOTA4ZjMwNGJjYTUyIiwidXNlcl9pZCI6MX0.kDhJjl6hqBnR0KgLQ4inaQEpef9P4p8hFrZRJwuke4g
 
 {
-  "tovar_id": 4,
+  "tovar_id": 1,
   "qty": 1
 }
 

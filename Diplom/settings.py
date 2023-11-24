@@ -126,3 +126,10 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {"ACCESS_TOKEN_LIFETIME": dt.timedelta(days=7), "AUTH_HEADER_TYPES": ("JWT", "Bearer")}
+
+SWAGGER_SETTINGS = {
+    "USE_SESSION_AUTH": False,
+    "SECURITY_DEFINITIONS": {
+        "JWT": {"type": "apiKey", "name": "Authorization", "in": "header"},
+    },
+}
