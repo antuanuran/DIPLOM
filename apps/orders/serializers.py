@@ -4,13 +4,13 @@ from apps.products.serializers import ItemSerializer, ItemParameterSerializer, P
 from rest_framework.exceptions import PermissionDenied
 
 
-class DetailSerializer(ItemSerializer):
+class OrderDetailSerializer(ItemSerializer):
     parameters = ItemParameterSerializer(read_only=True, many=True)
     product = ProductSerializer(read_only=True)
 
 
 class OrderRowSerializer(serializers.ModelSerializer):
-    item = DetailSerializer(read_only=True)
+    item = OrderDetailSerializer(read_only=True)
 
     class Meta:
         model = OrderRow

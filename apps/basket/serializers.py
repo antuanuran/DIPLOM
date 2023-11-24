@@ -5,13 +5,13 @@ from apps.products.serializers import ItemSerializer, ItemParameterSerializer, P
 from rest_framework.exceptions import ValidationError
 
 
-class DetailSerializer(ItemSerializer):
+class BasketDetailSerializer(ItemSerializer):
     parameters = ItemParameterSerializer(read_only=True, many=True)
     product = ProductSerializer(read_only=True)
 
 
 class BasketRowSerializer(serializers.ModelSerializer):
-    item = DetailSerializer(read_only=True)
+    item = BasketDetailSerializer(read_only=True)
     tovar_id = serializers.IntegerField(write_only=True, source="item_id")
     qty = serializers.IntegerField()
 

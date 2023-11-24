@@ -25,7 +25,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = ["rest_framework", "djoser", "django_filters"]
+THIRD_PARTY_APPS = ["rest_framework", "djoser", "django_filters", "drf_yasg"]
 
 LOCAL_APPS = ["apps.users", "apps.products", "apps.orders", "apps.basket"]
 
