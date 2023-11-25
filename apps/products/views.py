@@ -21,6 +21,11 @@ from apps.products import service_HTTP
 from apps.products import service
 
 
+# Отключаем данный метод для swagger
+@swagger_auto_schema(
+    methods=["post", "get"],
+    auto_schema=None,
+)
 @api_view(http_method_names=["post", "get"])
 @permission_classes([IsAuthenticated, IsVendor])
 def import_data(request):
@@ -52,7 +57,7 @@ def import_data(request):
     )
 
 
-# 2-декоратора для swagger (загрузка через файл)
+# 2-декоратора для swagger (загрузка через файл) @swagger_auto_schema+@parser_classes
 @swagger_auto_schema(
     method="post",
     operation_description="Allowed only for vendors",
@@ -73,16 +78,13 @@ def import_data(request):
 def import_file(request):
     if not request.FILES or "file" not in request.FILES:
         raise ValidationError("no file", code="no-file")
-    data_stream = request.FILES["file"]
 
+    data_stream = request.FILES["file"]
     _, data_format = data_stream.name.rsplit(".")
 
     if data_format == "csv":
         data_stream = data_stream.read().decode()
-        print(data_stream)
-
         service.import_http_csv(data_stream, request.user.id)
-
     else:
         service.import_data(data_stream, data_format, request.user.id)
     return Response(
