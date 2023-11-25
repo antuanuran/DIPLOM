@@ -3,13 +3,12 @@ from apps.basket.models import BasketRow, Basket
 from apps.basket.serializers import BasketRowSerializer
 from django.utils.decorators import method_decorator
 from drf_yasg.utils import swagger_auto_schema, no_body
-from rest_framework import status
 
 
 @method_decorator(
     name="create",
     decorator=swagger_auto_schema(
-        request_body=no_body,
+        operation_description='Необходимо ввести только 2 параметра: {"qty": 1, "tovar_id": 1}',
     ),
 )
 class BasketRowViewSet(ModelViewSet):

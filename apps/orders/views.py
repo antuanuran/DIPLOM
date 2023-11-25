@@ -10,9 +10,15 @@ from apps.orders.models import Order
 from apps.orders.premissions import IsOwner
 from apps.orders.serializers import OrderSerializer
 from rest_framework import status
-from drf_yasg import openapi
+from django.utils.decorators import method_decorator
 
 
+@method_decorator(
+    name="partial_update",
+    decorator=swagger_auto_schema(
+        operation_description='Менять статус заказа "status" можно только на "отменен" ',
+    ),
+)
 class OrderViewSet(ModelViewSet):
     http_method_names = [
         "get",
