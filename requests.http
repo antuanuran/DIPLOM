@@ -7,12 +7,12 @@ Content-Type: application/json
   "email": "admin@admin.org",
   "password": "admin"
 }
- JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNTA4MDAwLCJpYXQiOjE3MDA5MDMyMDAsImp0aSI6IjFhM2U0ZjRlMWVjZDRiZGE4NWI5MzYzZTM3OTdhYzAyIiwidXNlcl9pZCI6MX0.syGetVt5Byk4zIrC_Z4VjRWLpgSBVMd6C0zaD8sjNRM
+
 
 ### 2. Вариант загрузки данных файла через имя файла в строке (GET либо POST) :
 POST http://localhost:8000/api/v1/products-import-data/?file_name=import_2.yaml
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNDIxODU5LCJpYXQiOjE3MDA4MTcwNTksImp0aSI6IjA3ZmRlOGRlMmNjYTRmMTY4YTQxOTc3MGJjMjZhMmJlIiwidXNlcl9pZCI6MX0.nsRf1AGNF7URMMLe8GrPuXa5-Csf98XWBlFNG4I2HXs
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNTEyMzY0LCJpYXQiOjE3MDA5MDc1NjQsImp0aSI6IjE5NTM4NzhjYWFiNTRlMTNhZDRmMmU0YzA1Y2UxY2E3IiwidXNlcl9pZCI6MX0.umAB5lwG5ck98CdARKl0FGdqGzRMAZ4PgCzXq81t7o0
 
 
 

@@ -50,5 +50,5 @@ class ItemSerializer(serializers.ModelSerializer):
 
 
 class DetailItemSerializer(ItemSerializer):
-    product = ProductSerializer(read_only=True)
+    product = serializers.SlugRelatedField(slug_field="name", read_only=True)
     parameters = ItemParameterSerializer(read_only=True, many=True)
