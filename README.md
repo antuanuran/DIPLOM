@@ -1,7 +1,7 @@
-# DIPLOM PROJECT
+# DIPLOMA PROJECT Uranov Anton
 
-# Development
-1. python3 -m venv .venv
+# Настройка:
+1. git clone https://github.com/antuanuran/DIPLOM
 2. source .venv/bin/activate
 3. pip install -r requirements.txt
 4. sudo apt install make
