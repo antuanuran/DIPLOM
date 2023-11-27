@@ -7,7 +7,7 @@ from rest_framework.exceptions import ValidationError
 
 class BasketDetailSerializer(ItemSerializer):
     parameters = ItemParameterSerializer(read_only=True, many=True)
-    product = ProductSerializer(read_only=True)
+    product = serializers.SlugRelatedField(slug_field="name", read_only=True)
 
 
 class BasketRowSerializer(serializers.ModelSerializer):

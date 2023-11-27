@@ -3,17 +3,17 @@ POST http://localhost:8000/api/v1/auth/jwt/create/
 Content-Type: application/json
 
 {
-  "email": "admin@admin.org",
-  "password": "admin"
+  "email": "admin5@admin.org",
+  "password": "develop12345"
 }
 
-# затем копируем значение (сам токен) по ключу: "access": "....."
+# затем копируем значение (сам токен) по ключу: "access": "....." и вставляем ниже во всех запросах после префикса JWT [скопированный Токен]
 
 
 ### 2. Вариант загрузки данных файла через имя файла в строке (GET либо POST) :
 POST http://localhost:8000/api/v1/products-import-data/?file_name=import_2.yaml
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY..
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjcwNDU0LCJpYXQiOjE3MDEwNjU2NTQsImp0aSI6ImVhOWRhY2M0OWZkNzQwNzdiZWM4YjUyNTcyM2NiMGZhIiwidXNlcl9pZCI6Mn0.O33RXmIuLXj-y_bRw_gebxjRCrIv7hZUuBjdeggKSVo
 
 
 
@@ -24,7 +24,7 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY..
 
 POST http://localhost:8000/api/v1/products-import-file/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY..
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjY4ODIyLCJpYXQiOjE3MDEwNjQwMjIsImp0aSI6ImJkMDY3ZjFlYTJiODRlMzc5OGU2ZDcxMGRjMGU2ZjliIiwidXNlcl9pZCI6MX0.3sJx3gh3YVCxgx6NbVal2wLoTM1DWtCL6iOBz9Bq5Sc
 
 
 
@@ -36,10 +36,10 @@ GET http://localhost:8000/api/v1/items/
 ### 6. Отправка товаров в корзину (для уменьшения кол-ва товаров указывать значение "qty" со знаком минус)
 POST http://localhost:8000/api/v1/basket-rows/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY..
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjcxODk2LCJpYXQiOjE3MDEwNjcwOTYsImp0aSI6IjJiOGNjYzViMWUwYjQxNTdiYjM0YWQ2YjYxZDQ0MzcyIiwidXNlcl9pZCI6M30.FzDJjj5hwwsv6dUS8zzHCBPj-Lxnu1lm7G2ghHIKocM
 
 {
-  "tovar_id": 1,
+  "tovar_id": 3,
   "qty": 1
 }
 
@@ -48,13 +48,13 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY..
 ### 7. Orders. Покупки. Одним кликом отправляется весь товар из корзины пользователя в Покупки
 POST http://localhost:8000/api/v1/orders/checkout/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY..
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjcwNzAzLCJpYXQiOjE3MDEwNjU5MDMsImp0aSI6ImEwYTQwOGQyM2QwNTQ5ZGQ5NWY3YmEwY2Q3NDQ3ZDI2IiwidXNlcl9pZCI6Mn0.KoDt2-rT_GxHTWy6ZMabzasqH6Rd40NSAn2pi7EYY-M
 
 
 ### 8. Orders. Покупки. Изменение статуса на "отменен"
 PATCH http://localhost:8000/api/v1/orders/20/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY..
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjY4ODIyLCJpYXQiOjE3MDEwNjQwMjIsImp0aSI6ImJkMDY3ZjFlYTJiODRlMzc5OGU2ZDcxMGRjMGU2ZjliIiwidXNlcl9pZCI6MX0.3sJx3gh3YVCxgx6NbVal2wLoTM1DWtCL6iOBz9Bq5Sc
 
 {
   "status": "отменен"
@@ -67,13 +67,13 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY..
 ### 9. Basket. Просмотр товаров в Корзине (либо всех, либо конкретного по id) Товары можно увидеть только собственные
 GET http://localhost:8000/api/v1/basket-rows/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY..
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjcyNzg5LCJpYXQiOjE3MDEwNjc5ODksImp0aSI6ImE0MTQyZTk0ODIwOTQ0YzFhNGE3ZTBkZTVjZjk4OGFiIiwidXNlcl9pZCI6NH0.FMCgNXXO_mFeWlPsQ9uV0RirJgyOVkK6NpLoW3NVBLI
 
 
 ### 10. Orders. Просмотр покупок в Заказе (либо всех либо конкретной по id) Товары в заказе можно увидеть только собственные
 GET http://localhost:8000/api/v1/orders/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY..
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjY4ODIyLCJpYXQiOjE3MDEwNjQwMjIsImp0aSI6ImJkMDY3ZjFlYTJiODRlMzc5OGU2ZDcxMGRjMGU2ZjliIiwidXNlcl9pZCI6MX0.3sJx3gh3YVCxgx6NbVal2wLoTM1DWtCL6iOBz9Bq5Sc
 
 
 
@@ -86,16 +86,16 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY..
 #    search            - поиск по слову  
 GET http://localhost:8000/api/v1/items/?limit=5&ordering=-price&product__category=1&search=XS
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY..
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjY4ODIyLCJpYXQiOjE3MDEwNjQwMjIsImp0aSI6ImJkMDY3ZjFlYTJiODRlMzc5OGU2ZDcxMGRjMGU2ZjliIiwidXNlcl9pZCI6MX0.3sJx3gh3YVCxgx6NbVal2wLoTM1DWtCL6iOBz9Bq5Sc
 
 
-#  Создание Юзера
+###  Создание Юзера
 POST http://localhost:8000/api/v1/auth/users/
 Content-Type: application/json
 
 {
-  "email": "admin3@admin.org",
-  "password": "develop123"
+  "email": "admin5@admin.org",
+  "password": "develop12345"
 }
 
 # После создания юзера, чтобы в будущем иметь возможность загрузки товаров на платформу, в Админке нужно поставить галочку (boolean) - is_vendor
@@ -103,7 +103,7 @@ Content-Type: application/json
 
 ### Проверка данных Юзера
 GET http://localhost:8000/api/v1/auth/users/me/
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY..
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjcxMDc5LCJpYXQiOjE3MDEwNjYyNzksImp0aSI6IjZiYmMzZjAzYmE0NjQ1ZWJiZTVmYTg2YTk4MWQ2OTkwIiwidXNlcl9pZCI6NH0.FRlInMXETTkYRh1Fd48Psd8iI_-89HYVHc49DEs9OIM
 
 
 
