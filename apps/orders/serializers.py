@@ -6,7 +6,7 @@ from rest_framework.exceptions import PermissionDenied
 
 class OrderDetailSerializer(ItemSerializer):
     parameters = ItemParameterSerializer(read_only=True, many=True)
-    product = ProductSerializer(read_only=True)
+    product = serializers.SlugRelatedField(slug_field="name", read_only=True)
 
 
 class OrderRowSerializer(serializers.ModelSerializer):
@@ -14,15 +14,22 @@ class OrderRowSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = OrderRow
-        fields = ["id", "item", "qty", "price"]
+        fields = ["qty", "price", "item"]
 
 
 class OrderSerializer(serializers.ModelSerializer):
-    rows = OrderRowSerializer(read_only=True, many=True)
+    spisok_zakazov = OrderRowSerializer(read_only=True, many=True, source="rows")
+    order_id = serializers.IntegerField(source="id")
 
     class Meta:
         model = Order
-        fields = ["id", "rows", "status", "created_at", "updated_at"]
+        fields = [
+            "order_id",
+            "status",
+            "created_at",
+            "updated_at",
+            "spisok_zakazov",
+        ]
 
     def validate_status(self, value):
         if value != Order.STATUS_CANCELED:

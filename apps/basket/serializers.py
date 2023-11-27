@@ -17,7 +17,7 @@ class BasketRowSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = BasketRow
-        fields = ["id", "basket_id", "qty", "item", "tovar_id"]
+        fields = ["basket_id", "qty", "item", "tovar_id"]
 
     def validate(self, attrs):
         if not Item.objects.filter(id=attrs["item_id"], is_active=True).exists():
