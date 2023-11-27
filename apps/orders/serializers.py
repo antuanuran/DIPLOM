@@ -18,7 +18,7 @@ class OrderRowSerializer(serializers.ModelSerializer):
 
 
 class OrderSerializer(serializers.ModelSerializer):
-    spisok_zakazov = OrderRowSerializer(read_only=True, many=True, source="rows")
+    spisok_tovarov_zakaza = OrderRowSerializer(read_only=True, many=True, source="rows")
     order_id = serializers.IntegerField(source="id")
 
     class Meta:
@@ -28,7 +28,7 @@ class OrderSerializer(serializers.ModelSerializer):
             "status",
             "created_at",
             "updated_at",
-            "spisok_zakazov",
+            "spisok_tovarov_zakaza",
         ]
 
     def validate_status(self, value):

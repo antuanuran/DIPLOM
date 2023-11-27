@@ -2,15 +2,15 @@
 
 ### Настройка (for linux):
 1. git clone https://github.com/antuanuran/DIPLOM
-2. Переходим в корень Проекта и создаем вортуальное окружение: python3 -m venv .venv
-3. Активируем виртуальное окружение: source .venv/bin/activate
-4. pip install -r requirements.txt
-5. sudo apt install make  *(если не установлен "make")*
-6. make run  *(запускается докер с Базой данных, миграции, создается superuser)*
+2. Переходим в корень Проекта и создаем вортуальное окружение: **python3 -m venv .venv**
+3. Активируем виртуальное окружение: **source .venv/bin/activate**
+4. **pip install -r requirements.txt**
+5. **sudo apt install make**  *(если не установлен "make")*
+6. **make run**  *(запускается докер с Базой данных, миграции, создается superuser)*
 
 ### Запрашиваемые данные для superuser:
-- email: admin@admin.org (пример для ввода)
-- password (2 раза): admin
+- **email:** admin@admin.org (пример для ввода)
+- **password** (2 раза): admin
 - sure y/n (подтверждение, если пароль ненадежный)
 
 ### Импорт данных осуществляется разными способами:
