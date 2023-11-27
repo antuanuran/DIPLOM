@@ -1,20 +1,17 @@
 # DIPLOMA PROJECT Uranov Anton
 
-# Настройка:
+### Настройка (for linux):
 1. git clone https://github.com/antuanuran/DIPLOM
-2. source .venv/bin/activate
-3. pip install -r requirements.txt
-4. sudo apt install make
+2. python3 -m venv .venv
+3. source .venv/bin/activate
+4. pip install -r requirements.txt
+5. sudo apt install make  *(если не установлен "make")*
+6. make run  *(запускается докер с Базой данных, миграции, создается superuser)*
 
-# Make .env file:
-- example (.env.template)
+### Запрашиваемые данные для superuser:
+- email:
+- password (2 раза):
+- sure y/n (подтверждение если пароль ненадежный)
 
-# Migrations and RUN Project:
-- make run
-- make run_crop
 
-for info: createsuperuser:
-- email:    admin@admin.org
-- password: admin
-- password: admin
-- sure?:    "y"
+
