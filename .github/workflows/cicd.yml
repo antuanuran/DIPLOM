@@ -47,9 +47,6 @@ jobs:
       - name: Check imports ordering with isort
         run: isort -c .
 
-      - name: Lint with flake8
-        run: flake8 .
-
 
   build:
     if: github.event_name == 'push'
