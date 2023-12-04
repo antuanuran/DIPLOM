@@ -1,24 +1,21 @@
 from django.utils.decorators import method_decorator
-from rest_framework.parsers import MultiPartParser
-from drf_yasg.utils import swagger_auto_schema
-from rest_framework.decorators import api_view, parser_classes, permission_classes
-from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
-from rest_framework.exceptions import ValidationError
-from rest_framework.response import Response
-from rest_framework import status
-from drf_yasg import openapi
-
-from rest_framework.viewsets import ModelViewSet
-from rest_framework.pagination import LimitOffsetPagination
-
 from django_filters.rest_framework import DjangoFilterBackend
+from drf_yasg import openapi
+from drf_yasg.utils import swagger_auto_schema
+from rest_framework import status
+from rest_framework.decorators import api_view, parser_classes, permission_classes
+from rest_framework.exceptions import ValidationError
 from rest_framework.filters import OrderingFilter, SearchFilter
+from rest_framework.pagination import LimitOffsetPagination
+from rest_framework.parsers import MultiPartParser
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.response import Response
+from rest_framework.viewsets import ModelViewSet
 
+from apps.products import service, service_HTTP
 from apps.products.models import Item
 from apps.products.serializers import DetailItemSerializer, ItemSerializer
 from apps.users.permissions import IsVendor
-from apps.products import service_HTTP
-from apps.products import service
 
 
 # Отключаем данный метод для swagger

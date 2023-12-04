@@ -1,9 +1,8 @@
 import csv
+
 import yaml
-from yaml import Loader
-
 from rest_framework.exceptions import ValidationError
-
+from yaml import Loader
 
 from apps.products import service
 

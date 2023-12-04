@@ -1,7 +1,8 @@
 from django.contrib import admin
-from apps.basket.models import BasketRow, Basket
 from django.core.exceptions import ValidationError
 from django.forms import BaseInlineFormSet
+
+from apps.basket.models import Basket, BasketRow
 
 
 class BasketRowInLineFormset(BaseInlineFormSet):

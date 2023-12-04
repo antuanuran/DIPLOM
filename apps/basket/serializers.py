@@ -1,8 +1,8 @@
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 
 from apps.basket.models import BasketRow, Item
-from apps.products.serializers import ItemSerializer, ItemParameterSerializer, ProductSerializer
-from rest_framework.exceptions import ValidationError
+from apps.products.serializers import ItemParameterSerializer, ItemSerializer, ProductSerializer
 
 
 class BasketDetailSerializer(ItemSerializer):

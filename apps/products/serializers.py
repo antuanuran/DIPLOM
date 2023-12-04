@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from apps.products.models import Item, ItemParameter, Product, Vendor, Category
+from apps.products.models import Category, Item, ItemParameter, Product, Vendor
 
 
 class VendorSerializer(serializers.ModelSerializer):

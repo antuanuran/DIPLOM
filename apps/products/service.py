@@ -1,20 +1,11 @@
 import csv
-import yaml
-from yaml import Loader
-from rest_framework.exceptions import ValidationError
-
-
 import os
 
+import yaml
+from rest_framework.exceptions import ValidationError
+from yaml import Loader
 
-from apps.products.models import (
-    Category,
-    Product,
-    Vendor,
-    Item,
-    Attribute,
-    ItemParameter,
-)
+from apps.products.models import Attribute, Category, Item, ItemParameter, Product, Vendor
 
 
 def load_data_from_yml(data_stream):

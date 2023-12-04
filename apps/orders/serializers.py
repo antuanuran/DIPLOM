@@ -1,7 +1,8 @@
 from rest_framework import serializers
-from apps.orders.models import OrderRow, Order
-from apps.products.serializers import ItemSerializer, ItemParameterSerializer, ProductSerializer
 from rest_framework.exceptions import PermissionDenied
+
+from apps.orders.models import Order, OrderRow
+from apps.products.serializers import ItemParameterSerializer, ItemSerializer, ProductSerializer
 
 
 class OrderDetailSerializer(ItemSerializer):

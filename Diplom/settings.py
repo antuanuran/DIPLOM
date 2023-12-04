@@ -1,6 +1,6 @@
+import datetime as dt
 import os
 from pathlib import Path
-import datetime as dt
 
 from dotenv import load_dotenv
 
