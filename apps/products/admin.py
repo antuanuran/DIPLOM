@@ -30,9 +30,7 @@ class ItemParameterInlines(admin.TabularInline):
         field = super().formfield_for_foreignkey(db_field, request, **kwargs)
         if db_field.name == "attribute":
             if getattr(request, "_product_instance", None) is not None:
-                field.queryset = field.queryset.filter(
-                    product=request._product_instance
-                )
+                field.queryset = field.queryset.filter(product=request._product_instance)
             else:
                 field.queryset = field.queryset.none()
         return field
@@ -43,9 +41,7 @@ class ItemAdmin(admin.ModelAdmin):
     list_display = ["product", "price", "count", "id", "is_active"]
 
     search_fields = ["product__name"]  # Добавление поля для поисковой строки в Админке
-    autocomplete_fields = [
-        "product"
-    ]  # Идем в Админку с Продуктом и там прописываем search_fields
+    autocomplete_fields = ["product"]  # Идем в Админку с Продуктом и там прописываем search_fields
 
     inlines = [ItemParameterInlines]
 

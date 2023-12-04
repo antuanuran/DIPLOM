@@ -49,9 +49,7 @@ def import_data(request):
     except FileNotFoundError:
         raise ValidationError("incorrect file name", code="incorrect-file-name")
 
-    return Response(
-        data=f"file: '{name_format}' LOAD......ok", status=status.HTTP_201_CREATED
-    )
+    return Response(data=f"file: '{name_format}' LOAD......ok", status=status.HTTP_201_CREATED)
 
 
 # 2-декоратора для swagger (загрузка через файл) @swagger_auto_schema+@parser_classes

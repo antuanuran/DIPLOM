@@ -53,9 +53,7 @@ def load_data_yml(data, owner_id):
                         )
     ####
 
-    vendor, _ = Vendor.objects.get_or_create(
-        name=data["shop"], defaults={"owner_id": owner_id}
-    )
+    vendor, _ = Vendor.objects.get_or_create(name=data["shop"], defaults={"owner_id": owner_id})
 
     new_category_id = {}
     for entity in data.get("categories", []):
@@ -69,9 +67,7 @@ def load_data_yml(data, owner_id):
             name=entity["name"],
         )
 
-        item = Item.objects.filter(
-            upc=entity["id"], product__vendor_id=vendor.id
-        ).first()
+        item = Item.objects.filter(upc=entity["id"], product__vendor_id=vendor.id).first()
         if item:
             item.product = product
             item.price = entity["price"]
@@ -90,9 +86,7 @@ def load_data_yml(data, owner_id):
 
         for key, value in entity["parameters"].items():
             if key:
-                attribute_temp, _ = Attribute.objects.get_or_create(
-                    name=key, product_id=product.id
-                )
+                attribute_temp, _ = Attribute.objects.get_or_create(name=key, product_id=product.id)
 
                 if value:
                     item_temp, _ = ItemParameter.objects.get_or_create(
@@ -127,9 +121,7 @@ def load_data_csv(data, owner_id):
                     )
         ###
 
-        vendor, _ = Vendor.objects.get_or_create(
-            name=entity["vendor_name"], owner_id=owner_id
-        )
+        vendor, _ = Vendor.objects.get_or_create(name=entity["vendor_name"], owner_id=owner_id)
 
         db_cat, _ = Category.objects.get_or_create(name=entity["category_name"])
         new_category_id = db_cat.id
@@ -140,9 +132,7 @@ def load_data_csv(data, owner_id):
             name=entity["product_name"],
         )
 
-        item = Item.objects.filter(
-            upc=entity["product_id"], product__vendor_id=vendor.id
-        ).first()
+        item = Item.objects.filter(upc=entity["product_id"], product__vendor_id=vendor.id).first()
 
         if item:
             item.price = entity["price"]
@@ -164,9 +154,7 @@ def load_data_csv(data, owner_id):
         for key, value in entity.items():
             if key not in all_keys:
                 if value:
-                    attribute_temp, _ = Attribute.objects.get_or_create(
-                        name=key, product_id=product.id
-                    )
+                    attribute_temp, _ = Attribute.objects.get_or_create(name=key, product_id=product.id)
                     item_temp, _ = ItemParameter.objects.get_or_create(
                         item_id=item.id, value=value, attribute_id=attribute_temp.id
                     )
@@ -174,9 +162,7 @@ def load_data_csv(data, owner_id):
 
 def import_data(data_stream, data_format: str, owner_id):
     if data_format not in SUPPORTED_DATA_FORMATS:
-        raise NotImplementedError(
-            f"{data_format} not supported. Available only: {SUPPORTED_DATA_FORMATS.keys()}"
-        )
+        raise NotImplementedError(f"{data_format} not supported. Available only: {SUPPORTED_DATA_FORMATS.keys()}")
     elif data_format == "csv":
         data = SUPPORTED_DATA_FORMATS[data_format](data_stream)
         load_data_csv(data, owner_id)
