@@ -50,3 +50,6 @@
 - http://79.174.83.233/admin/
 - http://79.174.83.233/docs/swagger/
 
+ Данные для входа суперюзера в админку:
+ - login:    admin@admin.org
+ - password: admin
