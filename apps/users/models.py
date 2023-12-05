@@ -44,8 +44,8 @@ class User(AbstractUser):
     # baskets
 
     class Meta:
-        verbose_name = "Менеджер"
-        verbose_name_plural = "Менеджеры"
+        verbose_name = "Менеджер / Покупатель"
+        verbose_name_plural = "Менеджеры / Покупатели"
 
     def __str__(self):
         return self.email
