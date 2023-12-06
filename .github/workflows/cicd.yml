@@ -53,7 +53,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: antuanuran/diploma_antuan:latest
+          tags: antuanuran/${{ env.IMAGE_NAME }}:latest
 
 
 
