@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 env:
-  REGISTRY: hub.docker.com
+  USERNAME: antuanuran
   IMAGE_NAME: diploma_antuan
 
 jobs:
@@ -53,7 +53,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: antuanuran/${{ env.IMAGE_NAME }}:latest
+          tags: ${{ env.USERNAME }}/${{ env.IMAGE_NAME }}:latest
 
 
 
