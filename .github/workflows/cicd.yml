@@ -47,7 +47,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           username: antuanuran
-          password: ura651925
+          password: ${{ secrets.PASSWORD_HUB }}
 
       - name: Build and push
         uses: docker/build-push-action@v5
