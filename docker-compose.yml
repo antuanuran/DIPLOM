@@ -2,7 +2,7 @@ version: "3.3"
 
 networks:
   private:
-  
+
 volumes:
   pg_data:
 
@@ -18,10 +18,10 @@ services:
       - pg_data:/var/lib/postgresql/data
 
   backend:
-    image: antuanuran/api:latest
+    image: antuanuran/diploma_antuan:latest
     restart: always
     env_file:
-      - .env    
+      - .env
     networks:
       - private
     depends_on:
@@ -43,8 +43,3 @@ services:
       - ./media:/var/media
     ports:
       - 80:80
-
-    
-
-
-
