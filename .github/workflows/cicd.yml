@@ -61,13 +61,18 @@ jobs:
     steps:
       - name: Connect
         uses: appleboy/ssh-action@master
-        with:
-          host: 79.174.83.233
-          username: root
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            docker pull ${{ env.USERNAME }}/${{ env.IMAGE_NAME }}:latest
-            docker-compose down && docker-compose up -d && docker ps
+#        with:
+#          host: 79.174.83.233
+#          username: root
+#          key: ${{ secrets.SSH_KEY }}
+#          script: |
+#            docker pull ${{ env.USERNAME }}/${{ env.IMAGE_NAME }}:latest
+#            docker-compose down && docker-compose up -d && docker ps
+
+
+
+
+
 
 #*******************************************************************************************#
 
