@@ -39,8 +39,8 @@ class Order(models.Model):
         return text
 
     class Meta:
-        verbose_name = "Покупка"
-        verbose_name_plural = "Покупки"
+        verbose_name = "Покупка / Заказ"
+        verbose_name_plural = "Покупки / Заказы"
 
     def __str__(self):
         return self.user.email
