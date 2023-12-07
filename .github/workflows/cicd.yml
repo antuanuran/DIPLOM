@@ -31,8 +31,8 @@ jobs:
       - name: Check isort
         run: isort -c .
 
-      - name: Test with unittest
-        run: unittest --cov=apps
+      - name: Test with pytest
+        run: pytest --cov=apps
 
 
   build:
