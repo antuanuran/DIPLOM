@@ -31,6 +31,9 @@ jobs:
       - name: Check isort
         run: isort -c .
 
+      - name: Test with unittest
+        run: unittest --cov=apps
+
 
   build:
     if: github.event_name == 'push'
