@@ -58,13 +58,15 @@ jobs:
           push: true
           tags: ${{ env.USERNAME }}/${{ env.IMAGE_NAME }}:latest
 
-      - run: |
-          echo "proverka echo!"
 
-#  deploy:
-#    needs: build
-#    runs-on: ubuntu-latest
-#    steps:
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+
+      - run: |
+          echo "Позже будет Deploy"
+
 #      - name: Connect
 #        uses: appleboy/ssh-action@master
 #        with:
