@@ -7,6 +7,6 @@ class MultiTest(TestCase):
         self.assertEqual(res, 6)
 
 
-# def test_Multi():
-#     res = 3 * 2
-#     assert res == 6
+def test_Multi():
+    res = 3 * 2
+    assert res == 6
