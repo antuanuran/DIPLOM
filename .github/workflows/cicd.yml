@@ -67,7 +67,7 @@ jobs:
         with:
           host: 79.174.83.233
           username: root
-          key: ${{ secrets.SSH_KEY }}
+#          key: ${{ secrets.SSH_KEY }}
           script: |
             cd /root/
             docker pull ${{ env.USERNAME }}/${{ env.IMAGE_NAME }}:latest
