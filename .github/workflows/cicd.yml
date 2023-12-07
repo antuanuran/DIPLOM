@@ -67,11 +67,11 @@ jobs:
         with:
           host: 79.174.83.233
           username: root
-          password: 651925
+          key: ${{ secrets.SSH_KEY }}
           script: |
             cd /root/
             docker pull ${{ env.USERNAME }}/${{ env.IMAGE_NAME }}:latest
-            docker-compose down && docker-compose up -d
+            docker-compose down && docker-compose up -d && docker ps
 
 
 
