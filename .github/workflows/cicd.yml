@@ -152,7 +152,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
+          tags: ${{ env.REGISTRY }}/${{ github.repository }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -170,7 +170,8 @@ jobs:
             cd /root/docker_hub
 
             echo "${{ github.token }}" | docker login ${{ env.REGISTRY }} --username ${{ github.actor }} --password-stdin
-            docker pull ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
+            docker pull ${{ env.REGISTRY }}/${{ github.repository }}:latest
+
             docker-compose down
             docker-compose up -d
             docker image prune -f
