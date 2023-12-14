@@ -171,9 +171,6 @@ jobs:
 
             echo "${{ github.token }}" | docker login ${{ env.REGISTRY }} --username ${{ github.actor }} --password-stdin
             docker pull ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
-
-#            docker-compose down && docker-compose up -d && docker ps
-#            for image in $(docker images | grep none | awk '{print $3}' | cat); do docker rmi "$image"; done
             docker-compose down
             docker-compose up -d
             docker image prune -f
