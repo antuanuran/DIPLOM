@@ -66,4 +66,5 @@ class ItemAdmin(admin.ModelAdmin):
 class VendorAdmin(admin.ModelAdmin):
     list_display = ["vendor", "name", "manager"]
 
-#***
+
+# ***
