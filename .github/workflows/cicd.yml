@@ -89,7 +89,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: diploma_antuan
+  IMAGE_NAME: diplom
 
 jobs:
   tests:
@@ -152,7 +152,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.REGISTRY }}/${{ github.repository }}:latest
+          tags: ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -170,7 +170,7 @@ jobs:
             cd /root/docker_hub
 
             echo "${{ github.token }}" | docker login ${{ env.REGISTRY }} --username ${{ github.actor }} --password-stdin
-            docker pull ${{ env.REGISTRY }}/${{ github.repository }}:latest
+            docker pull ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
 
             docker-compose down
             docker-compose up -d
