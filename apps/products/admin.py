@@ -65,3 +65,5 @@ class ItemAdmin(admin.ModelAdmin):
 @admin.register(Vendor)
 class VendorAdmin(admin.ModelAdmin):
     list_display = ["vendor", "name", "manager"]
+
+#***
