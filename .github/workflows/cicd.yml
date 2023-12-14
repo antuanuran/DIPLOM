@@ -63,21 +63,16 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-
-      - run: |
-          echo "Позже будет Deploy"
-
-
-#      - name: Connect
-#        uses: appleboy/ssh-action@master
-#        with:
-#          host: 79.174.83.233
-#          username: root
-#          key: ${{ secrets.SSH_K }}
-#          script: |
-#            cd /root/
-#            docker pull ${{ env.USERNAME }}/${{ env.IMAGE_NAME }}:latest
-#            docker-compose down && docker-compose up -d && docker ps
+      - name: Connect
+        uses: appleboy/ssh-action@master
+        with:
+          host: 79.174.83.233
+          username: root
+          key: ${{ secrets.SSH_K }}
+          script: |
+            cd /root/docker_hub
+            docker pull ${{ env.USERNAME }}/${{ env.IMAGE_NAME }}:latest
+            docker-compose down && docker-compose up -d && docker ps
 
 
 
