@@ -6,7 +6,7 @@ on:
 
 env:
   USERNAME: antuanuran
-  IMAGE_NAME: diploma_antuanuran
+  IMAGE_NAME: diploma_antuan
 
 jobs:
   tests:
