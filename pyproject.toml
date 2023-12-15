@@ -111,7 +111,7 @@ testpaths = 'tests/'
 python_files = 'test_*.py'
 
 filterwarnings = [
-#  'error',
+  'error',
   'ignore::ImportWarning:importlib',
   'ignore::DeprecationWarning:django.http.request',
   'ignore::DeprecationWarning:kombu.utils.compat',
@@ -123,7 +123,6 @@ env = [
   'DEBUG=False',
   'TEST=True',
   'SECRET_KEY=test-secret-key',
-  'POSTGRES_HOST=localhost',
 #  'CELERY_BROKER_URL=memory://localhost/',
 #  'CELERY_RESULT_BACKEND=file:///tmp',
 ]
