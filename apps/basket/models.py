@@ -23,8 +23,8 @@ class Basket(models.Model):
         return text
 
     class Meta:
-        verbose_name = "Корзина"
-        verbose_name_plural = "Корзина"
+        verbose_name = "Корзина товаров"
+        verbose_name_plural = "Корзина товаров"
 
     def __str__(self):
         return self.user.email
