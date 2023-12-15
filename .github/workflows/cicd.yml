@@ -6,7 +6,7 @@ on:
 
 env:
   USERNAME: antuanuran
-  IMAGE_NAME: diploma_antuan
+  IMAGE_NAME: diploma_antuanuran
 
 jobs:
   tests:
@@ -59,20 +59,20 @@ jobs:
           tags: ${{ env.USERNAME }}/${{ env.IMAGE_NAME }}:latest
 
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Connect
-        uses: appleboy/ssh-action@master
-        with:
-          host: 79.174.83.233
-          username: root
-          key: ${{ secrets.SSH_K }}
-          script: |
-            cd /root/docker_hub
-            docker pull ${{ env.USERNAME }}/${{ env.IMAGE_NAME }}:latest
-            docker-compose down && docker-compose up -d && docker ps
+#  deploy:
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Connect
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: 79.174.83.233
+#          username: root
+#          key: ${{ secrets.SSH_K }}
+#          script: |
+#            cd /root/docker_hub
+#            docker pull ${{ env.USERNAME }}/${{ env.IMAGE_NAME }}:latest
+#            docker-compose down && docker-compose up -d && docker ps
 
 
 
