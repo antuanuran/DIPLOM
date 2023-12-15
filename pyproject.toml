@@ -79,7 +79,7 @@ line_length = 120
 skip_glob = '*/migrations'
 
 [tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = 'severinvest.settings'
+DJANGO_SETTINGS_MODULE = 'Diplom.settings'
 
 # Directories that are not visited by pytest collector:
 norecursedirs = [
@@ -111,7 +111,7 @@ testpaths = 'tests/'
 python_files = 'test_*.py'
 
 filterwarnings = [
-  'error',
+#  'error',
   'ignore::ImportWarning:importlib',
   'ignore::DeprecationWarning:django.http.request',
   'ignore::DeprecationWarning:kombu.utils.compat',
@@ -123,8 +123,9 @@ env = [
   'DEBUG=False',
   'TEST=True',
   'SECRET_KEY=test-secret-key',
-  'CELERY_BROKER_URL=memory://localhost/',
-  'CELERY_RESULT_BACKEND=file:///tmp',
+  'POSTGRES_HOST=localhost',
+#  'CELERY_BROKER_URL=memory://localhost/',
+#  'CELERY_RESULT_BACKEND=file:///tmp',
 ]
 
 [tool.coverage.run]

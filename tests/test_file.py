@@ -7,6 +7,8 @@ class MultiTest(TestCase):
         self.assertEqual(res, 6)
 
 
+
+
 # assertEqual(a, b)	            Проверяет, что a == b
 # assertNotEqual(a, b)	        Проверяет, что a != b
 # assertTrue(x)	                Проверяет, что значение x истинно

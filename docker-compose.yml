@@ -16,6 +16,8 @@ services:
       - private
     volumes:
       - pg_data:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
 
   backend:
     image: antuanuran/diploma_antuan:latest

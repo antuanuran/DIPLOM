@@ -24,7 +24,7 @@ class Basket(models.Model):
 
     class Meta:
         verbose_name = "Корзина"
-        verbose_name_plural = "Корзины"
+        verbose_name_plural = "Корзина"
 
     def __str__(self):
         return self.user.email
