@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 env:
-  USERNAME: antuanuran
+  USERNAME: antuan
   IMAGE_NAME: diploma_antuan
 
 jobs:
