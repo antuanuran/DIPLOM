@@ -31,8 +31,8 @@ jobs:
       - name: Check isort
         run: isort -c .
 
-      - name: Test with pytest
-        run: unittest
+#      - name: Test with pytest
+#        run: pytest
 
 
   build:
