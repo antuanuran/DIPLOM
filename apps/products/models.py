@@ -20,8 +20,8 @@ class Vendor(models.Model):
         return text
 
     class Meta:
-        verbose_name = "Поставщик / Вендор"
-        verbose_name_plural = "Поставщики / Вендоры"
+        verbose_name = "Поставщик / Вендор /"
+        verbose_name_plural = "Поставщики / Вендоры /"
 
     def __str__(self):
         return self.name
