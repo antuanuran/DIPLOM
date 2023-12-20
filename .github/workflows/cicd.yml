@@ -15,8 +15,8 @@ jobs:
       postgres:
         image: postgres:alpine
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: secret
+          POSTGRES_USER: diploma
+          POSTGRES_PASSWORD: diploma
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -46,6 +46,10 @@ jobs:
 
       - name: Test with pytest
         run: pytest
+        env:
+          POSTGRES_USER: diploma
+          POSTGRES_PASSWORD: diploma
+
 
 
   build:
