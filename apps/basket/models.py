@@ -62,7 +62,7 @@ class BasketRow(models.Model):
     # ******************************
 
     class Meta:
-        verbose_name = "Заказ в корзине"
+        verbose_name = "Заказ в корзине "
         verbose_name_plural = "Заказы в корзине"
 
     def __str__(self):
