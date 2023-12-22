@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Attribute, Category, Item, ItemParameter, Product, Vendor, ItemImage
+from .models import Attribute, Category, Item, ItemImage, ItemParameter, Product, Vendor
 
 
 @admin.register(Category)
