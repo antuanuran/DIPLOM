@@ -41,8 +41,12 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="products")
-    vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE, related_name="products")
+    category = models.ForeignKey(
+        Category, on_delete=models.CASCADE, related_name="products"
+    )
+    vendor = models.ForeignKey(
+        Vendor, on_delete=models.CASCADE, related_name="products"
+    )
     # attributes
     # items
 
@@ -56,7 +60,9 @@ class Product(models.Model):
 
 class Attribute(models.Model):
     name = models.CharField(max_length=100)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="attributes")
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name="attributes"
+    )
     # parameters - ссылка на конкретный параметр
 
     class Meta:
@@ -96,7 +102,9 @@ class Item(models.Model):
         if not self.upc:
             return
 
-        a = Item.objects.filter(product__vendor__id=self.product.vendor_id, upc=self.upc)
+        a = Item.objects.filter(
+            product__vendor__id=self.product.vendor_id, upc=self.upc
+        )
         if not self.id:
             if a:
                 raise ValidationError({"non unique id (goods)"}, code="non-unique-upc")
@@ -111,8 +119,30 @@ class Item(models.Model):
         return f"{self.product}. Цена: {self.price} руб. / Кол-во: {self.count} шт. {self.attributes}"
 
 
+# **** Загрузка фото **********
+def upload_image_path(instance: "ItemImage", filename: str) -> str:
+    ext = filename.rsplit(".", maxsplit=1)[-1]
+    filename = f"items/{instance.item.product.name}/image.{ext}"
+    return filename
+
+
+class ItemImage(models.Model):
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name="images")
+    image = models.ImageField(upload_to=upload_image_path)
+    is_main = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = "Фото товара"
+        verbose_name_plural = "Фото товара"
+
+
+# **** Загрузка фото **********
+
+
 class ItemParameter(models.Model):
-    attribute = models.ForeignKey(Attribute, on_delete=models.CASCADE, related_name="parameters")
+    attribute = models.ForeignKey(
+        Attribute, on_delete=models.CASCADE, related_name="parameters"
+    )
     item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name="parameters")
     value = models.CharField(max_length=100)
 
