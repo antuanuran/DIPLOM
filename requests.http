@@ -29,7 +29,7 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 
 
 ### 4. Вывод всех имеющихся товаров. GET-запрос. (Для просмотра можно без авторизации)
-GET http://localhost/api/v1/items/
+GET localhost:8000/api/v1/items/
 
 
 

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from apps.products.models import Category, Item, ItemParameter, Product, Vendor
+from apps.products.models import Category, Item, ItemImage, ItemParameter, Product, Vendor
 
 
 class VendorSerializer(serializers.ModelSerializer):
@@ -34,8 +34,23 @@ class ItemParameterSerializer(serializers.ModelSerializer):
         fields = ["attribute", "value"]
 
 
+class ItemParameterSerializer(serializers.ModelSerializer):
+    attribute = serializers.SlugRelatedField(slug_field="name", read_only=True)
+
+    class Meta:
+        model = ItemParameter
+        fields = ["attribute", "value"]
+
+
+class ItemImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ItemImage
+        fields = ["id", "image", "is_main"]
+
+
 class ItemSerializer(serializers.ModelSerializer):
     tovar_id = serializers.IntegerField(source="id")
+    images = ItemImageSerializer(many=True, read_only=True)
 
     class Meta:
         model = Item
@@ -46,6 +61,7 @@ class ItemSerializer(serializers.ModelSerializer):
             "count",
             "upc",
             "parameters",
+            "images",
         ]
 
 
