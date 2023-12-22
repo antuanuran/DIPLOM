@@ -29,12 +29,12 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 
 
 ### 4. Вывод всех имеющихся товаров. GET-запрос. (Для просмотра можно без авторизации)
-GET localhost:8000/api/v1/items/
+GET http://79/174/83/233/api/v1/items/
 
 
 
 ### 6. Отправка товаров в корзину (для уменьшения кол-ва товаров указывать значение "qty" со знаком минус)
-POST http://localhost:8000/api/v1/basket-rows/
+POST http://79/174/83/233/api/v1/basket-rows/
 Content-Type: application/json
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjgwNDY4LCJpYXQiOjE3MDEwNzU2NjgsImp0aSI6ImE1OWQ3YWQ2NWYwNjRhN2Q5NmZkMTE2YjE3OTZjNzgwIiwidXNlcl9pZCI6MX0.5bULL4xk8jKQleb2j7w9p89zYKEQ9jk-1TvTAWZpAOE
 
