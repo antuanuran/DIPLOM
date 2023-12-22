@@ -67,4 +67,4 @@ class VendorAdmin(admin.ModelAdmin):
     list_display = ["vendor", "name", "manager"]
 
 
-# ***
+# ****
