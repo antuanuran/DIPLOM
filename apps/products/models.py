@@ -112,9 +112,9 @@ class Item(models.Model):
 
 
 # **** Загрузка фото **********
-def upload_image_path(instance: "ItemImage", filename: str) -> str:
-    ext = filename.rsplit(".", maxsplit=1)[-1]
-    filename = f"items/{instance.item.product.name}/image.{ext}"
+def upload_image_path(instance, filename):
+    expansion = filename.rsplit(".")[-1]
+    filename = f"photo_items/{instance.item.product.name}_image.{expansion}"
     return filename
 
 
