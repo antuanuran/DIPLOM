@@ -1,5 +1,5 @@
 ### 1. Создать токен для дальнейшего использования (email и password указываем суперюзера).
-POST http://localhost:8000/api/v1/auth/jwt/create/
+POST http://79.174.83.233/api/v1/auth/jwt/create/
 Content-Type: application/json
 
 {
@@ -22,9 +22,9 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 #    Токен указываем по ключу: "Bearer Token". 
 #    Body: Key указываем: "file". Value: прикрепляем файл.
 
-POST http://localhost:8000/api/v1/products-import-file/
+POST http://79.174.83.233/api/v1/products-import-file/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjc4MDA4LCJpYXQiOjE3MDEwNzMyMDgsImp0aSI6IjY2NDVjZWFjM2IwYTQ0NDZiMTRlMGE1ZDIzODJiYzAzIiwidXNlcl9pZCI6MX0.IenrvWqylaUrbS3SYctz-jr1yc7OTBOXlfidPOw8yPg
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0MDgwMjIyLCJpYXQiOjE3MDM0NzU0MjIsImp0aSI6IjAzOGY3N2U0MjBkZDRkYzI5MDQ0MGJlODUwZmY3YzhjIiwidXNlcl9pZCI6MX0.U6cOsBnRx8XwY9RL7P69YgcXXwMVZMzetA3lGw70T4g
 
 
 
