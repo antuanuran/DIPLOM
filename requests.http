@@ -1,5 +1,5 @@
 ### 1. Создать токен для дальнейшего использования (email и password указываем суперюзера).
-POST http://79.174.83.233/api/v1/auth/jwt/create/
+POST http://localhost:8000/api/v1/auth/jwt/create/
 Content-Type: application/json
 
 {
@@ -13,7 +13,7 @@ Content-Type: application/json
 ### 2. Вариант загрузки данных файла через имя файла в строке (GET либо POST) :
 POST http://localhost:8000/api/v1/products-import-data/?file_name=import_2.yaml
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjc4MDA4LCJpYXQiOjE3MDEwNzMyMDgsImp0aSI6IjY2NDVjZWFjM2IwYTQ0NDZiMTRlMGE1ZDIzODJiYzAzIiwidXNlcl9pZCI6MX0.IenrvWqylaUrbS3SYctz-jr1yc7OTBOXlfidPOw8yPg
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0MjU1Nzk1LCJpYXQiOjE3MDM2NTA5OTUsImp0aSI6ImJkZTExZjMyMTMzMzRmM2JhY2I3ZDU5NjdjNTY4YzFiIiwidXNlcl9pZCI6MX0.UGmbLk78picHZ-3LC66xCpv0V1Z4XLo6uSjizCg-DQM
 
 
 
@@ -22,24 +22,24 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 #    Токен указываем по ключу: "Bearer Token". 
 #    Body: Key указываем: "file". Value: прикрепляем файл.
 
-POST http://79.174.83.233/api/v1/products-import-file/
+POST http://localhost:8000/api/v1/products-import-file/
 Content-Type: application/json
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0MDgwMjIyLCJpYXQiOjE3MDM0NzU0MjIsImp0aSI6IjAzOGY3N2U0MjBkZDRkYzI5MDQ0MGJlODUwZmY3YzhjIiwidXNlcl9pZCI6MX0.U6cOsBnRx8XwY9RL7P69YgcXXwMVZMzetA3lGw70T4g
 
 
 
 ### 4. Вывод всех имеющихся товаров. GET-запрос. (Для просмотра можно без авторизации)
-GET http://79.174.83.233/api/v1/items/
+GET http://localhost:8000/api/v1/items/
 
 
 
 ### 6. Отправка товаров в корзину (для уменьшения кол-ва товаров указывать значение "qty" со знаком минус)
-POST http://79/174/83/233/api/v1/basket-rows/
+POST http://localhost:8000/api/v1/basket-rows/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjgwNDY4LCJpYXQiOjE3MDEwNzU2NjgsImp0aSI6ImE1OWQ3YWQ2NWYwNjRhN2Q5NmZkMTE2YjE3OTZjNzgwIiwidXNlcl9pZCI6MX0.5bULL4xk8jKQleb2j7w9p89zYKEQ9jk-1TvTAWZpAOE
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0MjU1Nzk1LCJpYXQiOjE3MDM2NTA5OTUsImp0aSI6ImJkZTExZjMyMTMzMzRmM2JhY2I3ZDU5NjdjNTY4YzFiIiwidXNlcl9pZCI6MX0.UGmbLk78picHZ-3LC66xCpv0V1Z4XLo6uSjizCg-DQM
 
 {
-  "tovar_id": 4,
+  "tovar_id": 1,
   "qty": 1
 }
 
@@ -48,7 +48,7 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 ### 7. Orders. Покупка одним кликом. Отправляется весь товар из корзины пользователя в Новый Заказ
 POST http://localhost:8000/api/v1/orders/checkout/
 Content-Type: application/json
-Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjgwNDY4LCJpYXQiOjE3MDEwNzU2NjgsImp0aSI6ImE1OWQ3YWQ2NWYwNjRhN2Q5NmZkMTE2YjE3OTZjNzgwIiwidXNlcl9pZCI6MX0.5bULL4xk8jKQleb2j7w9p89zYKEQ9jk-1TvTAWZpAOE
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0MjU1Nzk1LCJpYXQiOjE3MDM2NTA5OTUsImp0aSI6ImJkZTExZjMyMTMzMzRmM2JhY2I3ZDU5NjdjNTY4YzFiIiwidXNlcl9pZCI6MX0.UGmbLk78picHZ-3LC66xCpv0V1Z4XLo6uSjizCg-DQM
 
 
 ### 8. Orders. Покупки. Изменение статуса на "отменен"

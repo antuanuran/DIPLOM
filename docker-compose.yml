@@ -5,6 +5,7 @@ networks:
 
 volumes:
   pg_data:
+  redis_data:
 
 services:
   db:
@@ -16,3 +17,11 @@ services:
       - pg_data:/var/lib/postgresql/data
     ports:
       - 5432:5432
+
+  redis:
+    image: redis:alpine
+    volumes:
+      - redis_data:/data
+    ports:
+      - 6369:6379
+

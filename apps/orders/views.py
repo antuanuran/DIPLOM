@@ -8,6 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
+from apps.common.tasks import send_email
 from apps.orders.models import Order
 from apps.orders.premissions import IsOwner
 from apps.orders.serializers import OrderSerializer
@@ -71,6 +72,11 @@ class OrderViewSet(ModelViewSet):
                 order.rows.create(item=row.item, qty=row.qty, price=row.item.price)
             basket.rows.all().delete()  # Очищаем корзину
         ### транзакция завершена
+
+        # Celery - send email
+        order_body = "\n".join([f"{row.item.product.name}: {row.qty} [{row.price}]" for row in order.rows.all()])
+        send_email.delay(body=order_body, subject=f"Заказ №{order.id} оформлен", recipient_list=[order.user.email])
+        # Celery - send email
 
         serializer = OrderSerializer(order)  # Выводим через сериализатор итог покупок
         return Response(data=serializer.data, status=status.HTTP_201_CREATED)

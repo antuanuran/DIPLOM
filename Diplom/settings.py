@@ -27,7 +27,7 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = ["rest_framework", "djoser", "django_filters", "drf_yasg"]
 
-LOCAL_APPS = ["apps.users", "apps.products", "apps.orders", "apps.basket"]
+LOCAL_APPS = ["apps.common", "apps.users", "apps.products", "apps.orders", "apps.basket"]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -133,3 +133,14 @@ SWAGGER_SETTINGS = {
         "JWT": {"type": "apiKey", "name": "Authorization", "in": "header"},
     },
 }
+
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_PORT = os.getenv("EMAIL_PORT")
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = True
+
+CELERY_TIMEZONE = "UTC"
+CELERY_TASK_TIME_LIMIT = 30 * 60
+CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL", "redis://localhost:6379/11")
+CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND", "redis://localhost:6379/12")
