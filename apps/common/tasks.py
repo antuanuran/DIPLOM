@@ -8,7 +8,7 @@ def send_email(body, subject, recipient_list):
     send_mail(
         subject,
         body,
-        settings.EMAIL_HOST_USER,
+        settings.EMAIL_HOST_USER,  # EMAIL_HOST_USER - это хост, от кого будет рассылка. Его нужно указать через .env
         recipient_list,
         fail_silently=False,
     )
