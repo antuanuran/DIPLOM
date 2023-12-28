@@ -1,4 +1,5 @@
 ### 1. Создать токен для дальнейшего использования (email и password указываем суперюзера).
+#POST http://79.174.83.233/api/v1/auth/jwt/create/
 POST http://localhost:8000/api/v1/auth/jwt/create/
 Content-Type: application/json
 
@@ -11,6 +12,7 @@ Content-Type: application/json
 
 
 ### 2. Вариант загрузки данных файла через имя файла в строке (GET либо POST) :
+#POST http://79.174.83.233/api/v1/products-import-data/?file_name=import_2.yaml
 POST http://localhost:8000/api/v1/products-import-data/?file_name=import_2.yaml
 Content-Type: application/json
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0MjcwNzA5LCJpYXQiOjE3MDM2NjU5MDksImp0aSI6IjlkM2Q4MDA2NzU4MzRlZDc4YWQxZTE0OWM3MzM2MGU1IiwidXNlcl9pZCI6MX0.qkdMP7W6fm6KUd2XWedRVEV0q-z-xg2Cx2n0uC48iOc
@@ -22,6 +24,7 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 #    Токен указываем по ключу: "Bearer Token". 
 #    Body: Key указываем: "file". Value: прикрепляем файл.
 
+#POST http://79.174.83.233/api/v1/products-import-file/
 POST http://localhost:8000/api/v1/products-import-file/
 Content-Type: application/json
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0MjcwNzA5LCJpYXQiOjE3MDM2NjU5MDksImp0aSI6IjlkM2Q4MDA2NzU4MzRlZDc4YWQxZTE0OWM3MzM2MGU1IiwidXNlcl9pZCI6MX0.qkdMP7W6fm6KUd2XWedRVEV0q-z-xg2Cx2n0uC48iOc
@@ -29,35 +32,34 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 
 
 ### 4. Вывод всех имеющихся товаров. GET-запрос. (Для просмотра можно без авторизации)
-#GET http://localhost:8000/api/v1/items/
-GET http://79.174.83.233/api/v1/items/
+#GET http://79.174.83.233/api/v1/items/
+GET http://localhost:8000/api/v1/items/
 
 
 
 
 ### 6. Отправка товаров в корзину (для уменьшения кол-ва товаров указывать значение "qty" со знаком минус)
-#POST http://localhost:8000/api/v1/basket-rows/
-POST http://79.174.83.233/api/v1/basket-rows/
+#POST http://79.174.83.233/api/v1/basket-rows/
+POST http://localhost:8000/api/v1/basket-rows/
 Content-Type: application/json
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0MjcwNzA5LCJpYXQiOjE3MDM2NjU5MDksImp0aSI6IjlkM2Q4MDA2NzU4MzRlZDc4YWQxZTE0OWM3MzM2MGU1IiwidXNlcl9pZCI6MX0.qkdMP7W6fm6KUd2XWedRVEV0q-z-xg2Cx2n0uC48iOc
 
 {
-  "tovar_id": 9,
+  "tovar_id": 1,
   "qty": 1
 }
 
 
 
 ### 7. Orders. Покупка одним кликом. Отправляется весь товар из корзины пользователя в Новый Заказ
-#POST http://localhost:8000/api/v1/orders/checkout/
-POST http://79.174.83.233/api/v1/orders/checkout/
+#POST http://79.174.83.233/api/v1/orders/checkout/
+POST http://localhost:8000/api/v1/orders/checkout/
 Content-Type: application/json
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0MjcwNzA5LCJpYXQiOjE3MDM2NjU5MDksImp0aSI6IjlkM2Q4MDA2NzU4MzRlZDc4YWQxZTE0OWM3MzM2MGU1IiwidXNlcl9pZCI6MX0.qkdMP7W6fm6KUd2XWedRVEV0q-z-xg2Cx2n0uC48iOc
 
 
 ### 8. Orders. Покупки. Изменение статуса на "отменен"
 PATCH http://localhost:8000/api/v1/orders/20/
-POST http://79.174.83.233/api/v1/basket-rows/
 Content-Type: application/json
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0MjcwNzA5LCJpYXQiOjE3MDM2NjU5MDksImp0aSI6IjlkM2Q4MDA2NzU4MzRlZDc4YWQxZTE0OWM3MzM2MGU1IiwidXNlcl9pZCI6MX0.qkdMP7W6fm6KUd2XWedRVEV0q-z-xg2Cx2n0uC48iOc
 
@@ -95,6 +97,7 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNj
 
 
 ###  Создание Юзера
+#POST http://79.174.83.233/api/v1/auth/users/
 POST http://localhost:8000/api/v1/auth/users/
 Content-Type: application/json
 
@@ -107,6 +110,7 @@ Content-Type: application/json
 
 
 ### Проверка данных Юзера
+#GET http://79.174.83.233/api/v1/auth/users/me/
 GET http://localhost:8000/api/v1/auth/users/me/
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjc4MDA4LCJpYXQiOjE3MDEwNzMyMDgsImp0aSI6IjY2NDVjZWFjM2IwYTQ0NDZiMTRlMGE1ZDIzODJiYzAzIiwidXNlcl9pZCI6MX0.IenrvWqylaUrbS3SYctz-jr1yc7OTBOXlfidPOw8yPg
 
